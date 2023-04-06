@@ -1,0 +1,282 @@
+* {
+  --clr-main: #606c38;
+  --clr-main-dark: #283618;
+  --clr-main-light: #8cb369;
+  --clr-dark-gray: #1a1a1a;
+  --clr-light-yellow: #edcf3c;
+  --clr-dark-yellow: #f4a259;
+  --clr-background-light: #dbcd8a;
+  --clr-dark-blue: #083d77;
+  --clr-light-blue: #5b7e99;
+  --clr-red: #e63946;
+}
+
+html, body {
+  background-color: white;
+}
+
+.main-banner {
+  display: none;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  padding: 0 30px;
+}
+
+.filter {
+  border-radius: 20px;
+  box-shadow: 0 0 20px gray;
+}
+
+.filter {
+  padding: 20px;
+}
+
+.catalog-nav,
+.filter ul,
+.filter form,
+.product-filter,
+.radio-button-group,
+.product-brands-filter,
+.filter {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.catalog-nav {
+  padding-bottom: 10px;
+  border-bottom: 1px solid gray;
+}
+
+.catalog-nav a {
+  text-decoration: none;
+  color: var(--clr-dark-gray);
+}
+
+.catalog-nav > a {
+  font-size: 1.5em;
+  color: var(--clr-main-dark);
+  font-weight: bold;
+}
+
+.label {
+  font-weight: bold;
+}
+
+[name="price-range-left"] {
+  direction: rtl;
+}
+
+.price-range-group {
+  width: 100%;
+  display: flex;
+  gap: 2px;
+}
+
+[type="range"] {
+  flex-grow: 1;
+}
+
+.price-range-display {
+  text-align: center;
+}
+
+.catalog-title {
+  border-radius: 15px;
+  box-shadow: 0 0 30px gray;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.catalog-title .title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--clr-main-dark);
+}
+
+.grid-col-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.product-sort select {
+  width: 150px;
+  outline: none;
+}
+
+.product-catalog {
+  padding: 30px 30px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.product-catalog-container {
+  border-radius: 15px;
+  box-shadow: 0 0 30px gray;
+  padding-bottom: 20px;
+}
+
+.product {
+  border: 1px solid lightgray;
+  transition: 300ms;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.product:hover {
+  transform: translateY(-10px);
+  border: 1px solid var(--clr-main);
+}
+
+.product img {
+  width: 100%;
+}
+
+.product-price {
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+}
+
+.product .product-price .price {
+  font-weight: bold;
+  color: var(--clr-dark-yellow);
+  font-size: 1.5rem;
+}
+
+.product .product-price .heart {
+  fill: var(--clr-dark-gray);
+  cursor: pointer;
+}
+
+.product .product-price .heart.checked {
+  fill: var(--clr-red);
+}
+
+.product .product-brand {
+  color: var(--clr-main);
+  font-weight: bold;
+}
+
+.product .prodcut-name {
+  max-height: 35px;
+}
+
+.page-nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding-top: 10px;
+  flex-wrap: wrap;
+}
+
+.page-nav a {
+  border: 2px solid var(--clr-main);
+  color: var(--clr-main);
+  width: 1.5em;
+  height: 1.5em;
+  text-align: center;
+  border-radius: 5px;
+  padding-top: 0.1em;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.page-nav a.active {
+  background-color: var(--clr-main);
+  color: white;
+}
+
+@media (max-width: 1350px) {
+  .product-catalog {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .product-cell {
+    width: 32%;
+  }
+}
+
+@media (max-width: 1020px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .catalog-nav ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .product-catalog {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .product-cell {
+    width: 32%;
+  }
+}
+
+@media (max-width: 720px) {
+  .product-catalog {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .product-cell {
+    width: 48%;
+  }
+
+  .product {
+    border: 1px solid gray;
+    box-shadow: none;
+  }
+
+  .product-catalog {
+    padding: 10px;
+  }
+
+  .product .product-price .price {
+    font-size: 1.25rem;
+  }
+
+  .product .product-price .heart {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 400px) {
+  .catalog-title .title {
+    font-size: 1.25rem;
+  }
+
+  .catalog-title select {
+    width: fit-content;
+  }
+}
+
+@media (max-width: 350px) {
+.product-catalog {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .product-cell {
+    width: 95%;
+  }
+}
