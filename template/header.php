@@ -67,7 +67,10 @@ F L O R A
                     </g>
                 </svg>
             </a>
-
+            <div class="post-login">
+                <div class="greeting">Xin chào, Pà</div>
+                <a href="#" id="btn-user-info">P</a>
+            </div>
         </div>
         <button class="burger">
             <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="25" height="25">

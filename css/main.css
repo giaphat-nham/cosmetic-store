@@ -13,9 +13,12 @@
   --clr-background-light: #dbcd8a;
   --clr-dark-blue: #083d77;
   --clr-light-blue: #5b7e99;
+  --clr-light-gray: #363031;
+  --clr-focus-gray: #0b0a0a;
 }
 
-html, body {
+html,
+body {
   background-color: white;
 }
 
@@ -238,6 +241,30 @@ button:hover svg {
   top: 3px;
   transform: rotateY(180deg);
   fill: var(--clr-dark-gray);
+}
+
+#btn-user-info {
+  width: 25px;
+  height: 25px;
+  border: 1px solid white;
+  color: white;
+  background-color: var(--clr-main);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.post-login {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  display: none;
+}
+
+.greeting {
+  font-weight: bold;
+  color: white;
 }
 
 .extend-menu {
@@ -648,6 +675,151 @@ footer img {
 
 .main-nav li a img {
   display: none;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0 0 0 0;
+  background-color: hsla(0, 0%, 100%, 0.2);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+
+.modal {
+  background-color: white;
+  padding: 30px 50px;
+  border-radius: 30px 0 30px 0;
+  border-top: 5px solid var(--clr-main-light);
+  border-left: 5px solid var(--clr-main-light);
+  border-bottom: 5px solid var(--clr-main);
+  border-right: 5px solid var(--clr-main);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 30%;
+  align-items: center;
+  min-width: 280px;
+  max-width: 450px;
+}
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.btn-cancel {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--clr-main);
+  cursor: pointer;
+}
+
+.btn-cancel:hover {
+  color: var(--clr-main-dark);
+}
+
+.modal .title {
+  color: var(--clr-main-dark);
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.modal .input {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.modal .input label {
+  font-weight: bold;
+  color: var(--clr-main-dark);
+}
+
+.modal .input input {
+  padding: 0.25rem 0.5rem;
+  outline: none;
+  border: 1px solid var(--clr-main);
+  border-radius: 100vh;
+}
+
+.modal .input input:hover {
+  border: 1px solid var(--clr-main-light);
+}
+
+.modal .input input:focus {
+  outline: 2px solid var(--clr-main-dark);
+  border: 1px solid transparent;
+}
+
+.modal button[type="submit"] {
+  border: 1px solid var(--clr-main);
+  margin-top: 10px;
+  border-radius: 100vh;
+  font-weight: bold;
+  color: white;
+  background-color: var(--clr-main);
+}
+
+.modal button[type="submit"]:hover {
+  background-color: var(--clr-main-light);
+  border: 1px solid var(--clr-main-light);
+}
+
+.modal button[type="submit"]:focus {
+  background-color: var(--clr-main-dark);
+  border: 1px solid var(--clr-main-dark);
+}
+
+.modal .other-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 1px solid gray;
+  position: relative;
+  justify-content: start;
+  width: 90%;
+}
+
+.modal .other-option::before {
+  content: "or";
+  color: gray;
+  position: absolute;
+  top: -10px;
+  background-color: white;
+  padding: 0 5px;
+}
+
+.modal button[type="button"] {
+  border: 1px solid var(--clr-dark-gray);
+  border-radius: 100vh;
+  font-weight: bold;
+  color: white;
+  background-color: var(--clr-dark-gray);
+  width: 100%;
+}
+
+.modal button[type="button"]:hover {
+  background-color: var(--clr-light-gray);
+  border: 1px solid var(--clr-light-gray);
+}
+
+.modal button[type="button"]:focus {
+  background-color: var(--clr-focus-gray);
+  border: 1px solid var(--clr-focus-gray);
 }
 @media (max-width: 1350px) {
   #btn-about svg,

@@ -122,6 +122,7 @@ svg {
   padding: 1.5rem 2rem;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .info .button-group .add-to-cart {
@@ -262,6 +263,7 @@ svg {
   flex-direction: column;
   gap: 15px;
   padding-left: 20px;
+  padding-right: 20px;
 }
 
 .product-tags .title {
@@ -273,6 +275,7 @@ svg {
 .product-tags .tags {
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .tags a {
@@ -310,4 +313,63 @@ svg {
 
 .claims li {
     line-height: 1.5rem;
+}
+
+@media (max-width: 940px)  {
+  .content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .brand-logo img {
+    width: 100%;
+  }
+
+  .side-info {
+    width: 100%;
+  }
+
+  .product-grid {
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 850px) {
+  .main-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .content {
+    padding: 0px 0px;
+  }
+
+  .main-info {
+    padding: 0px;
+  }
+
+  .main-info .main-img {
+    width: 100%;
+  }
+
+  .info {
+    padding: 0px;
+  }
+
+  .info .name, .info .brand, .info .price-fav {
+    font-size: 1rem;
+    padding: 0px 20px;
+  }
+
+  .info .button-group {
+    flex-direction: column;
+    padding: 10px 20px 20px 20px;
+  }
+
+  .product {
+    padding: 10px;
+  }
 }
