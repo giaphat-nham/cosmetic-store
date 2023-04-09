@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8">
@@ -89,7 +89,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="grid-col">
+            <div class="grid-col" id="2">
                 <a href="./product.php" class="brand-logo">
                     <img src="./img/brands/larocheposay-logo.jpg" alt="">
                 </a>

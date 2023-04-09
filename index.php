@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8">
@@ -105,6 +105,7 @@
             </div>
         </div>
     <?php include("./template/footer.php")?>
+    <?php include ("./login.php")?>
     </div>
 </body>
 
