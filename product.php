@@ -62,7 +62,7 @@
 
     </div>
     <?php include("./template/footer.php") ?>
-    <?php include(".template/login.php") ?>
+    <?php include("./template/login.php") ?>
     </div>
 </body>
 
