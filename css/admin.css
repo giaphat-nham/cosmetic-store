@@ -1,0 +1,44 @@
+*{
+    box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Roboto", sans-serif;
+        font-size: 14px;
+}
+html,
+body {
+    background-color: white;
+}
+.container {
+    width: 100%;
+    height: max-content;
+    display: grid;
+    grid-template-columns: 300px 1fr 1fr 1fr;
+    grid-template-rows: 0.2fr 3fr;
+    grid-template-areas: 
+    "sidebar header header header"
+    "sidebar main main main" ;
+    height: 100vh;
+
+}
+/* ---------- HEADER ---------- */
+.header {
+    grid-area: header;
+    background-color: #21232d;
+    height: 70px;
+
+}
+/* ---------- HEADER ---------- */
+
+/* ---------- SIDEBAR ---------- */
+.sidebar {
+    grid-area: sidebar;
+}
+/* ---------- SIDEBAR ---------- */
+
+/* ---------- MAIN ---------- */
+.main{
+    grid-area: main;
+}
+/* ---------- MAIN ---------- */
+
