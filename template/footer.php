@@ -4,43 +4,43 @@
         <div class="footer-nav">
             <span>Thương hiệu</span>
             <ul>
-                <li><a href="./product.php">L'OREAL</a></li>
-                <li><a href="./product.php">Cocoon</a></li>
-                <li><a href="./product.php">LA ROCHE-POSAY</a></li>
-                <li><a href="./product.php">BIODERMA</a></li>
-                <li><a href="./product.php">MAYBELLINE</a></li>
-                <li><a href="./product.php">M.A.C</a></li>
+                <li><a href="./product.php?nav=brand&type=loreal">L'OREAL</a></li>
+                <li><a href="./product.php?nav=brand&type=cocoon">Cocoon</a></li>
+                <li><a href="./product.php?nav=brand&type=larocheposay">LA ROCHE-POSAY</a></li>
+                <li><a href="./product.php?nav=brand&type=bioderma">BIODERMA</a></li>
+                <li><a href="./product.php?nav=brand&type=maybelline">MAYBELLINE</a></li>
+                <li><a href="./product.php?nav=brand&type=mac">M.A.C</a></li>
             </ul>
         </div>
         <div class="footer-nav">
             <span>Chăm sóc cơ thể</span>
             <ul>
-                <li><a href="./product.php">Tẩy tế bào chết</a></li>
-                <li><a href="./product.php">Sữa tắm</a></li>
-                <li><a href="./product.php">Dưỡng thể</a></li>
+                <li><a href="./product.php?nav=bodycare&type=srub">Tẩy tế bào chết</a></li>
+                <li><a href="./product.php?nav=bodycare&type=bodycleanser">Sữa tắm</a></li>
+                <li><a href="./product.php?nav=bodycare&type=lotion">Dưỡng thể</a></li>
             </ul>
         </div>
         <div class="footer-nav">
             <span>Makeup</span>
             <ul>
-                <li><a href="./product.php">Kem lót</a></li>
-                <li><a href="./product.php">Kem nền</a></li>
-                <li><a href="./product.php">Che khuyết điểm</a></li>
-                <li><a href="./product.php">Phấn phủ</a></li>
-                <li><a href="./product.php">Mascara</a></li>
-                <li><a href="./product.php">Kẻ mắt</a></li>
-                <li><a href="./product.php">Son</a></li>
+                <li><a href="./product.php?nav=makeup&type=primer">Kem lót</a></li>
+                <li><a href="./product.php?nav=makeup&type=foundation">Kem nền</a></li>
+                <li><a href="./product.php?nav=makeup&type=concealer">Che khuyết điểm</a></li>
+                <li><a href="./product.php?nav=makeup&type=powder">Phấn phủ</a></li>
+                <li><a href="./product.php?nav=makeup&type=mascara">Mascara</a></li>
+                <li><a href="./product.php?nav=makeup&type=eyeliner">Kẻ mắt</a></li>
+                <li><a href="./product.php?nav=makeup&type=lipstick">Son</a></li>
             </ul>
         </div>
         <div class="footer-nav">
             <span>Chăm sóc da mặt</span>
             <ul>
-                <li><a href="./product.php">Tẩy trang</a></li>
-                <li><a href="./product.php">Sữa rửa mặt</a></li>
-                <li><a href="./product.php">Toner</a></li>
-                <li><a href="./product.php">Serum</a></li>
-                <li><a href="./product.php">Dưỡng ẩm</a></li>
-                <li><a href="./product.php">Kem chống nắng</a></li>
+                <li><a href="./product.php?nav=facecare&type=micellar">Tẩy trang</a></li>
+                <li><a href="./product.php?nav=facecare&type=cleanser">Sữa rửa mặt</a></li>
+                <li><a href="./product.php?nav=facecare&type=toner">Toner</a></li>
+                <li><a href="./product.php?nav=facecare&type=serum">Serum</a></li>
+                <li><a href="./product.php?nav=facecare&type=moisturizer">Dưỡng ẩm</a></li>
+                <li><a href="./product.php?nav=facecare&type=suncream">Kem chống nắng</a></li>
             </ul>
         </div>
         <div class="footer-nav">

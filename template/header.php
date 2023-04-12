@@ -84,64 +84,64 @@ F L O R A
     <nav class="nav-bar">
         <ul class="main-nav">
             <li id="nav-brands">
-                <a href="./product.php">
+                <a href="./product.php?nav=brand">
                     <img src="./img/png/brand.png" alt="">
                     <span>Thương hiệu</span>
                 </a>
                 <div class="extend-menu" id="extend-brands">
                     <ul class="extend-menu-list">
-                        <li><a href="./product.php">L'OREAL</a></li>
-                        <li><a href="./product.php">Cocoon</a></li>
-                        <li><a href="./product.php">LA ROCHE-POSAY</a></li>
-                        <li><a href="./product.php">BIODERMA</a></li>
-                        <li><a href="./product.php">MAYBELLINE</a></li>
-                        <li><a href="./product.php">M.A.C</a></li>
+                        <li><a href="./product.php?nav=brand&brand=loreal">L'OREAL</a></li>
+                        <li><a href="./product.php?nav=brand&brand=cocoon">Cocoon</a></li>
+                        <li><a href="./product.php?nav=brand&brand=larocheposay">LA ROCHE-POSAY</a></li>
+                        <li><a href="./product.php?nav=brand&brand=bioderma">BIODERMA</a></li>
+                        <li><a href="./product.php?nav=brand&brand=maybelline">MAYBELLINE</a></li>
+                        <li><a href="./product.php?nav=brand&brand=mac">M.A.C</a></li>
                     </ul>
                 </div>
             </li>
             <li id="nav-skincare">
-                <a href="./product.php">
+                <a href="./product.php?nav=facecare">
                     <img src="./img/png/organic.png" alt="">
                     <span>Chăm sóc da mặt</span>
                 </a>
                 <div class="extend-menu" id="extend-skincare">
                     <ul class="extend-menu-list">
-                        <li><a href="./product.php">Tẩy trang</a></li>
-                        <li><a href="./product.php">Sữa rửa mặt</a></li>
-                        <li><a href="./product.php">Toner</a></li>
-                        <li><a href="./product.php">Serum</a></li>
-                        <li><a href="./product.php">Dưỡng ẩm</a></li>
-                        <li><a href="./product.php">Kem chống nắng</a></li>
+                        <li><a href="./product.php?nav=facecare&type=micellar">Tẩy trang</a></li>
+                        <li><a href="./product.php?nav=facecare&type=cleanser">Sữa rửa mặt</a></li>
+                        <li><a href="./product.php?nav=facecare&type=toner">Toner</a></li>
+                        <li><a href="./product.php?nav=facecare&type=serum">Serum</a></li>
+                        <li><a href="./product.php?nav=facecare&type=moisturizer">Dưỡng ẩm</a></li>
+                        <li><a href="./product.php?nav=facecare&type=suncream">Kem chống nắng</a></li>
                     </ul>
                 </div>
             </li>
             <li id="nav-bodycare">
-                <a href="./product.php">
+                <a href="./product.php?nav=bodycare">
                     <img src="./img/png/skincare.png" alt="">
                     <span>Chăm sóc cơ thể</span>
                 </a>
                 <div class="extend-menu" id="extend-bodycare">
                     <ul class="extend-menu-list">
-                        <li><a href="./product.php">Tẩy tế bào chết</a></li>
-                        <li><a href="./product.php">Sữa tắm</a></li>
-                        <li><a href="./product.php">Dưỡng thể</a></li>
+                        <li><a href="./product.php?nav=bodycare&type=srub">Tẩy tế bào chết</a></li>
+                        <li><a href="./product.php?nav=bodycare&type=bodycleanser">Sữa tắm</a></li>
+                        <li><a href="./product.php?nav=bodycare&type=lotion">Dưỡng thể</a></li>
                     </ul>
                 </div>
             </li>
             <li id="nav-makeup">
-                <a href="./product.php">
+                <a href="./product.php?nav=makeup">
                     <img src="./img/png/cosmetics.png" alt="">
                     <span>Makeup</span>
                 </a>
                 <div class="extend-menu" id="extend-makeup">
                     <ul class="extend-menu-list">
-                        <li><a href="./product.php">Kem lót</a></li>
-                        <li><a href="./product.php">Kem nền</a></li>
-                        <li><a href="./product.php">Che khuyết điểm</a></li>
-                        <li><a href="./product.php">Phấn phủ</a></li>
-                        <li><a href="./product.php">Mascara</a></li>
-                        <li><a href="./product.php">Kẻ mắt</a></li>
-                        <li><a href="./product.php">Son</a></li>
+                        <li><a href="./product.php?nav=makeup&type=primer">Kem lót</a></li>
+                        <li><a href="./product.php?nav=makeup&type=foundation">Kem nền</a></li>
+                        <li><a href="./product.php?nav=makeup&type=concealer">Che khuyết điểm</a></li>
+                        <li><a href="./product.php?nav=makeup&type=powder">Phấn phủ</a></li>
+                        <li><a href="./product.php?nav=makeup&type=mascara">Mascara</a></li>
+                        <li><a href="./product.php?nav=makeup&type=eyeliner">Kẻ mắt</a></li>
+                        <li><a href="./product.php?nav=makeup&type=lipstick">Son</a></li>
                     </ul>
                 </div>
             </li>

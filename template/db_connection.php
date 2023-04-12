@@ -28,5 +28,17 @@ class DatabaseConnection
         $this->conn->close();
     }
 
+    public function getBrands() {
+        $sql = "SELECT brand_name, display_name FROM brand";
+        $result = mysqli_query($this->conn,$sql);
+        $arr = array();
+
+        while ($row = mysqli_fetch_array($result)){
+            array_push($arr,$row);
+        }
+
+        return $arr;
+    }
+
 }
 ?>

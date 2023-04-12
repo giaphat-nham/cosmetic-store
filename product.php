@@ -17,6 +17,10 @@
     <script defer src="./js/script.js"></script>
     <script defer src="./js/product.js"></script>
     <title>FLORA | PRODUCT</title>
+    <?php include("./template/db_connection.php");
+    $conn = new DatabaseConnection("localhost","root","","cosmetic_store");
+    $conn->connect();
+    ?>
 </head>
 
 <body>
@@ -25,7 +29,7 @@
         <div class="content">
             <div class="grid-col-1">
                 <div class="filter">
-                    <?php include("./template/catalog_nav.php")?>
+                    <?php include("./template/catalog_nav.php") ?>
                     <div class="product-filter">
                         <form action="" method="get">
                             <label for="price-range" class="label">Khoảng giá:</label>
@@ -49,20 +53,27 @@
                                     <label for="oily">Mọi loại da</label>
                                 </div>
                             </div>
-                            <?php include("./template/product_type_filter.php") ?>
-                            <?php include("./template/product_brands_filter.php") ?>
+                            <?php
+                            if (isset($_GET["nav"])) {
+                                if ($_GET["nav"] == "brand") {
+                                    include("./template/product_type_filter.php");
+                                } else {
+                                    include("./template/product_brands_filter.php");
+                                }
+                            }
+                            ?>
                         </form>
                     </div>
                 </div>
             </div>
             <div class="grid-col-2">
-                <?php include("./template/products_display.php")?>
+                <?php include("./template/products_display.php") ?>
             </div>
         </div>
 
     </div>
     <?php include("./template/footer.php") ?>
-    <?php include(".template/login.php") ?>
+    <?php include("./template/login.php") ?>
     </div>
 </body>
 

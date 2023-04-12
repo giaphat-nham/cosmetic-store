@@ -1,5 +1,24 @@
 <div class="catalog-title">
-    <div class="title">Nhóm sản phẩm</div>
+    <div class="title">
+        <?php
+        if (isset($_GET['nav'])) {
+            switch ($_GET['nav']) {
+                case "brand":
+                    echo "Sản phẩm theo thương hiệu";
+                    break;
+                case "facecare":
+                    echo "Sản phẩm chăm sóc da mặt";
+                    break;
+                case "bodycare":
+                    echo "Sản phẩm chăm sóc cơ thể";
+                    break;
+                case "makeup":
+                    echo "Sản phẩm Makeup";
+                    break;
+            }
+        }
+        ?>
+    </div>
     <div class="product-sort">
         <select name="product-sort" id="">
             <option value="1">A - Z</option>
