@@ -1,15 +1,17 @@
 <div class="product-brands-filter radio-button-group">
     <label for="brand" class="label">Thương hiệu:</label>
-    <div class="radio-option">
-        <input type="radio" name="brand" id="cocoon" value="cocoon">
-        <label for="face-care">Cocoon</label>
-    </div>
-    <div class="radio-option">
-        <input type="radio" name="brand" id="bioderma" value="bioderma">
-        <label for="body-care">Bioderma</label>
-    </div>
-    <div class="radio-option">
-        <input type="radio" name="brand" id="La Roche Posay" value="La Roche Posay">
-        <label for="makeup">La Roche Posay</label>
-    </div>
+    <?php
+    if (isset($_GET['nav'])) {
+        if ($_GET['nav'] != "brand") {
+            $brands = $conn->getBrands();
+
+            foreach ($brands as $brand) {
+                echo "<div class='radio-option'>
+        <input type='radio' name='brand' id='".$brand['brand_name']."' value='" . $brand['brand_name'] . "'>
+        <label for='" . $brand['brand_name'] . "'>" . $brand['display_name'] . "</label>
+    </div>";
+            }
+        }
+    }
+    ?>
 </div>

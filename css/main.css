@@ -821,7 +821,7 @@ footer img {
   background-color: var(--clr-focus-gray);
   border: 1px solid var(--clr-focus-gray);
 }
-@media (max-width: 1350px) {
+@media (max-width: 1300px) {
   #btn-about svg,
   #btn-delivery svg {
     display: block;
