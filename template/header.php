@@ -84,7 +84,7 @@ F L O R A
     <nav class="nav-bar">
         <ul class="main-nav">
             <li id="nav-brands">
-                <a href="./product.php?nav=brand">
+                <a href="./product.php?nav=brand&brand=loreal">
                     <img src="./img/png/brand.png" alt="">
                     <span>Thương hiệu</span>
                 </a>

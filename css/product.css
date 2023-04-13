@@ -135,6 +135,7 @@ html, body {
   gap: 10px;
   background-color: white;
   cursor: pointer;
+  height: 100%;
 }
 
 .product:hover {

@@ -16,6 +16,7 @@
     <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
     <script defer src="./js/script.js"></script>
     <script defer src="./js/product.js"></script>
+    <script src="./js/jquery-3.6.4.min.js"></script>
     <title>FLORA | PRODUCT</title>
     <?php include("./template/db_connection.php");
     $conn = new DatabaseConnection("localhost","root","","cosmetic_store");
