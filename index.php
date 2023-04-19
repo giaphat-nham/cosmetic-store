@@ -40,6 +40,10 @@
                     include("./template/home_banners.php");
                     break;
             }
+            echo "<script type='text/javascript'>
+            const banner = document.querySelector('.main-banner');
+            banner.style.display = 'none';
+            </script>";
         } else {
             include("./template/home_banners.php");
         }

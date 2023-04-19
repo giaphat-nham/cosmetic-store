@@ -140,6 +140,7 @@ html, body {
   cursor: pointer;
   height: 100%;
   width: 100%;
+  text-decoration: none;
 }
 
 .product:hover {
@@ -177,8 +178,9 @@ html, body {
   font-weight: bold;
 }
 
-.product .prodcut-name {
+.product .product-name {
   max-height: 35px;
+  color: var(--clr-dark-gray);
 }
 
 .page-nav {

@@ -6,14 +6,8 @@
                 case "brand":
                     echo $conn->getBrandDisplayName($_GET['brand']);
                     break;
-                case "facecare":
-                    echo "Sản phẩm chăm sóc da mặt";
-                    break;
-                case "bodycare":
-                    echo "Sản phẩm chăm sóc cơ thể";
-                    break;
-                case "makeup":
-                    echo "Sản phẩm Makeup";
+                default:
+                    echo $conn->getTypeDisplayName($_GET['type']);
                     break;
             }
         }
@@ -34,19 +28,15 @@
         if (isset($_GET['nav'])) {
             if ($_GET['nav'] == "brand") {
                 $conn->loadProductsBrand();
-            }
-            else {
-                
+            } else {
+                $conn->loadProductType();
             }
         }
         ?>
     </div>
     <div class="page-nav">
-        <a href="#">1</a>
-        <a href="#">2</a>
-        <a href="#" class="active">3</a>
-        <a href="#">2</a>
-        <a href="#">2</a>
-        <a href="#">2</a>
+        <?php
+        $conn->loadPageNavigation();
+        ?>
     </div>
 </div>
