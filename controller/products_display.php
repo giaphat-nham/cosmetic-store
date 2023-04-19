@@ -29,11 +29,14 @@
     </div>
 </div>
 <div class="product-catalog-container">
-    <div class="product-catalog">
+    <div class="product-catalog product-page">
         <?php
         if (isset($_GET['nav'])) {
             if ($_GET['nav'] == "brand") {
                 $conn->loadProductsBrand();
+            }
+            else {
+                
             }
         }
         ?>

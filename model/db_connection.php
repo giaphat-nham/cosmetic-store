@@ -43,25 +43,19 @@ class DatabaseConnection
 
     public function loadProductsBrand()
     {
-        if (isset($_POST['page_num'])) {
-            $pageNum = $_POST['page_num'];
-        } else {
-            $pageNum = 1;
-        }
         $brandName = $_GET['brand'];
         $sql = "SELECT brand_id FROM brand WHERE brand_name = '" . $brandName . "'";
         $result = mysqli_query($this->conn, $sql);
         $row = mysqli_fetch_array($result);
         $brandId = $row['brand_id'];
 
-        $start = ($pageNum - 1) * 16;
+        $start = 0;
         $sql = "SELECT product_name, product".'.'."img, price, display_name FROM product, brand WHERE product".'.'."brand_id = $brandId AND product" . '.' . "brand_id = brand" . '.' . "brand_id AND state = 1 LIMIT $start,16";
         $result = mysqli_query($this->conn, $sql);
 
         while ($row = mysqli_fetch_array($result)) {
             echo "
-            <div class='product-cell'>
-                <div class='product'>
+                <div class='product product-page'>
                     <img src='./img/product/" . $row['img'] . "' alt='product image'>
                     <div class='product-price'>
                         <div class='price'>" . number_format($row['price'], 0, '', '.') . "</div>
@@ -73,8 +67,7 @@ class DatabaseConnection
                     </div>
                     <div class='product-brand'>" . $row['display_name'] . "</div>
                     <div class='product-name'>" . $row['product_name'] . "</div>
-                </div>
-            </div>";
+                </div>";
         }
     }
 
@@ -84,6 +77,11 @@ class DatabaseConnection
         $row = mysqli_fetch_array($result);
 
         return $row['display_name'];
+    }
+
+    public function loadProductType() {
+        $start = 0;
+        $productType = $_GET['type'];
     }
 
 }

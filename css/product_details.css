@@ -24,7 +24,7 @@ svg {
   display: none;
 }
 
-.content {
+.content.product-details-page {
   padding: 0 30px;
   display: grid;
   grid-template-columns: 3fr auto;
@@ -316,7 +316,7 @@ svg {
 }
 
 @media (max-width: 940px)  {
-  .content {
+  .content.content.product-details-page {
     display: flex;
     flex-direction: column;
   }
@@ -343,7 +343,7 @@ svg {
 }
 
 @media (max-width: 400px) {
-  .content {
+  .content.product-details-page {
     padding: 0px 0px;
   }
 
