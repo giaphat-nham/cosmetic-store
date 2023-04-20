@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 13, 2023 at 08:27 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th4 20, 2023 lúc 10:40 AM
+-- Phiên bản máy phục vụ: 10.4.25-MariaDB
+-- Phiên bản PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `cosmetic_store`
+-- Cơ sở dữ liệu: `cosmetic_store`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `account`
+-- Cấu trúc bảng cho bảng `account`
 --
 
 CREATE TABLE `account` (
@@ -34,10 +34,10 @@ CREATE TABLE `account` (
   `date` datetime NOT NULL,
   `decent_id` int(10) UNSIGNED NOT NULL,
   `state` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `account`
+-- Đang đổ dữ liệu cho bảng `account`
 --
 
 INSERT INTO `account` (`account_id`, `username`, `password`, `date`, `decent_id`, `state`) VALUES
@@ -46,7 +46,7 @@ INSERT INTO `account` (`account_id`, `username`, `password`, `date`, `decent_id`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bill`
+-- Cấu trúc bảng cho bảng `bill`
 --
 
 CREATE TABLE `bill` (
@@ -55,12 +55,12 @@ CREATE TABLE `bill` (
   `customer_id` int(10) UNSIGNED NOT NULL,
   `bill_state` int(1) UNSIGNED NOT NULL,
   `date` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bill_detail`
+-- Cấu trúc bảng cho bảng `bill_detail`
 --
 
 CREATE TABLE `bill_detail` (
@@ -68,12 +68,12 @@ CREATE TABLE `bill_detail` (
   `product_id` int(10) UNSIGNED NOT NULL,
   `quantity` int(10) UNSIGNED NOT NULL,
   `product_price` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `brand`
+-- Cấu trúc bảng cho bảng `brand`
 --
 
 CREATE TABLE `brand` (
@@ -81,10 +81,10 @@ CREATE TABLE `brand` (
   `brand_name` varchar(100) NOT NULL,
   `img` varchar(100) NOT NULL,
   `display_name` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `brand`
+-- Đang đổ dữ liệu cho bảng `brand`
 --
 
 INSERT INTO `brand` (`brand_id`, `brand_name`, `img`, `display_name`) VALUES
@@ -98,7 +98,7 @@ INSERT INTO `brand` (`brand_id`, `brand_name`, `img`, `display_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer`
+-- Cấu trúc bảng cho bảng `customer`
 --
 
 CREATE TABLE `customer` (
@@ -108,21 +108,21 @@ CREATE TABLE `customer` (
   `email` varchar(100) NOT NULL,
   `phone` varchar(10) NOT NULL,
   `address` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `decentralization`
+-- Cấu trúc bảng cho bảng `decentralization`
 --
 
 CREATE TABLE `decentralization` (
   `decent_id` int(10) UNSIGNED NOT NULL,
   `decent_name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `decentralization`
+-- Đang đổ dữ liệu cho bảng `decentralization`
 --
 
 INSERT INTO `decentralization` (`decent_id`, `decent_name`) VALUES
@@ -134,7 +134,7 @@ INSERT INTO `decentralization` (`decent_id`, `decent_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `decent_detail`
+-- Cấu trúc bảng cho bảng `decent_detail`
 --
 
 CREATE TABLE `decent_detail` (
@@ -143,10 +143,10 @@ CREATE TABLE `decent_detail` (
   `url` varchar(20) NOT NULL,
   `action` varchar(100) NOT NULL,
   `isDisplayed` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `decent_detail`
+-- Đang đổ dữ liệu cho bảng `decent_detail`
 --
 
 INSERT INTO `decent_detail` (`decent_id`, `feature_id`, `url`, `action`, `isDisplayed`) VALUES
@@ -163,16 +163,16 @@ INSERT INTO `decent_detail` (`decent_id`, `feature_id`, `url`, `action`, `isDisp
 -- --------------------------------------------------------
 
 --
--- Table structure for table `feature`
+-- Cấu trúc bảng cho bảng `feature`
 --
 
 CREATE TABLE `feature` (
   `feature_id` int(10) UNSIGNED NOT NULL,
   `feature_name` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `feature`
+-- Đang đổ dữ liệu cho bảng `feature`
 --
 
 INSERT INTO `feature` (`feature_id`, `feature_name`) VALUES
@@ -188,7 +188,7 @@ INSERT INTO `feature` (`feature_id`, `feature_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product`
+-- Cấu trúc bảng cho bảng `product`
 --
 
 CREATE TABLE `product` (
@@ -198,19 +198,19 @@ CREATE TABLE `product` (
   `product_name` varchar(100) NOT NULL,
   `img` varchar(50) NOT NULL,
   `info` varchar(2000) NOT NULL,
-  `ingredien` varchar(2000) NOT NULL,
+  `ingredient` varchar(2000) NOT NULL,
   `skin_type` varchar(50) NOT NULL,
   `volume` int(5) UNSIGNED NOT NULL,
   `price` int(10) UNSIGNED NOT NULL,
   `quantity` int(10) UNSIGNED NOT NULL,
   `state` int(1) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `product`
+-- Đang đổ dữ liệu cho bảng `product`
 --
 
-INSERT INTO `product` (`product_id`, `brand_id`, `product_type`, `product_name`, `img`, `info`, `ingredien`, `skin_type`, `volume`, `price`, `quantity`, `state`) VALUES
+INSERT INTO `product` (`product_id`, `brand_id`, `product_type`, `product_name`, `img`, `info`, `ingredient`, `skin_type`, `volume`, `price`, `quantity`, `state`) VALUES
 (1, 1, 1, 'Nước Tẩy Trang L\'Oreal Tươi Mát Cho Da Dầu, Hỗn Hợp', '1.jpg', 'Nước Tẩy Trang L\'Oréal Paris 3-in-1 Micellar Water Refreshing (xanh dương nhạt) ứng dụng công nghệ Micellar mới chứa các phân tử mi-xen độc đáo hoạt động như một thỏi nam châm giúp loại bỏ hoàn toàn bụi bẩn và lớp trang điểm, đồng thời làm dịu da nhờ thành phần nước khoáng từ những ngọn núi ở Pháp, mang lại làn da tươi tắn hơn sau khi tẩy trang. Kết cấu dạng nước tươi mát, dễ sử dụng, không cần rửa lại với nước mà vẫn không gây nhờn dính da.', 'Aqua / Water, Hexylene Glycol, Glycerin, Poloxamer 184, Disodium Cocoamphodiacetate, Disodium Edta, BHT , Polyaminopropyl Biguanide', 'oil', 400, 159000, 0, 1),
 (2, 1, 1, 'Nước Tẩy Trang L\'Oreal Làm Sạch Sâu Trang Điểm', '2.jpg', 'Nước Tẩy Trang L\'Oreal Micellar Water 3-in-1 Deep Cleansing Even For Sensitive Skin có hai lớp chất lỏng giúp hòa tan chất bẩn và loại bỏ toàn bộ lớp trang điểm hiệu quả, kể cả lớp trang điểm lâu trôi và không thấm nước chỉ trong một bước.', 'Aqua / Water, Cyclopentasiloxane, Isohexadecane, Potassium Phosphate, Sodium Chloride, Dipotassium Phosphate, Disodium Edta, Decyl Glucoside, Hexylene Glycol, Polyaminopropyl Biguanide, CI 61565 / Green 6', 'all', 400, 159000, 0, 1),
 (3, 1, 1, 'Nước Tẩy Trang L\'Oreal Dưỡng Ẩm Cho Da Thường, Khô', '3.jpg', 'Nước Tẩy Trang L\'Oreal Micellar Water 3-in-1 Moisturizing Even For Sensitive Skin ứng dụng công nghệ Micellar mới chứa các phân tử mi-xen độc đáo hoạt động như một thỏi nam châm giúp loại bỏ hoàn toàn bụi bẩn và lớp trang điểm, đồng thời dưỡng da ẩm mượt nhờ thành phần chiết xuất hoa hồng Pháp, giúp duy trì độ ẩm cần thiết cho da sau khi tẩy trang. Kết cấu dạng nước tươi mát, dễ sử dụng, không cần rửa lại với nước, giúp da trở nên sạch sẽ, tươi sáng và có đủ độ ẩm.', ' Aqua / Water, Hexylene Glycol, Glycerin, Rosa Gallica Flower Extract, Sorbitol, Poloxamer 184, Disodium Cocoamphodiacetate, Disodium Edta, Propylene Glycol, BHT , Polyaminopropyl Biguanide', 'dry', 400, 159000, 0, 1),
@@ -257,7 +257,7 @@ INSERT INTO `product` (`product_id`, `brand_id`, `product_type`, `product_name`,
 (57, 3, 5, 'Sữa Rửa Mặt La Roche-Posay Cho Da Quá Nhạy Cảm ', '57.jpg', 'Sữa Rửa Mặt Tẩy Trang La Roche-Posay Cho Da Quá Nhạy Cảm Toleriane Dermo Nettoyant Cleanser là sản phẩm đến từ thương hiệu La Roche-Posay đình đám của nước Pháp. Sản phẩm thích hợp cho mọi loại da kể cả da nhạy cảm, không gây kích ứng, không paraben và hương liệu.', 'Wate/Aqua, Ethylhexyl Palmitate, Glycerin, Dipropylene Glycol, Carbomer, Sodium Hydroxide, Capryl Glycol/Caprylyl Glycol, Ethylhexylglycerin.', 'all', 200, 422000, 3000, 1),
 (59, 4, 4, 'Kem Dưỡng Bioderma Giúp Se Khít Lỗ Chân Lông', '59.jpg', 'Kem Dưỡng Bioderma Sébium Pore Refiner là sản phẩm kem dưỡng chuyên biệt dành cho làn da dầu, lỗ chân lông to đến từ thương hiệu dược mỹ phẩm Bioderma. Với kết cấu mỏng nhẹ, thẩm thấu tức thì, sản phẩm giúp tạo lớp lót trên bề mặt da giúp che phủ lỗ chân lông, hỗ trợ cân bằng bã nhờn đồng thời giúp làm giảm kích thước lỗ chân lông, để lại làn da khô thoáng sau khi sử dụng. Đặc biệt phù hợp cho da dầu và da mụn.', 'Aqua/Water/Eau, Methyl Methacrylate Crosspolymer, Dipropylene Glycol, Cyclopentasiloxane, Cyclohexasiloxane, Dimethicone, Glycerin, Butylene Glycol, Fomes Officinalis (Mushroom) Extract, Sodium Polyacrylate, Salicylic Acid, Dodecyl Gallate, Ginkgo Biloba Leaf Extract, Mannitol, Xylitol, Rhamnose, Fructooligosaccharides, Laminaria Ochroleuca Extract, Silica, Trideceth-6, C30-45 Alkyl Cetearyl Dimethicone Crosspolymer, Lauryl Peg/Ppg-18/18 Methicone, Caprylic/Capric Triglyceride, Mineral Oil (Paraffinum Liquidum), Pentylene Glycol, 1,2-Hexanediol, Peg/Ppg-18/18 Dimethicone, Caprylyl Glycol, Propylene Glycol, Sodium Hydroxide, Citric Acid, Disodium Edta, Fragrance (Parfum).', 'oil', 30, 368000, 1000, 1),
 (61, 4, 4, 'Kem Dưỡng Bioderma Hỗ Trợ Phục Hồi Da Tổn Thương ', '61.jpg', 'Bioderma Cicabio Crème là sản phẩm kem dưỡng ẩm hỗ trợ phục hồi và làm dịu làn da tổn thương, da nhạy cảm - kích ứng đến từ thương hiệu dược mỹ phẩm Bioderma nổi tiếng của Pháp, được các bác sĩ da liễu Pháp tin dùng. Sản phẩm có khả năng làm giảm các triệu chứng ngứa và khó chịu gần như ngay lập tức, đồng thời dưỡng ẩm và khôi phục lớp biểu bì, tạo lớp màng bảo vệ da tối ưu mà vẫn mỏng nhẹ và thoáng khí, giúp da luôn thoải mái dễ chịu.', 'Aqua (Water), Glycerin (Khóa Ẩm), Ethylhexyl Palmitate (Làm Mềm Da), Fructooligosaccharides, Zinc Oxide (Làm Làm Vết Thương, Chống Uva, Kháng Khuẩn), Octyldodecanol, Butylene Glycol, Polyacrylamide, Mannitol, Xylitol, Rhamnose, Laminaria Ochroleuca Extract, Copper Sulfate (Trị Thương), Zinc Sulfate (Ngăn, Sodium Hyaluronate (Cấp Ẩm, Giảm Sự Mất Nước Qua Da), Vitis Vinifera (Grape) Vine Extract (Resveratrol: Giảm Thương Tổn Tế Bào), Asiaticoside (Centella Asiatica: Kháng Khuẩn, Trị Thương), Asiatic Acid, Madecassic Acid, C13-14 Isoparaffin, Octyldodecyl Xyloside, Peg-30 Dipolyhydroxystearate, Caprylic/Capric Triglyceride, Laureth-7, Laureth-3, Hydroxyethylcellulose, Acetyl Dipeptide-1 Cetyl Ester, Potassium Sorbate.', 'all', 40, 293000, 1000, 1);
-INSERT INTO `product` (`product_id`, `brand_id`, `product_type`, `product_name`, `img`, `info`, `ingredien`, `skin_type`, `volume`, `price`, `quantity`, `state`) VALUES
+INSERT INTO `product` (`product_id`, `brand_id`, `product_type`, `product_name`, `img`, `info`, `ingredient`, `skin_type`, `volume`, `price`, `quantity`, `state`) VALUES
 (62, 4, 4, 'Kem Dưỡng Ẩm Bioderma Cho Da Khô Nhạy Cảm', '62.jpg', 'Bioderma Atoderm Crème là sản phẩm kem dưỡng ẩm chăm sóc hàng ngày, bảo vệ và dưỡng ẩm chuyên sâu đến từ thương hiệu dược mỹ phẩm Bioderma của Pháp. Nhờ các thành phần dưỡng chất và tái cấu trúc, kem dưỡng Atoderm Crème giúp tăng cường hàng rào sinh học bảo vệ da và do đó ngăn ngừa các tác nhân gây kích ứng xâm nhập. Với các thành phần dưỡng ẩm, Atoderm Crème giữ nước ở lớp da trên và ngăn chặn quá trình bay hơi. Dùng cho da thường và da khô nhạy cảm.', 'Aqua/Water/Eau, Paraffinum Liquidum/Mineral Oil/Huile Minerale, Glycerin, Brassica Campestris (Rapeseed) Seed Oil, Sodium Polyacrylate, Pentylene Glycol, Cetearyl Alcohol, 1,2-Hexanediol, Caprylyl Glycol, Acrylates/C10-30 Alkyl Acrylate Crosspolymer, Sodium Citrate, Xylitol, Cetearyl Glucoside, Mannitol, Tocopherol, Rhamnose, Xylitylglucoside, Helianthus Annuus (Sunflower) Seed Oil, Anhydroxylitol, Niacinamide, Glucose, Fructooligosaccharides, Caprylic/Capric Triglyceride, Laminaria Ochroleuca Extract. [Bi 475]', 'dry', 200, 293000, 1000, 1),
 (63, 4, 4, 'Kem Dưỡng Bioderma Cấp Ẩm Và Làm Dịu Cho Da Nhạy', '63.jpg', 'Kem Dưỡng Bioderma Cấp Ẩm Và Làm Dịu Cho Da Nhạy Cảm 40ml là sản phẩm kem dưỡng ẩm đến từ thương hiệu mỹ phẩm Bioderma của Pháp, chứa đựng khả năng dưỡng ẩm đột phá lên đến 12 giờ, tự bảo vệ trước tác nhân kích ứng, tăng cường đề kháng, hiệu quả lâu dài và rõ ràng cho mỗi tình trạng nhạy cảm của làn da.', 'Aqua/Water/Eau, Glycerin, Dicaprylyl Ether, Propylheptyl Caprylate, Butylene Glycol, Glyceryl Stearate Citrate, Glycol Palmitate, Squalane, Sucrose Stearate, Mangifera Indica (Mango) Seed Butter, Pentylene Glycol, Acrylates/C10-30 Alkyl Acrylate Crosspolymer, Caprylyl Glycol, Carnosine, Hydroxyethyl Acrylate/Sodium Acryloyldimethyl Taurate Copolymer, Mannitol, Xylitol, Tocopherol, Salvia Miltiorrhiza Flower/Leaf/Root Extract, Rhamnose, Glycine Soja (Soybean) Oil, Polysorbate 60, Sorbitan Isostearate, Palmitoyl Tetrapeptide-10. [Bi 2012]', 'all', 40, 401000, 500, 1),
 (64, 4, 4, 'Gel Dưỡng Ẩm Bioderma Làm Dịu Cho Da Rất Khô ', '64.jpg', 'Gel Dưỡng Ẩm Làm Dịu Cho Da Rất Khô Bioderma Atoderm Intensive gel-crème là sản phẩm kem dưỡng đến từ thương hiệu dược mỹ phẩm Bioderma, giúp làm dịu da tức thì, giảm ngay cảm giác ngứa rát khó chịu và dưỡng ẩm suốt 24h. Đây món quà Bioderma dành tặng riêng cho làn da khô đến rất khô, dị ứng.', 'Aqua/Water/Eau, Glycerin, Niacinamide, Sodium Polyacrylate, Dipotassium Glycyrrhizate, Hydrogenated Polydecene, Pentylene Glycol, 1,2-Hexanediol, Caprylyl Glycol, Mannitol, Polysorbate 20, Xylitol, Rhamnose, Sodium Citrate, Polyquaternium-51, Fructooligosaccharides, Caprylic/Capric Triglyceride, Laminaria Ochroleuca Extract. [Bi 479]', 'dry', 75, 293000, 100, 1),
@@ -279,16 +279,16 @@ INSERT INTO `product` (`product_id`, `brand_id`, `product_type`, `product_name`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_attribute`
+-- Cấu trúc bảng cho bảng `product_attribute`
 --
 
 CREATE TABLE `product_attribute` (
   `attribute_id` int(10) UNSIGNED NOT NULL,
   `attribute_name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `product_attribute`
+-- Đang đổ dữ liệu cho bảng `product_attribute`
 --
 
 INSERT INTO `product_attribute` (`attribute_id`, `attribute_name`) VALUES
@@ -298,16 +298,16 @@ INSERT INTO `product_attribute` (`attribute_id`, `attribute_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_type`
+-- Cấu trúc bảng cho bảng `product_type`
 --
 
 CREATE TABLE `product_type` (
   `product_type_id` int(5) NOT NULL,
   `product_type_name` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `product_type`
+-- Đang đổ dữ liệu cho bảng `product_type`
 --
 
 INSERT INTO `product_type` (`product_type_id`, `product_type_name`) VALUES
@@ -317,7 +317,7 @@ INSERT INTO `product_type` (`product_type_id`, `product_type_name`) VALUES
 (4, 'Kem dưỡng'),
 (5, 'Sữa rửa mặt'),
 (6, 'Toner'),
-(7, 'Tẩy tế bào chết toàn'),
+(7, 'Tẩy tế bào chết'),
 (8, 'Sữa tắm'),
 (9, 'Dưỡng thể'),
 (10, 'Kem lót'),
@@ -331,7 +331,7 @@ INSERT INTO `product_type` (`product_type_id`, `product_type_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_values`
+-- Cấu trúc bảng cho bảng `product_values`
 --
 
 CREATE TABLE `product_values` (
@@ -342,10 +342,10 @@ CREATE TABLE `product_values` (
   `img` varchar(50) NOT NULL,
   `price` int(10) UNSIGNED NOT NULL,
   `quantity` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `product_values`
+-- Đang đổ dữ liệu cho bảng `product_values`
 --
 
 INSERT INTO `product_values` (`product_values_id`, `product_id`, `attribute_id`, `value`, `img`, `price`, `quantity`) VALUES
@@ -397,7 +397,7 @@ INSERT INTO `product_values` (`product_values_id`, `product_id`, `attribute_id`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `staff`
+-- Cấu trúc bảng cho bảng `staff`
 --
 
 CREATE TABLE `staff` (
@@ -407,74 +407,74 @@ CREATE TABLE `staff` (
   `email` varchar(30) NOT NULL,
   `phone` varchar(10) NOT NULL,
   `address` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `staff`
+-- Đang đổ dữ liệu cho bảng `staff`
 --
 
 INSERT INTO `staff` (`staff_id`, `account_id`, `staff_name`, `email`, `phone`, `address`) VALUES
 ('S001', 1, 'Thiên Hương', 'thienhuong6935@gmail.com', '0329947740', 'HCM');
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `account`
+-- Chỉ mục cho bảng `account`
 --
 ALTER TABLE `account`
   ADD PRIMARY KEY (`account_id`),
   ADD KEY `fk_account_decent_id` (`decent_id`);
 
 --
--- Indexes for table `bill`
+-- Chỉ mục cho bảng `bill`
 --
 ALTER TABLE `bill`
   ADD PRIMARY KEY (`bill_id`),
   ADD KEY `fk_bill_customerID` (`customer_id`);
 
 --
--- Indexes for table `bill_detail`
+-- Chỉ mục cho bảng `bill_detail`
 --
 ALTER TABLE `bill_detail`
   ADD PRIMARY KEY (`bill_id`,`product_id`),
   ADD KEY `fk_billDetail_productID` (`product_id`);
 
 --
--- Indexes for table `brand`
+-- Chỉ mục cho bảng `brand`
 --
 ALTER TABLE `brand`
   ADD PRIMARY KEY (`brand_id`);
 
 --
--- Indexes for table `customer`
+-- Chỉ mục cho bảng `customer`
 --
 ALTER TABLE `customer`
   ADD PRIMARY KEY (`cusotmer_id`),
   ADD KEY `fk_customer_accountID` (`account_id`);
 
 --
--- Indexes for table `decentralization`
+-- Chỉ mục cho bảng `decentralization`
 --
 ALTER TABLE `decentralization`
   ADD PRIMARY KEY (`decent_id`);
 
 --
--- Indexes for table `decent_detail`
+-- Chỉ mục cho bảng `decent_detail`
 --
 ALTER TABLE `decent_detail`
   ADD PRIMARY KEY (`decent_id`,`feature_id`,`action`),
   ADD KEY `fk_decentDetail_featureID` (`feature_id`);
 
 --
--- Indexes for table `feature`
+-- Chỉ mục cho bảng `feature`
 --
 ALTER TABLE `feature`
   ADD PRIMARY KEY (`feature_id`);
 
 --
--- Indexes for table `product`
+-- Chỉ mục cho bảng `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`product_id`),
@@ -482,19 +482,19 @@ ALTER TABLE `product`
   ADD KEY `fk_product_brandID` (`brand_id`);
 
 --
--- Indexes for table `product_attribute`
+-- Chỉ mục cho bảng `product_attribute`
 --
 ALTER TABLE `product_attribute`
   ADD PRIMARY KEY (`attribute_id`);
 
 --
--- Indexes for table `product_type`
+-- Chỉ mục cho bảng `product_type`
 --
 ALTER TABLE `product_type`
   ADD PRIMARY KEY (`product_type_id`);
 
 --
--- Indexes for table `product_values`
+-- Chỉ mục cho bảng `product_values`
 --
 ALTER TABLE `product_values`
   ADD PRIMARY KEY (`product_values_id`),
@@ -502,128 +502,128 @@ ALTER TABLE `product_values`
   ADD KEY `fk_productValues_productId` (`product_id`);
 
 --
--- Indexes for table `staff`
+-- Chỉ mục cho bảng `staff`
 --
 ALTER TABLE `staff`
   ADD PRIMARY KEY (`staff_id`),
   ADD KEY `fk_staff_accountID` (`account_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `account`
+-- AUTO_INCREMENT cho bảng `account`
 --
 ALTER TABLE `account`
   MODIFY `account_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `bill`
+-- AUTO_INCREMENT cho bảng `bill`
 --
 ALTER TABLE `bill`
   MODIFY `bill_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `brand`
+-- AUTO_INCREMENT cho bảng `brand`
 --
 ALTER TABLE `brand`
   MODIFY `brand_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `customer`
+-- AUTO_INCREMENT cho bảng `customer`
 --
 ALTER TABLE `customer`
   MODIFY `cusotmer_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `decentralization`
+-- AUTO_INCREMENT cho bảng `decentralization`
 --
 ALTER TABLE `decentralization`
   MODIFY `decent_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `feature`
+-- AUTO_INCREMENT cho bảng `feature`
 --
 ALTER TABLE `feature`
   MODIFY `feature_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `product`
+-- AUTO_INCREMENT cho bảng `product`
 --
 ALTER TABLE `product`
   MODIFY `product_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
--- AUTO_INCREMENT for table `product_attribute`
+-- AUTO_INCREMENT cho bảng `product_attribute`
 --
 ALTER TABLE `product_attribute`
   MODIFY `attribute_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `product_type`
+-- AUTO_INCREMENT cho bảng `product_type`
 --
 ALTER TABLE `product_type`
   MODIFY `product_type_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `product_values`
+-- AUTO_INCREMENT cho bảng `product_values`
 --
 ALTER TABLE `product_values`
   MODIFY `product_values_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `account`
+-- Các ràng buộc cho bảng `account`
 --
 ALTER TABLE `account`
   ADD CONSTRAINT `fk_account_decentID` FOREIGN KEY (`decent_id`) REFERENCES `decentralization` (`decent_id`);
 
 --
--- Constraints for table `bill`
+-- Các ràng buộc cho bảng `bill`
 --
 ALTER TABLE `bill`
   ADD CONSTRAINT `fk_bill_customerID` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`cusotmer_id`);
 
 --
--- Constraints for table `bill_detail`
+-- Các ràng buộc cho bảng `bill_detail`
 --
 ALTER TABLE `bill_detail`
   ADD CONSTRAINT `fk_billDetail_billID` FOREIGN KEY (`bill_id`) REFERENCES `bill` (`bill_id`),
   ADD CONSTRAINT `fk_billDetail_productID` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
 
 --
--- Constraints for table `customer`
+-- Các ràng buộc cho bảng `customer`
 --
 ALTER TABLE `customer`
   ADD CONSTRAINT `fk_customer_accountID` FOREIGN KEY (`account_id`) REFERENCES `account` (`account_id`);
 
 --
--- Constraints for table `decent_detail`
+-- Các ràng buộc cho bảng `decent_detail`
 --
 ALTER TABLE `decent_detail`
   ADD CONSTRAINT `fk_decentDetail_decentID` FOREIGN KEY (`decent_id`) REFERENCES `decentralization` (`decent_id`),
   ADD CONSTRAINT `fk_decentDetail_featureID` FOREIGN KEY (`feature_id`) REFERENCES `feature` (`feature_id`);
 
 --
--- Constraints for table `product`
+-- Các ràng buộc cho bảng `product`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `fk_product_brandID` FOREIGN KEY (`brand_id`) REFERENCES `brand` (`brand_id`),
   ADD CONSTRAINT `fk_product_type` FOREIGN KEY (`product_type`) REFERENCES `product_type` (`product_type_id`);
 
 --
--- Constraints for table `product_values`
+-- Các ràng buộc cho bảng `product_values`
 --
 ALTER TABLE `product_values`
   ADD CONSTRAINT `fk_productValues_attributeId` FOREIGN KEY (`attribute_id`) REFERENCES `product_attribute` (`attribute_id`),
   ADD CONSTRAINT `fk_productValues_productId` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
 
 --
--- Constraints for table `staff`
+-- Các ràng buộc cho bảng `staff`
 --
 ALTER TABLE `staff`
   ADD CONSTRAINT `fk_staff_accountID` FOREIGN KEY (`account_id`) REFERENCES `account` (`account_id`);
