@@ -161,7 +161,7 @@ svg {
   gap: 10px;
 }
 
-.product {
+.product.product-details-page {
   border: 1px solid lightgray;
   transition: 300ms;
   padding: 20px;
@@ -171,6 +171,7 @@ svg {
   background-color: white;
   cursor: pointer;
   width: 270px;
+  text-decoration: none;
 }
 
 .product:hover {
@@ -207,7 +208,7 @@ svg {
   font-weight: bold;
 }
 
-.product .prodcut-name {
+.product .product-name {
   max-height: 35px;
 }
 
@@ -369,7 +370,7 @@ svg {
     padding: 10px 20px 20px 20px;
   }
 
-  .product {
+  .product.product-details-page {
     padding: 10px;
   }
 }
