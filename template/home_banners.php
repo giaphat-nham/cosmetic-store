@@ -77,8 +77,8 @@
     <div class="sub-banner-5">
         <h2>Bắt đầu mua sắm ngay</h2>
         <div class="button-group">
-            <input type="button" id="login" value="Đăng nhập">
-            <input type="button" id="register" value="Đăng ký">
+            <input type="button" id="login" value="Đăng nhập" onclick="loginform()">
+            <input type="button" id="register" value="Đăng ký" onclick="registerform()">
         </div>
     </div>
 </div>

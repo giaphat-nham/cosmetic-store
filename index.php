@@ -17,6 +17,7 @@
     <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
     <title>FLORA</title>
     <script defer src="./js/script.js"></script>
+    <script defer src="./js/login.js"></script>
     <?php
     include("./model/db_connection.php");
     $conn = new DatabaseConnection("localhost", "root", "", "cosmetic_store");
@@ -50,6 +51,7 @@
         ?>
         <?php include("./view/footer.php") ?>
         <?php include("./view/login.php") ?>
+        <?php include("./view/register.php ") ?>
     </div>
 </body>
 
