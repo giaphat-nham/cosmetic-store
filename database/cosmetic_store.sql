@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 20, 2023 lúc 10:40 AM
--- Phiên bản máy phục vụ: 10.4.25-MariaDB
--- Phiên bản PHP: 8.1.10
+-- Host: 127.0.0.1
+-- Generation Time: Apr 23, 2023 at 06:42 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `cosmetic_store`
+-- Database: `cosmetic_store`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `account`
+-- Table structure for table `account`
 --
 
 CREATE TABLE `account` (
@@ -34,10 +34,10 @@ CREATE TABLE `account` (
   `date` datetime NOT NULL,
   `decent_id` int(10) UNSIGNED NOT NULL,
   `state` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `account`
+-- Dumping data for table `account`
 --
 
 INSERT INTO `account` (`account_id`, `username`, `password`, `date`, `decent_id`, `state`) VALUES
@@ -46,7 +46,7 @@ INSERT INTO `account` (`account_id`, `username`, `password`, `date`, `decent_id`
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `bill`
+-- Table structure for table `bill`
 --
 
 CREATE TABLE `bill` (
@@ -55,12 +55,12 @@ CREATE TABLE `bill` (
   `customer_id` int(10) UNSIGNED NOT NULL,
   `bill_state` int(1) UNSIGNED NOT NULL,
   `date` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `bill_detail`
+-- Table structure for table `bill_detail`
 --
 
 CREATE TABLE `bill_detail` (
@@ -68,12 +68,12 @@ CREATE TABLE `bill_detail` (
   `product_id` int(10) UNSIGNED NOT NULL,
   `quantity` int(10) UNSIGNED NOT NULL,
   `product_price` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `brand`
+-- Table structure for table `brand`
 --
 
 CREATE TABLE `brand` (
@@ -81,10 +81,10 @@ CREATE TABLE `brand` (
   `brand_name` varchar(100) NOT NULL,
   `img` varchar(100) NOT NULL,
   `display_name` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `brand`
+-- Dumping data for table `brand`
 --
 
 INSERT INTO `brand` (`brand_id`, `brand_name`, `img`, `display_name`) VALUES
@@ -98,7 +98,28 @@ INSERT INTO `brand` (`brand_id`, `brand_name`, `img`, `display_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `customer`
+-- Table structure for table `category`
+--
+
+CREATE TABLE `category` (
+  `category_id` int(10) UNSIGNED NOT NULL,
+  `category_name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`category_id`, `category_name`) VALUES
+(0, ''),
+(1, 'Chăm sóc da mặt'),
+(2, 'Chăm sóc cơ thể'),
+(3, 'Makeup');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customer`
 --
 
 CREATE TABLE `customer` (
@@ -108,21 +129,21 @@ CREATE TABLE `customer` (
   `email` varchar(100) NOT NULL,
   `phone` varchar(10) NOT NULL,
   `address` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `decentralization`
+-- Table structure for table `decentralization`
 --
 
 CREATE TABLE `decentralization` (
   `decent_id` int(10) UNSIGNED NOT NULL,
   `decent_name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `decentralization`
+-- Dumping data for table `decentralization`
 --
 
 INSERT INTO `decentralization` (`decent_id`, `decent_name`) VALUES
@@ -134,7 +155,7 @@ INSERT INTO `decentralization` (`decent_id`, `decent_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `decent_detail`
+-- Table structure for table `decent_detail`
 --
 
 CREATE TABLE `decent_detail` (
@@ -143,10 +164,10 @@ CREATE TABLE `decent_detail` (
   `url` varchar(20) NOT NULL,
   `action` varchar(100) NOT NULL,
   `isDisplayed` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `decent_detail`
+-- Dumping data for table `decent_detail`
 --
 
 INSERT INTO `decent_detail` (`decent_id`, `feature_id`, `url`, `action`, `isDisplayed`) VALUES
@@ -163,16 +184,16 @@ INSERT INTO `decent_detail` (`decent_id`, `feature_id`, `url`, `action`, `isDisp
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `feature`
+-- Table structure for table `feature`
 --
 
 CREATE TABLE `feature` (
   `feature_id` int(10) UNSIGNED NOT NULL,
   `feature_name` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `feature`
+-- Dumping data for table `feature`
 --
 
 INSERT INTO `feature` (`feature_id`, `feature_name`) VALUES
@@ -188,7 +209,7 @@ INSERT INTO `feature` (`feature_id`, `feature_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `product`
+-- Table structure for table `product`
 --
 
 CREATE TABLE `product` (
@@ -204,10 +225,10 @@ CREATE TABLE `product` (
   `price` int(10) UNSIGNED NOT NULL,
   `quantity` int(10) UNSIGNED NOT NULL,
   `state` int(1) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `product`
+-- Dumping data for table `product`
 --
 
 INSERT INTO `product` (`product_id`, `brand_id`, `product_type`, `product_name`, `img`, `info`, `ingredient`, `skin_type`, `volume`, `price`, `quantity`, `state`) VALUES
@@ -279,16 +300,16 @@ INSERT INTO `product` (`product_id`, `brand_id`, `product_type`, `product_name`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `product_attribute`
+-- Table structure for table `product_attribute`
 --
 
 CREATE TABLE `product_attribute` (
   `attribute_id` int(10) UNSIGNED NOT NULL,
   `attribute_name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `product_attribute`
+-- Dumping data for table `product_attribute`
 --
 
 INSERT INTO `product_attribute` (`attribute_id`, `attribute_name`) VALUES
@@ -298,40 +319,41 @@ INSERT INTO `product_attribute` (`attribute_id`, `attribute_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `product_type`
+-- Table structure for table `product_type`
 --
 
 CREATE TABLE `product_type` (
   `product_type_id` int(5) NOT NULL,
-  `product_type_name` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `product_type_name` varchar(20) NOT NULL,
+  `category_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `product_type`
+-- Dumping data for table `product_type`
 --
 
-INSERT INTO `product_type` (`product_type_id`, `product_type_name`) VALUES
-(1, 'Tẩy trang'),
-(2, 'Chống nắng'),
-(3, 'Serum'),
-(4, 'Kem dưỡng'),
-(5, 'Sữa rửa mặt'),
-(6, 'Toner'),
-(7, 'Tẩy tế bào chết'),
-(8, 'Sữa tắm'),
-(9, 'Dưỡng thể'),
-(10, 'Kem lót'),
-(11, 'Kem nền'),
-(12, 'Che khuyết điểm'),
-(13, 'Phấn phủ'),
-(14, 'Mascara'),
-(15, 'Kẻ mắt'),
-(16, 'Son môi');
+INSERT INTO `product_type` (`product_type_id`, `product_type_name`, `category_id`) VALUES
+(1, 'Tẩy trang', 1),
+(2, 'Chống nắng', 1),
+(3, 'Serum', 1),
+(4, 'Kem dưỡng', 1),
+(5, 'Sữa rửa mặt', 1),
+(6, 'Toner', 1),
+(7, 'Tẩy tế bào chết', 2),
+(8, 'Sữa tắm', 2),
+(9, 'Dưỡng thể', 2),
+(10, 'Kem lót', 3),
+(11, 'Kem nền', 3),
+(12, 'Che khuyết điểm', 3),
+(13, 'Phấn phủ', 3),
+(14, 'Mascara', 3),
+(15, 'Kẻ mắt', 3),
+(16, 'Son môi', 3);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `product_values`
+-- Table structure for table `product_values`
 --
 
 CREATE TABLE `product_values` (
@@ -342,10 +364,10 @@ CREATE TABLE `product_values` (
   `img` varchar(50) NOT NULL,
   `price` int(10) UNSIGNED NOT NULL,
   `quantity` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `product_values`
+-- Dumping data for table `product_values`
 --
 
 INSERT INTO `product_values` (`product_values_id`, `product_id`, `attribute_id`, `value`, `img`, `price`, `quantity`) VALUES
@@ -397,7 +419,7 @@ INSERT INTO `product_values` (`product_values_id`, `product_id`, `attribute_id`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `staff`
+-- Table structure for table `staff`
 --
 
 CREATE TABLE `staff` (
@@ -407,74 +429,80 @@ CREATE TABLE `staff` (
   `email` varchar(30) NOT NULL,
   `phone` varchar(10) NOT NULL,
   `address` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `staff`
+-- Dumping data for table `staff`
 --
 
 INSERT INTO `staff` (`staff_id`, `account_id`, `staff_name`, `email`, `phone`, `address`) VALUES
 ('S001', 1, 'Thiên Hương', 'thienhuong6935@gmail.com', '0329947740', 'HCM');
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `account`
+-- Indexes for table `account`
 --
 ALTER TABLE `account`
   ADD PRIMARY KEY (`account_id`),
   ADD KEY `fk_account_decent_id` (`decent_id`);
 
 --
--- Chỉ mục cho bảng `bill`
+-- Indexes for table `bill`
 --
 ALTER TABLE `bill`
   ADD PRIMARY KEY (`bill_id`),
   ADD KEY `fk_bill_customerID` (`customer_id`);
 
 --
--- Chỉ mục cho bảng `bill_detail`
+-- Indexes for table `bill_detail`
 --
 ALTER TABLE `bill_detail`
   ADD PRIMARY KEY (`bill_id`,`product_id`),
   ADD KEY `fk_billDetail_productID` (`product_id`);
 
 --
--- Chỉ mục cho bảng `brand`
+-- Indexes for table `brand`
 --
 ALTER TABLE `brand`
   ADD PRIMARY KEY (`brand_id`);
 
 --
--- Chỉ mục cho bảng `customer`
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`category_id`);
+
+--
+-- Indexes for table `customer`
 --
 ALTER TABLE `customer`
   ADD PRIMARY KEY (`cusotmer_id`),
   ADD KEY `fk_customer_accountID` (`account_id`);
 
 --
--- Chỉ mục cho bảng `decentralization`
+-- Indexes for table `decentralization`
 --
 ALTER TABLE `decentralization`
   ADD PRIMARY KEY (`decent_id`);
 
 --
--- Chỉ mục cho bảng `decent_detail`
+-- Indexes for table `decent_detail`
 --
 ALTER TABLE `decent_detail`
   ADD PRIMARY KEY (`decent_id`,`feature_id`,`action`),
   ADD KEY `fk_decentDetail_featureID` (`feature_id`);
 
 --
--- Chỉ mục cho bảng `feature`
+-- Indexes for table `feature`
 --
 ALTER TABLE `feature`
   ADD PRIMARY KEY (`feature_id`);
 
 --
--- Chỉ mục cho bảng `product`
+-- Indexes for table `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`product_id`),
@@ -482,19 +510,20 @@ ALTER TABLE `product`
   ADD KEY `fk_product_brandID` (`brand_id`);
 
 --
--- Chỉ mục cho bảng `product_attribute`
+-- Indexes for table `product_attribute`
 --
 ALTER TABLE `product_attribute`
   ADD PRIMARY KEY (`attribute_id`);
 
 --
--- Chỉ mục cho bảng `product_type`
+-- Indexes for table `product_type`
 --
 ALTER TABLE `product_type`
-  ADD PRIMARY KEY (`product_type_id`);
+  ADD PRIMARY KEY (`product_type_id`),
+  ADD KEY `fk_productType_categoryID` (`category_id`);
 
 --
--- Chỉ mục cho bảng `product_values`
+-- Indexes for table `product_values`
 --
 ALTER TABLE `product_values`
   ADD PRIMARY KEY (`product_values_id`),
@@ -502,128 +531,140 @@ ALTER TABLE `product_values`
   ADD KEY `fk_productValues_productId` (`product_id`);
 
 --
--- Chỉ mục cho bảng `staff`
+-- Indexes for table `staff`
 --
 ALTER TABLE `staff`
   ADD PRIMARY KEY (`staff_id`),
   ADD KEY `fk_staff_accountID` (`account_id`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `account`
+-- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
   MODIFY `account_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT cho bảng `bill`
+-- AUTO_INCREMENT for table `bill`
 --
 ALTER TABLE `bill`
   MODIFY `bill_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `brand`
+-- AUTO_INCREMENT for table `brand`
 --
 ALTER TABLE `brand`
   MODIFY `brand_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT cho bảng `customer`
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `category_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
   MODIFY `cusotmer_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `decentralization`
+-- AUTO_INCREMENT for table `decentralization`
 --
 ALTER TABLE `decentralization`
   MODIFY `decent_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT cho bảng `feature`
+-- AUTO_INCREMENT for table `feature`
 --
 ALTER TABLE `feature`
   MODIFY `feature_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT cho bảng `product`
+-- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
   MODIFY `product_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
--- AUTO_INCREMENT cho bảng `product_attribute`
+-- AUTO_INCREMENT for table `product_attribute`
 --
 ALTER TABLE `product_attribute`
   MODIFY `attribute_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT cho bảng `product_type`
+-- AUTO_INCREMENT for table `product_type`
 --
 ALTER TABLE `product_type`
   MODIFY `product_type_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT cho bảng `product_values`
+-- AUTO_INCREMENT for table `product_values`
 --
 ALTER TABLE `product_values`
   MODIFY `product_values_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `account`
+-- Constraints for table `account`
 --
 ALTER TABLE `account`
   ADD CONSTRAINT `fk_account_decentID` FOREIGN KEY (`decent_id`) REFERENCES `decentralization` (`decent_id`);
 
 --
--- Các ràng buộc cho bảng `bill`
+-- Constraints for table `bill`
 --
 ALTER TABLE `bill`
   ADD CONSTRAINT `fk_bill_customerID` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`cusotmer_id`);
 
 --
--- Các ràng buộc cho bảng `bill_detail`
+-- Constraints for table `bill_detail`
 --
 ALTER TABLE `bill_detail`
   ADD CONSTRAINT `fk_billDetail_billID` FOREIGN KEY (`bill_id`) REFERENCES `bill` (`bill_id`),
   ADD CONSTRAINT `fk_billDetail_productID` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
 
 --
--- Các ràng buộc cho bảng `customer`
+-- Constraints for table `customer`
 --
 ALTER TABLE `customer`
   ADD CONSTRAINT `fk_customer_accountID` FOREIGN KEY (`account_id`) REFERENCES `account` (`account_id`);
 
 --
--- Các ràng buộc cho bảng `decent_detail`
+-- Constraints for table `decent_detail`
 --
 ALTER TABLE `decent_detail`
   ADD CONSTRAINT `fk_decentDetail_decentID` FOREIGN KEY (`decent_id`) REFERENCES `decentralization` (`decent_id`),
   ADD CONSTRAINT `fk_decentDetail_featureID` FOREIGN KEY (`feature_id`) REFERENCES `feature` (`feature_id`);
 
 --
--- Các ràng buộc cho bảng `product`
+-- Constraints for table `product`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `fk_product_brandID` FOREIGN KEY (`brand_id`) REFERENCES `brand` (`brand_id`),
   ADD CONSTRAINT `fk_product_type` FOREIGN KEY (`product_type`) REFERENCES `product_type` (`product_type_id`);
 
 --
--- Các ràng buộc cho bảng `product_values`
+-- Constraints for table `product_type`
+--
+ALTER TABLE `product_type`
+  ADD CONSTRAINT `fk_productType_categoryID` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`);
+
+--
+-- Constraints for table `product_values`
 --
 ALTER TABLE `product_values`
   ADD CONSTRAINT `fk_productValues_attributeId` FOREIGN KEY (`attribute_id`) REFERENCES `product_attribute` (`attribute_id`),
   ADD CONSTRAINT `fk_productValues_productId` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
 
 --
--- Các ràng buộc cho bảng `staff`
+-- Constraints for table `staff`
 --
 ALTER TABLE `staff`
   ADD CONSTRAINT `fk_staff_accountID` FOREIGN KEY (`account_id`) REFERENCES `account` (`account_id`);
