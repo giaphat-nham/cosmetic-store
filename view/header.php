@@ -63,8 +63,8 @@ F L O R A
             <?php if(isset($_SESSION['account_id']))
                         {
                             echo'<div class="post-login">
-                            <div class="greeting">Xin chào, Pà</div>
-                            <a href="model/logout.inc.php" id="btn-user-info">P</a>
+                            <div class="greeting">Chào mừng đến với FLORA!</div>
+                            <a href="model/logout.inc.php" id="btn-user-info">Đăng xuất</a>
                         </div>';
                         } else {                       
                     echo '<a href="#" id="btn-user" onclick="loginform()">

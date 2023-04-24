@@ -131,7 +131,7 @@ class DatabaseConnection
             $totalProduct % 16 == 0 ? $pageNumbers = $totalProduct / 16 : $pageNumbers = $totalProduct / 16 + 1;
 
             for ($i = 1; $i <= $pageNumbers; $i++) {
-                echo "<a href='#' data-nav='brand' data-nav-type='$brandId'>$i</a>";
+                echo "<button href='#' data-nav='brand' data-nav-type='$brandId' onclick='sendPageNumber(this.dataset.nav, this.dataset.navType, this.innerHTML)'>$i</button>";
             }
         } else if (isset($_GET['type'])) {
             $productType = $_GET['type'];
@@ -142,7 +142,7 @@ class DatabaseConnection
             $totalProduct % 16 == 0 ? $pageNumbers = $totalProduct / 16 : $pageNumbers = $totalProduct / 16 + 1;
 
             for ($i = 1; $i <= $pageNumbers; $i++) {
-                echo "<a href='#' class='change-page' data-nav='nBrand' data-nav-type='$productType'>$i</a>";
+                echo "<button href='#' class='change-page' data-nav='nBrand' data-nav-type='$productType' onclick='sendPageNumber(this.dataset.nav, this.dataset.navType, this.innerHTML)'>$i</button>";
             }
         }
     }

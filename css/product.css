@@ -191,7 +191,7 @@ html, body {
   flex-wrap: wrap;
 }
 
-.page-nav a {
+.page-nav button {
   border: 2px solid var(--clr-main);
   color: var(--clr-main);
   width: 1.5em;
@@ -203,7 +203,7 @@ html, body {
   font-weight: bold;
 }
 
-.page-nav a.active {
+.page-nav button.active {
   background-color: var(--clr-main);
   color: white;
 }

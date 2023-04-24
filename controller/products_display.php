@@ -38,5 +38,15 @@
         <?php
         $conn->loadPageNavigation();
         ?>
+        <script type="text/javascript">
+            function sendPageNumber(nav, navType, pageNum) {
+                const xmlhttp = new XMLHttpRequest();
+                xmlhttp.onload = function () {
+                    document.querySelector(".product-catalog.product-page").innerHTML = this.responseText;
+                }
+                xmlhttp.open("GET", "./model/load_product_page.php?nav=" + nav + "&navType=" + navType + "&pageNum=" + pageNum);
+                xmlhttp.send();
+            }
+        </script>
     </div>
 </div>

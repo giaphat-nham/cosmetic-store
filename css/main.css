@@ -244,15 +244,14 @@ button:hover svg {
 }
 
 #btn-user-info {
-  width: 25px;
-  height: 25px;
   border: 1px solid white;
   color: white;
   background-color: var(--clr-main);
-  border-radius: 50%;
+  border-radius: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: .25em .5em;
 }
 
 .post-login {
@@ -822,6 +821,10 @@ footer img {
   border: 1px solid var(--clr-focus-gray);
 }
 @media (max-width: 1300px) {
+.greeting {
+  display: none;
+}
+
   #btn-about svg,
   #btn-delivery svg {
     display: block;
@@ -874,8 +877,9 @@ footer img {
     border: 1px solid lightgray;
     border-top: none;
     border-radius: 0 0 0 30px;
-    transform: translateX(100px);
+    transform: translateX(200px);
     transition: 300ms;
+    place-items: center;
   }
 
   .main-header .function.active {
