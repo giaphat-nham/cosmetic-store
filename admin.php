@@ -44,7 +44,7 @@
                 <div class="sidebar-brand">
                     <a href="#"><img src="./img/favicon.png" alt="">FLORA</a>
                 </div>
-                <span class="material-icons-outlined" onclick="closesSidebar()">close</span>
+                <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
             </div>
 
             <ul class="sidebar-list">
@@ -103,7 +103,13 @@
                     </div>
                     <span class="text-primary font-weight-bold">0</span>
                 </div>
-
+                <div class="card">
+                    <div class="card-inner">
+                        <p class="text-primary">DOANH SỐ</p>
+                        <span class="material-icons-outlined">paid</span>
+                    </div>
+                    <span class="text-primary font-weight-bold">0</span>
+                </div>
 
             </div>
         </div>
