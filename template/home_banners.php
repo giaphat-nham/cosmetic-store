@@ -9,7 +9,7 @@
             <p>Thương hiệu mỹ phẩm đến từ Việt Nam. Cocoon hướng đến các dòng sản phẩm thuần chay, thân thiện
                 với môi trường, phù hợp với làn da người Việt. Cocoon hướng đến nét đẹp thuần Việt với đa dạng
                 các loại sản phẩm từ chăm sóc da mặt đến chăm sóc cơ thể.</p>
-            <a href="">Tìm hiểu thêm</a>
+            <a href="./index.php?act=product&nav=brand&brand=cocoon">Tìm hiểu thêm</a>
         </div>
     </div>
     <div class="sub-banner-3">
@@ -21,7 +21,7 @@
             <h3>MICELLAR WATER ULTRA</h3>
             <p>Nước tẩy trang giàu khoáng giúp làm sạch sâu ngay cả các hạt bụi mịn 2.5PM, với nước khoáng La
                 Roche Posay, Glycerin và Zinc giúp làm dịu, cấp ẩm và kiềm dầu vượt trội.</p>
-            <a href="#">Trải nghiệm ngay</a>
+            <a href="./index.php?act=product&nav=brand&brand=larocheposay">Trải nghiệm ngay</a>
         </div>
     </div>
     <div class="sub-banner-2">
@@ -58,7 +58,7 @@
             </p>
         </div>
         <div class="grid-row span3">
-            <button>MUA NGAY</button>
+            <a href="./index.php?act=product&txtSearch=">MUA NGAY</a>
         </div>
     </div>
 
@@ -69,7 +69,7 @@
                 <h3>
                     Thời thượng cho vẻ ngoài đầy cá tính
                 </h3>
-                <a href="#">Khám phá ngay</a>
+                <a href="./index.php?act=product&nav=brand&brand=maybelline">Khám phá ngay</a>
             </div>
         </div>
         <img src="./img/maybelline-banner.jpg" alt="">

@@ -11,7 +11,11 @@
                     break;
             }
         } else if (isset($_GET['txtSearch'])) {
-            echo "Kết quả của \"" . $_GET['txtSearch'] . "\"";
+            if (trim($_GET['txtSearch']) != "")
+                echo "Kết quả của \"" . $_GET['txtSearch'] . "\"";
+            else {
+                echo "Tất cả sản phẩm";
+            }
         }
         ?>
     </div>
@@ -70,7 +74,7 @@
             $totalResult % 12 == 0 ? $pageNumber = $totalResult / 12 : $pageNumber = $totalResult / 12 + 1;
 
             for ($i = 1; $i <= $pageNumber; $i++) {
-                echo "<button href='#' class='change-page' onclick=".'"'."changeSearchResultPage(this.innerHTML,'" . $_GET['txtSearch'] . "', this)".'"'.">$i</button>";
+                echo "<button href='#' class='change-page' onclick=" . '"' . "changeSearchResultPage(this.innerHTML,'" . $_GET['txtSearch'] . "', this)" . '"' . ">$i</button>";
             }
         }
         echo "<script type='text/javascript'>

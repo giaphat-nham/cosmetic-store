@@ -409,14 +409,17 @@ button:hover svg {
   justify-content: center;
 }
 
-.sub-banner-2 button {
+.sub-banner-2 a {
   border: 2px solid var(--clr-main-dark);
-  padding: 0 3em;
+  padding: .25rem 3em;
   font-weight: bold;
   text-align: center;
+  cursor: pointer;
+  color: var(--clr-main-dark);
+  text-decoration: none;
 }
 
-.sub-banner-2 button:hover {
+.sub-banner-2 a:hover {
   background-color: var(--clr-main-dark);
   color: white;
 }
