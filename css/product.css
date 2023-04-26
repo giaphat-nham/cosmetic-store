@@ -47,6 +47,26 @@ html, body {
   gap: 10px;
 }
 
+.filter form .submit-filter-button {
+  display: flex;
+  justify-content: end;
+}
+
+.filter form button.filter {
+  border: 1px solid var(--clr-main-light);
+  box-shadow: none;
+  background-color: var(--clr-main-light);
+  color: white;
+  font-weight: bold;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
 .catalog-nav {
   padding-bottom: 10px;
   border-bottom: 1px solid gray;
@@ -226,11 +246,6 @@ html, body {
     padding: 10px;
   }
 
-  .catalog-nav ul {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
   .product-catalog.product-page {
     display: flex;
     flex-wrap: wrap;
@@ -289,5 +304,11 @@ html, body {
 
   .product.product-page {
     width: 95%;
+  }
+}
+
+@media (max-width: 320px) {
+  .price-range-group {
+    flex-direction: column;
   }
 }

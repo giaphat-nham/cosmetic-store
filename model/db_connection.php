@@ -50,7 +50,7 @@ class DatabaseConnection
         $brandId = $row['brand_id'];
 
         $start = 0;
-        $sql = "SELECT product_id, product_name, product" . '.' . "img, price, display_name FROM product, brand WHERE product" . '.' . "brand_id = $brandId AND product" . '.' . "brand_id = brand" . '.' . "brand_id AND state = 1 LIMIT $start,16";
+        $sql = "SELECT product_id, product_name, product" . '.' . "img, price, display_name FROM product, brand WHERE product" . '.' . "brand_id = $brandId AND product" . '.' . "brand_id = brand" . '.' . "brand_id AND state = 1 ORDER BY product_name ASC LIMIT $start,12";
         $result = mysqli_query($this->conn, $sql);
 
         while ($row = mysqli_fetch_array($result)) {
@@ -94,7 +94,7 @@ class DatabaseConnection
         $start = 0;
         $productType = $_GET['type'];
 
-        $sql = "SELECT product_id, product_name, product" . '.' . "img, price, display_name FROM product, brand WHERE product_type = $productType AND product" . '.' . "brand_id = brand" . '.' . "brand_id AND state = 1 LIMIT $start,16";
+        $sql = "SELECT product_id, product_name, product" . '.' . "img, price, display_name FROM product, brand WHERE product_type = $productType AND product" . '.' . "brand_id = brand" . '.' . "brand_id AND state = 1 ORDER BY product_name ASC LIMIT $start,12";
         $result = mysqli_query($this->conn, $sql);
 
         while ($row = mysqli_fetch_array($result)) {
@@ -128,10 +128,10 @@ class DatabaseConnection
             $result = mysqli_query($this->conn, $sql);
 
             $totalProduct = $result->num_rows;
-            $totalProduct % 16 == 0 ? $pageNumbers = $totalProduct / 16 : $pageNumbers = $totalProduct / 16 + 1;
+            $totalProduct % 12 == 0 ? $pageNumbers = $totalProduct / 12 : $pageNumbers = $totalProduct / 12 + 1;
 
             for ($i = 1; $i <= $pageNumbers; $i++) {
-                echo "<button href='#' data-nav='brand' data-nav-type='$brandId' onclick='sendPageNumber(this.dataset.nav, this.dataset.navType, this.innerHTML)'>$i</button>";
+                echo "<button href='#' class='change-page' data-nav='brand' data-nav-type='$brandId' onclick='sendPageNumber(this.dataset.nav, this.dataset.navType, this.innerHTML, this)'>$i</button>";
             }
         } else if (isset($_GET['type'])) {
             $productType = $_GET['type'];
@@ -139,10 +139,10 @@ class DatabaseConnection
             $result = mysqli_query($this->conn, $sql);
 
             $totalProduct = $result->num_rows;
-            $totalProduct % 16 == 0 ? $pageNumbers = $totalProduct / 16 : $pageNumbers = $totalProduct / 16 + 1;
+            $totalProduct % 12 == 0 ? $pageNumbers = $totalProduct / 12 : $pageNumbers = $totalProduct / 12 + 1;
 
             for ($i = 1; $i <= $pageNumbers; $i++) {
-                echo "<button href='#' class='change-page' data-nav='nBrand' data-nav-type='$productType' onclick='sendPageNumber(this.dataset.nav, this.dataset.navType, this.innerHTML)'>$i</button>";
+                echo "<button href='#' class='change-page' data-nav='nBrand' data-nav-type='$productType' onclick='sendPageNumber(this.dataset.nav, this.dataset.navType, this.innerHTML, this)'>$i</button>";
             }
         }
     }
@@ -191,7 +191,7 @@ class DatabaseConnection
 
     public function loadProductTags($productId)
     {
-        $sql = 'SELECT skin_type, product_type_name, display_name, product_type, brand_name FROM product, product_type, brand WHERE product'.'.'.'brand_id = brand'.'.'."brand_id AND product_type = product_type_id AND product_id = $productId";
+        $sql = 'SELECT skin_type, product_type_name, display_name, product_type, brand_name FROM product, product_type, brand WHERE product' . '.' . 'brand_id = brand' . '.' . "brand_id AND product_type = product_type_id AND product_id = $productId";
         $result = mysqli_query($this->conn, $sql);
         $row = mysqli_fetch_array($result);
 
@@ -207,11 +207,12 @@ class DatabaseConnection
                 break;
         }
 
-        echo "<a href='./index.php?act=product&nav=any&type=".$row['product_type']."' class='tag'>".$row['product_type_name']."</a>";
-        echo "<a href='./index.php?act=product&nav=brand&brand=".$row['brand_name']."' class='tag'>".$row['display_name']."</a>";
+        echo "<a href='./index.php?act=product&nav=any&type=" . $row['product_type'] . "' class='tag'>" . $row['product_type_name'] . "</a>";
+        echo "<a href='./index.php?act=product&nav=brand&brand=" . $row['brand_name'] . "' class='tag'>" . $row['display_name'] . "</a>";
     }
 
-    public function loadProductRecommendation($productId) {
+    public function loadProductRecommendation($productId)
+    {
         $sql = "SELECT brand_id FROM product WHERE product_id = $productId";
         $result = mysqli_query($this->conn, $sql);
         $row = mysqli_fetch_array($result);
@@ -236,6 +237,19 @@ class DatabaseConnection
                     <div class='product-name'>" . $row['product_name'] . "</div>
                 </a>";
         }
+    }
+
+    public function getSearchResult($key)
+    {
+        $sql = "SELECT product_id, product_name, product" . '.' . "img, price, display_name FROM product, brand WHERE product" . '.' . "brand_id = brand" . '.' . "brand_id AND state = 1 AND product_name LIKE '%$key%' ORDER BY product_name ASC";
+        $result = mysqli_query($this->conn, $sql);
+        $searchResult = array();
+
+        while ($row = mysqli_fetch_array($result)) {
+            array_push($searchResult, $row);
+        }
+
+        return $searchResult;
     }
 
 }

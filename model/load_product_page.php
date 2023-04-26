@@ -3,12 +3,26 @@ $conn = mysqli_connect("localhost", "root", "", "cosmetic_store");
 $nav = $_REQUEST['nav'];
 $navType = $_REQUEST['navType'];
 $pageNum = $_REQUEST['pageNum'];
+$orderType = $_REQUEST['order'];
 
 if ($nav === "brand") {
     $brandId = $navType;
 
-    $start = ($pageNum-1)*16;
-    $sql = "SELECT product_id, product_name, product" . '.' . "img, price, display_name FROM product, brand WHERE product" . '.' . "brand_id = $brandId AND product" . '.' . "brand_id = brand" . '.' . "brand_id AND state = 1 LIMIT $start,16";
+    $start = ($pageNum-1)*12;
+    switch ($orderType) {
+        case "1":
+            $sql = "SELECT product_id, product_name, product" . '.' . "img, price, display_name FROM product, brand WHERE product" . '.' . "brand_id = $brandId AND product" . '.' . "brand_id = brand" . '.' . "brand_id AND state = 1 ORDER BY product_name ASC LIMIT $start,12 ";
+            break;
+        case "2":
+            $sql = "SELECT product_id, product_name, product" . '.' . "img, price, display_name FROM product, brand WHERE product" . '.' . "brand_id = $brandId AND product" . '.' . "brand_id = brand" . '.' . "brand_id AND state = 1 ORDER BY product_name DESC LIMIT $start,12 ";
+            break;
+        case "3":
+            $sql = "SELECT product_id, product_name, product" . '.' . "img, price, display_name FROM product, brand WHERE product" . '.' . "brand_id = $brandId AND product" . '.' . "brand_id = brand" . '.' . "brand_id AND state = 1 ORDER BY price ASC LIMIT $start,12 ";
+            break;
+        case "4":
+            $sql = "SELECT product_id, product_name, product" . '.' . "img, price, display_name FROM product, brand WHERE product" . '.' . "brand_id = $brandId AND product" . '.' . "brand_id = brand" . '.' . "brand_id AND state = 1 ORDER BY price DESC LIMIT $start,12 ";
+            break;
+    }
     $result = mysqli_query($conn, $sql);
 
     while ($row = mysqli_fetch_array($result)) {
@@ -30,10 +44,24 @@ if ($nav === "brand") {
 }
 
 else {
-    $start = ($pageNum - 1) * 16;
+    $start = ($pageNum - 1) * 12;
     $productType = $navType;
 
-    $sql = "SELECT product_id, product_name, product" . '.' . "img, price, display_name FROM product, brand WHERE product_type = $productType AND product" . '.' . "brand_id = brand" . '.' . "brand_id AND state = 1 LIMIT $start,16";
+    switch($orderType) {
+        case "1":
+            $sql = "SELECT product_id, product_name, product" . '.' . "img, price, display_name FROM product, brand WHERE product_type = $productType AND product" . '.' . "brand_id = brand" . '.' . "brand_id AND state = 1 ORDER BY product_name ASC LIMIT $start,12";
+            break;
+        case "2":
+            $sql = "SELECT product_id, product_name, product" . '.' . "img, price, display_name FROM product, brand WHERE product_type = $productType AND product" . '.' . "brand_id = brand" . '.' . "brand_id AND state = 1 ORDER BY product_name DESC LIMIT $start,12";
+            break;
+        case "3":
+            $sql = "SELECT product_id, product_name, product" . '.' . "img, price, display_name FROM product, brand WHERE product_type = $productType AND product" . '.' . "brand_id = brand" . '.' . "brand_id AND state = 1 ORDER BY price ASC LIMIT $start,12";
+            break;
+        case "4":
+            $sql = "SELECT product_id, product_name, product" . '.' . "img, price, display_name FROM product, brand WHERE product_type = $productType AND product" . '.' . "brand_id = brand" . '.' . "brand_id AND state = 1 ORDER BY price DESC LIMIT $start,12";
+            break;
+    }
+    
     $result = mysqli_query($conn, $sql);
 
     while ($row = mysqli_fetch_array($result)) {

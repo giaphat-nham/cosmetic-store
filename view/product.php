@@ -32,8 +32,14 @@
                         } else {
                             include("./controller/product_brands_filter.php");
                         }
+                    } else if (isset($_GET['txtSearch'])) {
+                        include("./controller/product_type_filter.php");
+                        include("./controller/product_brands_filter.php");
                     }
                     ?>
+                    <div class="submit-filter-button">
+                        <button class="filter" type="submit">Lọc</button>
+                    </div>
                 </form>
             </div>
         </div>

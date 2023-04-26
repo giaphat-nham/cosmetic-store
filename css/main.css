@@ -170,8 +170,7 @@ ul {
   display: flex;
   align-items: center;
   position: relative;
-  flex-grow: 0.001;
-  transition: 600ms;
+  flex-grow: 1;
 }
 
 .function {
@@ -207,12 +206,8 @@ ul {
 }
 
 .search input:focus {
-  outline: none;
+  outline: 1px solid var(--clr-main-dark);
   border: 1px solid var(--clr-main-dark);
-}
-
-.search:has(input:focus) {
-  flex-grow: 1;
 }
 
 button {
@@ -463,6 +458,7 @@ button:hover svg {
   padding-bottom: 20px;
   text-align: justify;
   color: gray;
+  line-height: 1.5rem;
 }
 
 .sub-banner-3 {

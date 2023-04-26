@@ -7,10 +7,19 @@
 
             foreach ($brands as $brand) {
                 echo "<div class='radio-option'>
-        <input type='radio' name='brand' id='".$brand['brand_name']."' value='" . $brand['brand_name'] . "'>
+        <input type='radio' name='brand' id='" . $brand['brand_name'] . "' value='" . $brand['brand_name'] . "'>
         <label for='" . $brand['brand_name'] . "'>" . $brand['display_name'] . "</label>
     </div>";
             }
+        }
+    } else if (isset($_GET['txtSearch'])) {
+        $brands = $conn->getBrands();
+
+        foreach ($brands as $brand) {
+            echo "<div class='radio-option'>
+        <input type='radio' name='brand' id='" . $brand['brand_name'] . "' value='" . $brand['brand_name'] . "'>
+        <label for='" . $brand['brand_name'] . "'>" . $brand['display_name'] . "</label>
+    </div>";
         }
     }
     ?>

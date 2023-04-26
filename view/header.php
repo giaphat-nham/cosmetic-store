@@ -1,4 +1,4 @@
-<?php session_start()?>
+<?php session_start() ?>
 <header>
     <div class="main-header">
         <a href="index.php" id="nav-home">
@@ -25,9 +25,10 @@ F L O R A
                 </style>
             </svg>
         </a>
-        <form class="search">
-            <input type="text" placeholder="Search" name="txtSearch">
-            <button id="btn-search">
+        <form action="./index.php" method="get" class="search">
+            <input type="hidden" name="act" value="product">
+            <input type="text" placeholder="Tìm kiếm" name="txtSearch">
+            <button type="submit" id="btn-search">
                 <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="25" height="25">
                     <path
                         d="M23.707,22.293l-5.969-5.969a10.016,10.016,0,1,0-1.414,1.414l5.969,5.969a1,1,0,0,0,1.414-1.414ZM10,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,10,18Z" />
@@ -60,14 +61,13 @@ F L O R A
                 </svg>
             </a>
 
-            <?php if(isset($_SESSION['account_id']))
-                        {
-                            echo'<div class="post-login">
+            <?php if (isset($_SESSION['account_id'])) {
+                echo '<div class="post-login">
                             <div class="greeting">Chào mừng đến với FLORA!</div>
                             <a href="model/logout.inc.php" id="btn-user-info">Đăng xuất</a>
                         </div>';
-                        } else {                       
-                    echo '<a href="#" id="btn-user" onclick="loginform()">
+            } else {
+                echo '<a href="#" id="btn-user" onclick="loginform()">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="25" height="25">
                         <g id="_01_align_center" data-name="01 align center">
                             <path
@@ -76,7 +76,7 @@ F L O R A
                         </g>
                     </svg>
                 </a>';
-                    }
+            }
             ?>
             <!-- <a href="#" id="btn-user" onclick="loginform()">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="25" height="25">
