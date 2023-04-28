@@ -4,10 +4,10 @@
         switch ($_GET['nav']) {
             case "brand":
                 $brands = $conn->getBrands();
-                echo "<a href='index.php?act=product&nav=brand'>Thương hiệu</a>";
+                echo "<a href='index.php?act=product&nav=brand&brand=loreal'>Thương hiệu</a>";
                 echo "<ul>";
                 foreach ($brands as $brand) {
-                        echo "<li><a href='index.php?act=product&nav=brand&brand=".$brand['brand_name']."'>".$brand['display_name']."</a></li>";
+                    echo "<li><a href='index.php?act=product&nav=brand&brand=" . $brand['brand_name'] . "'>" . $brand['display_name'] . "</a></li>";
                 }
                 echo "</ul>";
                 break;
@@ -43,6 +43,14 @@
                 echo "</ul>";
                 break;
         }
+    } else {
+        $brands = $conn->getBrands();
+        echo "<a href='index.php?act=product&nav=brand&brand=loreal'>Thương hiệu</a>";
+        echo "<ul>";
+        foreach ($brands as $brand) {
+            echo "<li><a href='index.php?act=product&nav=brand&brand=" . $brand['brand_name'] . "'>" . $brand['display_name'] . "</a></li>";
+        }
+        echo "</ul>";
     }
     ?>
 </div>

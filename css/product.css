@@ -11,7 +11,8 @@
   --clr-red: #e63946;
 }
 
-html, body {
+html,
+body {
   background-color: white;
 }
 
@@ -65,6 +66,11 @@ html, body {
   width: 10rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+
+.filter form button.filter:hover {
+  background-color: var(--clr-main);
+  border: 1px solid var(--clr-main);
 }
 
 .catalog-nav {
@@ -296,7 +302,7 @@ html, body {
 }
 
 @media (max-width: 350px) {
-.product-catalog.product-page {
+  .product-catalog.product-page {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

@@ -3,7 +3,7 @@
         <div class="filter">
             <?php include("./controller/catalog_nav.php") ?>
             <div class="product-filter">
-                <form action="" method="get">
+                <form>
                     <label for="price-range" class="label">Khoảng giá:</label>
                     <div class="price-range-group">
                         <input type="range" min="0" max="1000000" step="10000" name="price-range-left">
@@ -13,16 +13,16 @@
                     <div class="radio-button-group">
                         <label for="skin-type" class="label">Chọn loại da phù hợp:</label>
                         <div class="radio-option">
-                            <input type="radio" name="skin-type" id="oily" value="oily">
+                            <input type="radio" name="skin-type" id="oily" value="oil">
                             <label for="oily">Da dầu</label>
                         </div>
                         <div class="radio-option">
                             <input type="radio" name="skin-type" id="dry" value="dry">
-                            <label for="oily">Da khô</label>
+                            <label for="dry">Da khô</label>
                         </div>
                         <div class="radio-option">
                             <input type="radio" name="skin-type" id="all" value="all">
-                            <label for="oily">Mọi loại da</label>
+                            <label for="all">Mọi loại da</label>
                         </div>
                     </div>
                     <?php
@@ -35,10 +35,15 @@
                     } else if (isset($_GET['txtSearch'])) {
                         include("./controller/product_type_filter.php");
                         include("./controller/product_brands_filter.php");
+                    } else {
+                        echo "<script type='text/javascript'>
+                        const filter = document.querySelector('.product-filter');
+                        filter.style.display = 'none';
+                        </script>";
                     }
                     ?>
                     <div class="submit-filter-button">
-                        <button class="filter" type="submit">Lọc</button>
+                        <button class="filter" type="button">Lọc</button>
                     </div>
                 </form>
             </div>
@@ -48,3 +53,30 @@
         <?php include("./controller/products_display.php") ?>
     </div>
 </div>
+
+<script type='text/javascript'>
+    const rangeSelects = document.querySelectorAll("input[type='range']");
+    const leftRange = rangeSelects[0];
+    const rightRange = rangeSelects[1];
+    const rangeDisplay = document.querySelector(".price-range-display");
+
+    rangeDisplay.innerHTML = `${leftRange.max - leftRange.value} - ${rightRange.value}`;
+
+    rangeSelects.forEach(input => {
+        input.addEventListener("change", e => {
+            const leftRange = rangeSelects[0];
+            const rightRange = rangeSelects[1];
+            const rangeDisplay = document.querySelector(".price-range-display");
+
+            rangeDisplay.innerHTML = `${leftRange.max - leftRange.value} - ${rightRange.value}`;
+
+        })
+    });
+
+    rangeSelects[0].addEventListener("change", e => {
+        const leftRange = rangeSelects[0];
+        const rightRange = rangeSelects[1];
+
+        rightRange.min =leftRange.max - leftRange.value;
+    });
+</script>

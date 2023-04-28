@@ -41,6 +41,9 @@
         }
         if (isset($_GET['txtSearch'])) {
             $searchResult = $conn->getSearchResult($_GET['txtSearch']);
+            if (sizeof($searchResult) <= 0) {
+                echo "<h3>Không có kết quả!</h3>";
+            }
             $counter = 0;
             foreach ($searchResult as $result) {
                 $counter++;
@@ -62,6 +65,9 @@
                     break;
             }
         }
+        if (isset($_GET['skintype'])) {
+            $conn->loadProductSkinType($_GET['skintype']);
+        }
         ?>
     </div>
     <div class="page-nav">
@@ -70,17 +76,20 @@
             $conn->loadPageNavigation();
         } else if (isset($_GET['txtSearch'])) {
             $searchResult = $conn->getSearchResult($_GET['txtSearch']);
-            $totalResult = sizeof($searchResult);
-            $totalResult % 12 == 0 ? $pageNumber = $totalResult / 12 : $pageNumber = $totalResult / 12 + 1;
+            if (sizeof($searchResult) > 0) {
+                $totalResult = sizeof($searchResult);
+                $totalResult % 12 == 0 ? $pageNumber = $totalResult / 12 : $pageNumber = $totalResult / 12 + 1;
 
-            for ($i = 1; $i <= $pageNumber; $i++) {
-                echo "<button href='#' class='change-page' onclick=" . '"' . "changeSearchResultPage(this.innerHTML,'" . $_GET['txtSearch'] . "', this)" . '"' . ">$i</button>";
+                for ($i = 1; $i <= $pageNumber; $i++) {
+                    echo "<button href='#' class='change-page' data-search='" . $_GET['txtSearch'] . "' onclick=" . '"' . "changeSearchResultPage(this.innerHTML,'" . $_GET['txtSearch'] . "', this)" . '"' . ">$i</button>";
+                }
             }
-        }
-        echo "<script type='text/javascript'>
+            echo "<script type='text/javascript'>
                     const pageChangeButton = document.querySelector('.change-page');
                     pageChangeButton.classList.add('active');
                 </script>";
+        }
+
         ?>
         <script type="text/javascript">
             function sendPageNumber(nav, navType, pageNum, pageNav) {
@@ -102,20 +111,34 @@
 
             function updatePage() {
                 const pageNav = document.querySelector(".change-page.active");
-                const nav = pageNav.dataset.nav;
-                const navType = pageNav.dataset.navType;
-                const pageNum = pageNav.innerHTML;
+                if (pageNav.dataset.nav) {
+                    const nav = pageNav.dataset.nav;
+                    const navType = pageNav.dataset.navType;
+                    const pageNum = pageNav.innerHTML;
 
-                sendPageNumber(nav, navType, pageNum, pageNav);
+                    sendPageNumber(nav, navType, pageNum, pageNav);
+                }
+                else if (pageNav.dataset.skinType) {
+                    const skinType = pageNav.dataset.skinType;
+                    const pageNum = pageNav.innerHTML;
+
+                    loadSkinTypePage(skinType, pageNum, pageNav);
+                }
+                else if (pageNav.dataset.search) {
+                    const pageNum = pageNav.innerHTML;
+                    const key = pageNav.dataset.search;
+                    changeSearchResultPage(pageNum, key, pageNav);
+                }
             }
 
             function changeSearchResultPage(pageNum, key, pageNav) {
                 const xmlhttp = new XMLHttpRequest();
                 const pageNavs = document.querySelectorAll(".change-page");
+                const orderProduct = document.querySelector(".order-product");
                 xmlhttp.onload = function () {
                     document.querySelector(".product-catalog.product-page").innerHTML = this.responseText;
                 }
-                xmlhttp.open("GET", "./model/load_search_page.php?txtSearch=" + key + "&pageNum=" + pageNum);
+                xmlhttp.open("GET", "./model/load_search_page.php?txtSearch=" + key + "&pageNum=" + pageNum + "&order=" + orderProduct.value);
                 xmlhttp.send();
                 pageNavs.forEach(page => {
                     if (page.classList.contains("active")) {
@@ -123,6 +146,81 @@
                     }
                 })
                 pageNav.classList.add("active");
+            }
+
+            function loadSkinTypePage(skinType, pageNum, pageNav) {
+                const xmlhttp = new XMLHttpRequest();
+                const pageNavs = document.querySelectorAll(".change-page");
+                const orderProduct = document.querySelector(".order-product");
+                xmlhttp.onload = function () {
+                    document.querySelector(".product-catalog.product-page").innerHTML = this.responseText;
+                }
+                xmlhttp.open("GET", "./model/load_skintype_page.php?skintype=" + skinType + "&pageNum=" + pageNum + "&order=" + orderProduct.value);
+                xmlhttp.send();
+                pageNavs.forEach(page => {
+                    if (page.classList.contains("active")) {
+                        page.classList.remove("active");
+                    }
+                })
+                pageNav.classList.add("active");
+            }
+
+            const filterButton = document.querySelector("button.filter");
+            filterButton.addEventListener("click", e => filterProducts())
+
+            function filterProducts() {
+                const rangeInputs = document.querySelectorAll("input[type='range']");
+                const leftRange = rangeInputs[0].max - rangeInputs[0].value;
+                const rightRange = rangeInputs[1].value;
+
+                const skinTypeButtons = document.querySelectorAll("input[type='radio'][name='skin-type']");
+                let skinType = "";
+                skinTypeButtons.forEach(button => {
+                    if (button.checked) {
+                        skinType = button.value;
+                    }
+                });
+
+                const brandButtons = document.querySelectorAll("input[type='radio'][name='brand']");
+                let brand = "";
+                if (brandButtons) {
+                    brandButtons.forEach(button => {
+                        if (button.checked) {
+                            brand = button.value;
+                        }
+                    });
+                }
+
+                const typeButtons = document.querySelectorAll("input[type='radio'][name='product-type']");
+                let productType = "";
+                if (typeButtons) {
+                    typeButtons.forEach(button => {
+                        if (button.checked) {
+                            productType = button.value;
+                        }
+                    });
+                }
+
+                const pageNav = document.querySelector(".change-page");
+                let filterFor = "";
+                let nav = "";
+                let navType = "";
+                if (pageNav.dataset.nav) {
+                    filterFor = "nav";
+                    nav = pageNav.dataset.nav;
+                    navType = pageNav.dataset.navType;
+                }
+                else if (pageNav.dataset.search) {
+                    filterFor = "search";
+                }
+
+                const orderProduct = document.querySelector(".order-product");
+                const xmlhttp = new XMLHttpRequest();
+                xmlhttp.onload = function () {
+                    document.querySelector(".product-catalog.product-page").innerHTML = this.responseText;
+                }
+                xmlhttp.open("GET", "./model/filter_products.php?lrange=" + leftRange + "&rrange=" + rightRange + "&skintype=" + skinType + "&brand=" + brand + "&producttype=" + productType + "&filter=" + filterFor + "&order=" + orderProduct.value + "&nav=" + nav + "&navtype=" + navType);
+                xmlhttp.send();
             }
         </script>
     </div>

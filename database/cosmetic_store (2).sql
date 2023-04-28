@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 25, 2023 at 08:13 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th4 28, 2023 lúc 01:37 PM
+-- Phiên bản máy phục vụ: 10.4.25-MariaDB
+-- Phiên bản PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `cosmetic_store`
+-- Cơ sở dữ liệu: `cosmetic_store`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `account`
+-- Cấu trúc bảng cho bảng `account`
 --
 
 CREATE TABLE `account` (
@@ -34,10 +34,10 @@ CREATE TABLE `account` (
   `date` datetime NOT NULL,
   `decent_id` int(10) UNSIGNED NOT NULL,
   `state` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `account`
+-- Đang đổ dữ liệu cho bảng `account`
 --
 
 INSERT INTO `account` (`account_id`, `username`, `password`, `date`, `decent_id`, `state`) VALUES
@@ -46,7 +46,7 @@ INSERT INTO `account` (`account_id`, `username`, `password`, `date`, `decent_id`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bill`
+-- Cấu trúc bảng cho bảng `bill`
 --
 
 CREATE TABLE `bill` (
@@ -55,12 +55,12 @@ CREATE TABLE `bill` (
   `customer_id` int(10) UNSIGNED NOT NULL,
   `bill_state` int(1) UNSIGNED NOT NULL,
   `date` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bill_detail`
+-- Cấu trúc bảng cho bảng `bill_detail`
 --
 
 CREATE TABLE `bill_detail` (
@@ -68,12 +68,12 @@ CREATE TABLE `bill_detail` (
   `product_id` int(10) UNSIGNED NOT NULL,
   `quantity` int(10) UNSIGNED NOT NULL,
   `product_price` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `brand`
+-- Cấu trúc bảng cho bảng `brand`
 --
 
 CREATE TABLE `brand` (
@@ -81,10 +81,10 @@ CREATE TABLE `brand` (
   `brand_name` varchar(100) NOT NULL,
   `img` varchar(100) NOT NULL,
   `display_name` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `brand`
+-- Đang đổ dữ liệu cho bảng `brand`
 --
 
 INSERT INTO `brand` (`brand_id`, `brand_name`, `img`, `display_name`) VALUES
@@ -98,28 +98,7 @@ INSERT INTO `brand` (`brand_id`, `brand_name`, `img`, `display_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
---
-
-CREATE TABLE `category` (
-  `category_id` int(10) UNSIGNED NOT NULL,
-  `category_name` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `category`
---
-
-INSERT INTO `category` (`category_id`, `category_name`) VALUES
-(0, ''),
-(1, 'Chăm sóc da mặt'),
-(2, 'Chăm sóc cơ thể'),
-(3, 'Makeup');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `customer`
+-- Cấu trúc bảng cho bảng `customer`
 --
 
 CREATE TABLE `customer` (
@@ -129,21 +108,21 @@ CREATE TABLE `customer` (
   `email` varchar(100) NOT NULL,
   `phone` varchar(10) NOT NULL,
   `address` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `decentralization`
+-- Cấu trúc bảng cho bảng `decentralization`
 --
 
 CREATE TABLE `decentralization` (
   `decent_id` int(10) UNSIGNED NOT NULL,
   `decent_name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `decentralization`
+-- Đang đổ dữ liệu cho bảng `decentralization`
 --
 
 INSERT INTO `decentralization` (`decent_id`, `decent_name`) VALUES
@@ -155,7 +134,7 @@ INSERT INTO `decentralization` (`decent_id`, `decent_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `decent_detail`
+-- Cấu trúc bảng cho bảng `decent_detail`
 --
 
 CREATE TABLE `decent_detail` (
@@ -164,10 +143,10 @@ CREATE TABLE `decent_detail` (
   `url` varchar(20) NOT NULL,
   `action` varchar(100) NOT NULL,
   `isDisplayed` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `decent_detail`
+-- Đang đổ dữ liệu cho bảng `decent_detail`
 --
 
 INSERT INTO `decent_detail` (`decent_id`, `feature_id`, `url`, `action`, `isDisplayed`) VALUES
@@ -184,16 +163,16 @@ INSERT INTO `decent_detail` (`decent_id`, `feature_id`, `url`, `action`, `isDisp
 -- --------------------------------------------------------
 
 --
--- Table structure for table `feature`
+-- Cấu trúc bảng cho bảng `feature`
 --
 
 CREATE TABLE `feature` (
   `feature_id` int(10) UNSIGNED NOT NULL,
   `feature_name` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `feature`
+-- Đang đổ dữ liệu cho bảng `feature`
 --
 
 INSERT INTO `feature` (`feature_id`, `feature_name`) VALUES
@@ -209,7 +188,7 @@ INSERT INTO `feature` (`feature_id`, `feature_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product`
+-- Cấu trúc bảng cho bảng `product`
 --
 
 CREATE TABLE `product` (
@@ -225,10 +204,10 @@ CREATE TABLE `product` (
   `price` int(10) UNSIGNED NOT NULL,
   `quantity` int(10) UNSIGNED NOT NULL,
   `state` int(1) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `product`
+-- Đang đổ dữ liệu cho bảng `product`
 --
 
 INSERT INTO `product` (`product_id`, `brand_id`, `product_type`, `product_name`, `img`, `info`, `ingredient`, `skin_type`, `volume`, `price`, `quantity`, `state`) VALUES
@@ -262,7 +241,7 @@ INSERT INTO `product` (`product_id`, `brand_id`, `product_type`, `product_name`,
 (28, 2, 3, 'Serum Bí Đao Cocoon Làm Giảm Mụn, Mờ Thâm', '28.jpg', 'Tinh Chất Bí Đao Cocoon Winter Melon Serum 70ml là dòng sản phẩm chăm sóc da mụn của thương hiệu mỹ phẩm thuần chay Cocoon xuất xứ Việt Nam. Sản phẩm chứa các thành phần từ thực vật làm chủ đạo gồm chiết xuất bí đao, rau má, tràm trà và được bổ sung thêm 7% Niacinamide (vitamin B3) giúp hỗ trợ phục hồi tình trạng da mụn viêm và ửng đỏ hiệu quả, mang lại làn da thông thoáng và sáng mịn màng.', 'Aqua/Water, Niacinamide, Salicylic Acid, Cocamidopropyl Dimethylamine, Benincasa Cerifera Fruit Extract, Centella Asiatica Extract, Butylene Glycol, Pentylene Glycol, Bisabolol, Zinc PCA, Phellodendron Amurense Bark Extract, Glycereth-26, Bis-PEG-18 Methyl Ether Dimethyl Silane, Melaleuca Alternifolia Leaf Oil, Lavandula Angustifolia Flower Oil, Rosmarinus Officinalis Leaf Oil, Phenoxyethanol, Trisodium Ethylenediamine Disuccinate, Ethylhexylglycerin, Farnesol.', 'all', 70, 238000, 1000, 1),
 (29, 2, 3, 'Serum Cocoon Chiết Xuất Từ Nghệ Hưng Yên ', '29.jpg', 'Tinh Chất Cocoon Chiết Xuất Từ Nghệ Hưng Yên 30ml là dòng tinh chất dưỡng da đến từ thương hiệu mỹ phẩm thuần chay Cocoon của Việt Nam, với thành phần dầu nghệ chiết xuất từ củ nghệ Hưng Yên rất giàu turmerone, được xé nhỏ và lơ lửng trong một hỗn hợp kết cấu mọng nước chứa 5% vitamin C (3-O-Ethyl Ascorbic Acid), 4% vitamin B3 và 2% NAG. Sản phẩm có tác dụng làm sáng, làm mờ vết thâm sạm, cung cấp độ ẩm, tăng cường độ đàn hồi, săn chắc đồng thời có khả năng chống oxy hoá cao và ngăn ngừa lão hoá.', 'Aqua/Water,  3-O-Ethyl Ascorbic Acid, Caprylic/Capric/Succinic Triglyceride, Niacinamide, Potassium Azeloyl Diglycinate, Acetyl Glucosamine, Dimethyl Isosorbide, 1-Methylhydantoin-2-Imide, Propanediol, Curcuma Longa (Turmeric) Root Oil, Curcuma Longa (Turmeric) Root Extract, Daucus Carota Sativa (Carrot) Root Extract, Betaine, Glycerin, Hydroxyacetophenone, Butylene Glycol, Beta-Carotene, Glycine Soja (Soybean) Oil, Tocopherol, Xanthan Gum, Ethylhexylglycerin, Sodium Chloride, Trisodium Ethylenediamine Disuccinate, Phenoxyethanol.', 'all', 30, 292000, 500, 1),
 (30, 2, 3, 'Serum Cocoon Nghệ Hưng Yên x2.2 Sáng Da Chuyên Sâu', '30.jpg', 'Tinh Chất Cocoon Nghệ Hưng Yên x2.2 Sáng Da Chuyên Sâu 30ml là sản phẩm tinh chất đến từ thương hiệu mỹ phẩm Cocoon của Việt Nam, vận dụng nguồn năng lượng dồi dào từ củ nghệ Hưng Yên và các thành phần hoạt tính nổi bật gồm 22% Vitamin C, 1% Hexylresorcinol, 4% Niacinamide và 2% NAG giúp làm sáng các làn da ngăm đen, tối màu, cháy nắng, có tác dụng tốt trên vết thâm đậm và vết thâm đỏ do mụn để lại, chống oxy hóa giúp ngăn ngừa lão hoá da, cải thiện bề mặt giúp da trở nên mịn màng, căng bóng.', 'Aqua/Water, 3-O-Ethyl Ascorbic Acid, Propanediol, Niacinamide, Acetyl Glucosamine, Dimethyl Isosorbide, Hexylresorcinol, Glycerin, Betaine, Ethoxydiglycol, Butylene Glycol, Pentylene Glycol, Curcuma Longa (Turmeric) Root Extract, Ferulic Acid, Potassium Azeloyl Diglycinate, Trisodium Ethylenediamine Disuccinate, Sodium Benzoate, Potassium Sorbate.', 'all', 30, 371000, 1000, 1),
-(31, 2, 4, 'Serum Cocoon Cấp Nước & Cấp Ẩm Sâu Từ Hoa Hồng', '31.jpg', 'Tinh Chất Cocoon Cấp Nước & Cấp Ẩm Sâu Từ Hoa Hồng 30ml dòng tinh chất dưỡng da đến từ thương hiệu mỹ phẩm thuần chay Cocoon của Việt Nam, kết hợp những hoạt chất như 5% Vitamin B5, 5% Betaine, 5% Urea, Ectoin & HA, tinh chất hoa hồng cung cấp ẩm dồi dào giúp dưỡng ẩm sâu, phục hồi những tổn thương do sự mất nước gây ra. Làn da sau khi ngậm nước sẽ nhanh chóng trở nên tươi mới, căng mọng và ẩm mượt như được phủ sương', 'Aqua/Water, Rosa Damascena Flower Water, Panthenol, Betaine, Hydroxyethyl Urea, Biosaccharide Gum-1, Arginine,  Glycine, Alanine, Serine, Valine, Proline, Threonine, Isoleucine, Histidine, Phenylalanine,  Aspartic Acid, PCA, Sodium PCA, Rosa Damascena Extract, Ectoin, Sodium Hyaluronate, Hydrolyzed Hyaluronic Acid, Saccharide Isomerate, Aloe Barbadensis Leaf Juice, Allantoin, Glycerin, Propanediol, Glycereth-26, Pentylene Glycol, Butylene Glycol, Xylitol, Hydroxyacetophenone, Xylitylglucoside, Ethylhexylglycerin, Anhydroxylitol, Hydroxyethylcellulose, Xanthan Gum, Trisodium Ethylenediamine Disuccinate, Phenoxyethanol, Sodium Lactate.', 'all', 30, 212000, 1000, 1),
+(31, 2, 3, 'Serum Cocoon Cấp Nước & Cấp Ẩm Sâu Từ Hoa Hồng', '31.jpg', 'Tinh Chất Cocoon Cấp Nước & Cấp Ẩm Sâu Từ Hoa Hồng 30ml dòng tinh chất dưỡng da đến từ thương hiệu mỹ phẩm thuần chay Cocoon của Việt Nam, kết hợp những hoạt chất như 5% Vitamin B5, 5% Betaine, 5% Urea, Ectoin & HA, tinh chất hoa hồng cung cấp ẩm dồi dào giúp dưỡng ẩm sâu, phục hồi những tổn thương do sự mất nước gây ra. Làn da sau khi ngậm nước sẽ nhanh chóng trở nên tươi mới, căng mọng và ẩm mượt như được phủ sương', 'Aqua/Water, Rosa Damascena Flower Water, Panthenol, Betaine, Hydroxyethyl Urea, Biosaccharide Gum-1, Arginine,  Glycine, Alanine, Serine, Valine, Proline, Threonine, Isoleucine, Histidine, Phenylalanine,  Aspartic Acid, PCA, Sodium PCA, Rosa Damascena Extract, Ectoin, Sodium Hyaluronate, Hydrolyzed Hyaluronic Acid, Saccharide Isomerate, Aloe Barbadensis Leaf Juice, Allantoin, Glycerin, Propanediol, Glycereth-26, Pentylene Glycol, Butylene Glycol, Xylitol, Hydroxyacetophenone, Xylitylglucoside, Ethylhexylglycerin, Anhydroxylitol, Hydroxyethylcellulose, Xanthan Gum, Trisodium Ethylenediamine Disuccinate, Phenoxyethanol, Sodium Lactate.', 'all', 30, 212000, 1000, 1),
 (32, 2, 5, 'Gel Rửa Mặt Bí Đao Cocoon Làm Giảm Dầu & Mụn ', '32.jpg', 'Gel Bí Đao Rửa Mặt Cocoon Winter Melon Cleanser là sản phẩm sữa rửa mặt độc đáo đến từ thương hiệu mỹ phẩm Việt Nam Cocoon, được chiết xuất từ thành phần tự nhiên phù hợp với làn da dầu mụn như bí đao, rau má, tràm trà... Công thức dạng gel tạo bọt nhẹ nhàng nhưng lại có khả năng làm sạch sâu, ngăn ngừa các tác nhân gây mụn, đặc biệt là mụn ẩn dưới da, mang đến cho sự ẩm mịn tự nhiên cùng cảm giác vô cùng tươi mới và sạch sẽ. Độ pH 5.5 cân bằng lý tưởng, an toàn cho làn da dầu, mụn & nhạy cảm.', 'Water/Aqua, Potassium Laureth Phosphate, Cocamidopropyl Betaine, Acrylates/Steareth-20 Methacrylate Copolymer, Sodium Cocoyl Glycinate, Cocoyl Methyl Glucamide, PEG-7-Glyceryl Cocoate, Glycerin, Benincasa Cerifera (Bí đao) Fruit Extract, Salicylic Acid, Niacinamide (Vitamin B3), Panthenol (Vitamin B5), Centella Asiatica Extract (Rau má), Betaine, Propanediol, Butylene Glycol, PEG-120 Methyl Glucose Dioleate, Molasses, Glycereth-26, Sodium Lactate, Sodium Hydroxide, Polysorbate 20, Melaleuca Alternifolia (Tràm trà) Leaf Oil, Rosmarinus Officinalis (Hương thảo) Leaf Oil, Lavandula Angustifolia (Oải hương) Flower Oil, Allantoin, Ethylhexylglycerin, Phenoxyethanol, Xanthan gum, Menthyl Lactate, Sodium Phytate, Alcohol (0.01% - là dung môi trong hoạt chất càng hóa nước cứng, bắt các icon kim loại, bảo vệ sản phầm khỏi tác nhân oxi hóa).', 'all', 310, 236000, 1000, 1),
 (33, 2, 5, 'Sữa Rửa Mặt Cocoon Chiết Xuất Từ Nghệ Hưng Yên ', '33.jpg', 'Sữa Rửa Mặt Cocoon Chiết Xuất Từ Nghệ Hưng Yên là dòng sữa rửa mặt đến từ thương hiệu mỹ phẩm thuần chay Cocoon của Việt Nam, với công thức dịu nhẹ không sulfate và thành phần chính từ nghệ của vùng đất Hưng Yên, cà rốt và nồng độ 4% AHA nhẹ nhàng loại bỏ các bụi bẩn, tế bào chết, cấp ẩm và làm mềm da giúp da sáng mịn, đều màu.', 'Aqua/Water, Disodium Cocoyl Glutamate, Potassium Laureth Phosphate, Sodium Laurylglucosides Hydroxypropylsulfonate, Lactic Acid, Glycerin, Polysorbate 20, PEG-120 Methyl Glucose Dioleate, Cetearyl Alcohol, Curcuma Longa (Turmeric) Root Extract, Glycolic Acid, Beta-Carotene, Daucus Carota Sativa (Carrot) Root Extract, Betaine, Allantoin, Propanediol, Glycereth-26, Cocoyl Methyl Glucamide, Ethylhexylglycerin, Xanthan Gum, Tocopherol, Glycine Soja (Soybean) Oil, Trisodium Ethylenediamine Disuccinate, Sodium Benzoate, Eucalyptus Globulus Leaf Oil,  Potassium Sorbate, Phenoxyethanol.\r\n\r\n', 'all', 140, 175000, 500, 1),
 (34, 2, 5, 'Sữa Rửa Mặt Cocoon Chiết Xuất Từ Nghệ Hưng Yên', '34.jpg', 'Sữa Rửa Mặt Cocoon Chiết Xuất Từ Nghệ Hưng Yên là dòng sữa rửa mặt đến từ thương hiệu mỹ phẩm thuần chay Cocoon của Việt Nam, với công thức dịu nhẹ không sulfate và thành phần chính từ nghệ của vùng đất Hưng Yên, cà rốt và nồng độ 4% AHA nhẹ nhàng loại bỏ các bụi bẩn, tế bào chết, cấp ẩm và làm mềm da giúp da sáng mịn, đều màu.', 'Aqua/Water, Disodium Cocoyl Glutamate, Potassium Laureth Phosphate, Sodium Laurylglucosides Hydroxypropylsulfonate, Lactic Acid, Glycerin, Polysorbate 20, PEG-120 Methyl Glucose Dioleate, Cetearyl Alcohol, Curcuma Longa (Turmeric) Root Extract, Glycolic Acid, Beta-Carotene, Daucus Carota Sativa (Carrot) Root Extract, Betaine, Allantoin, Propanediol, Glycereth-26, Cocoyl Methyl Glucamide, Ethylhexylglycerin, Xanthan Gum, Tocopherol, Glycine Soja (Soybean) Oil, Trisodium Ethylenediamine Disuccinate, Sodium Benzoate, Eucalyptus Globulus Leaf Oil,  Potassium Sorbate, Phenoxyethanol.', 'all', 310, 235000, 1000, 1),
@@ -359,16 +338,16 @@ INSERT INTO `product` (`product_id`, `brand_id`, `product_type`, `product_name`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_attribute`
+-- Cấu trúc bảng cho bảng `product_attribute`
 --
 
 CREATE TABLE `product_attribute` (
   `attribute_id` int(10) UNSIGNED NOT NULL,
   `attribute_name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `product_attribute`
+-- Đang đổ dữ liệu cho bảng `product_attribute`
 --
 
 INSERT INTO `product_attribute` (`attribute_id`, `attribute_name`) VALUES
@@ -378,17 +357,17 @@ INSERT INTO `product_attribute` (`attribute_id`, `attribute_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_type`
+-- Cấu trúc bảng cho bảng `product_type`
 --
 
 CREATE TABLE `product_type` (
   `product_type_id` int(5) NOT NULL,
   `product_type_name` varchar(20) NOT NULL,
   `category_id` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `product_type`
+-- Đang đổ dữ liệu cho bảng `product_type`
 --
 
 INSERT INTO `product_type` (`product_type_id`, `product_type_name`, `category_id`) VALUES
@@ -412,7 +391,7 @@ INSERT INTO `product_type` (`product_type_id`, `product_type_name`, `category_id
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_values`
+-- Cấu trúc bảng cho bảng `product_values`
 --
 
 CREATE TABLE `product_values` (
@@ -423,10 +402,10 @@ CREATE TABLE `product_values` (
   `img` varchar(50) NOT NULL,
   `price` int(10) UNSIGNED NOT NULL,
   `quantity` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `product_values`
+-- Đang đổ dữ liệu cho bảng `product_values`
 --
 
 INSERT INTO `product_values` (`product_values_id`, `product_id`, `attribute_id`, `value`, `img`, `price`, `quantity`) VALUES
@@ -478,7 +457,7 @@ INSERT INTO `product_values` (`product_values_id`, `product_id`, `attribute_id`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `staff`
+-- Cấu trúc bảng cho bảng `staff`
 --
 
 CREATE TABLE `staff` (
@@ -488,80 +467,74 @@ CREATE TABLE `staff` (
   `email` varchar(30) NOT NULL,
   `phone` varchar(10) NOT NULL,
   `address` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `staff`
+-- Đang đổ dữ liệu cho bảng `staff`
 --
 
 INSERT INTO `staff` (`staff_id`, `account_id`, `staff_name`, `email`, `phone`, `address`) VALUES
 ('S001', 1, 'Thiên Hương', 'thienhuong6935@gmail.com', '0329947740', 'HCM');
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `account`
+-- Chỉ mục cho bảng `account`
 --
 ALTER TABLE `account`
   ADD PRIMARY KEY (`account_id`),
   ADD KEY `fk_account_decent_id` (`decent_id`);
 
 --
--- Indexes for table `bill`
+-- Chỉ mục cho bảng `bill`
 --
 ALTER TABLE `bill`
   ADD PRIMARY KEY (`bill_id`),
   ADD KEY `fk_bill_customerID` (`customer_id`);
 
 --
--- Indexes for table `bill_detail`
+-- Chỉ mục cho bảng `bill_detail`
 --
 ALTER TABLE `bill_detail`
   ADD PRIMARY KEY (`bill_id`,`product_id`),
   ADD KEY `fk_billDetail_productID` (`product_id`);
 
 --
--- Indexes for table `brand`
+-- Chỉ mục cho bảng `brand`
 --
 ALTER TABLE `brand`
   ADD PRIMARY KEY (`brand_id`);
 
 --
--- Indexes for table `category`
---
-ALTER TABLE `category`
-  ADD PRIMARY KEY (`category_id`);
-
---
--- Indexes for table `customer`
+-- Chỉ mục cho bảng `customer`
 --
 ALTER TABLE `customer`
   ADD PRIMARY KEY (`cusotmer_id`),
   ADD KEY `fk_customer_accountID` (`account_id`);
 
 --
--- Indexes for table `decentralization`
+-- Chỉ mục cho bảng `decentralization`
 --
 ALTER TABLE `decentralization`
   ADD PRIMARY KEY (`decent_id`);
 
 --
--- Indexes for table `decent_detail`
+-- Chỉ mục cho bảng `decent_detail`
 --
 ALTER TABLE `decent_detail`
   ADD PRIMARY KEY (`decent_id`,`feature_id`,`action`),
   ADD KEY `fk_decentDetail_featureID` (`feature_id`);
 
 --
--- Indexes for table `feature`
+-- Chỉ mục cho bảng `feature`
 --
 ALTER TABLE `feature`
   ADD PRIMARY KEY (`feature_id`);
 
 --
--- Indexes for table `product`
+-- Chỉ mục cho bảng `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`product_id`),
@@ -569,20 +542,20 @@ ALTER TABLE `product`
   ADD KEY `fk_product_brandID` (`brand_id`);
 
 --
--- Indexes for table `product_attribute`
+-- Chỉ mục cho bảng `product_attribute`
 --
 ALTER TABLE `product_attribute`
   ADD PRIMARY KEY (`attribute_id`);
 
 --
--- Indexes for table `product_type`
+-- Chỉ mục cho bảng `product_type`
 --
 ALTER TABLE `product_type`
   ADD PRIMARY KEY (`product_type_id`),
   ADD KEY `fk_productType_categoryID` (`category_id`);
 
 --
--- Indexes for table `product_values`
+-- Chỉ mục cho bảng `product_values`
 --
 ALTER TABLE `product_values`
   ADD PRIMARY KEY (`product_values_id`),
@@ -590,140 +563,134 @@ ALTER TABLE `product_values`
   ADD KEY `fk_productValues_productId` (`product_id`);
 
 --
--- Indexes for table `staff`
+-- Chỉ mục cho bảng `staff`
 --
 ALTER TABLE `staff`
   ADD PRIMARY KEY (`staff_id`),
   ADD KEY `fk_staff_accountID` (`account_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `account`
+-- AUTO_INCREMENT cho bảng `account`
 --
 ALTER TABLE `account`
   MODIFY `account_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `bill`
+-- AUTO_INCREMENT cho bảng `bill`
 --
 ALTER TABLE `bill`
   MODIFY `bill_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `brand`
+-- AUTO_INCREMENT cho bảng `brand`
 --
 ALTER TABLE `brand`
   MODIFY `brand_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `category`
---
-ALTER TABLE `category`
-  MODIFY `category_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `customer`
+-- AUTO_INCREMENT cho bảng `customer`
 --
 ALTER TABLE `customer`
   MODIFY `cusotmer_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `decentralization`
+-- AUTO_INCREMENT cho bảng `decentralization`
 --
 ALTER TABLE `decentralization`
   MODIFY `decent_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `feature`
+-- AUTO_INCREMENT cho bảng `feature`
 --
 ALTER TABLE `feature`
   MODIFY `feature_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `product`
+-- AUTO_INCREMENT cho bảng `product`
 --
 ALTER TABLE `product`
   MODIFY `product_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
 
 --
--- AUTO_INCREMENT for table `product_attribute`
+-- AUTO_INCREMENT cho bảng `product_attribute`
 --
 ALTER TABLE `product_attribute`
   MODIFY `attribute_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `product_type`
+-- AUTO_INCREMENT cho bảng `product_type`
 --
 ALTER TABLE `product_type`
   MODIFY `product_type_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `product_values`
+-- AUTO_INCREMENT cho bảng `product_values`
 --
 ALTER TABLE `product_values`
   MODIFY `product_values_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `account`
+-- Các ràng buộc cho bảng `account`
 --
 ALTER TABLE `account`
   ADD CONSTRAINT `fk_account_decentID` FOREIGN KEY (`decent_id`) REFERENCES `decentralization` (`decent_id`);
 
 --
--- Constraints for table `bill`
+-- Các ràng buộc cho bảng `bill`
 --
 ALTER TABLE `bill`
   ADD CONSTRAINT `fk_bill_customerID` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`cusotmer_id`);
 
 --
--- Constraints for table `bill_detail`
+-- Các ràng buộc cho bảng `bill_detail`
 --
 ALTER TABLE `bill_detail`
   ADD CONSTRAINT `fk_billDetail_billID` FOREIGN KEY (`bill_id`) REFERENCES `bill` (`bill_id`),
   ADD CONSTRAINT `fk_billDetail_productID` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
 
 --
--- Constraints for table `customer`
+-- Các ràng buộc cho bảng `customer`
 --
 ALTER TABLE `customer`
   ADD CONSTRAINT `fk_customer_accountID` FOREIGN KEY (`account_id`) REFERENCES `account` (`account_id`);
 
 --
--- Constraints for table `decent_detail`
+-- Các ràng buộc cho bảng `decent_detail`
 --
 ALTER TABLE `decent_detail`
   ADD CONSTRAINT `fk_decentDetail_decentID` FOREIGN KEY (`decent_id`) REFERENCES `decentralization` (`decent_id`),
   ADD CONSTRAINT `fk_decentDetail_featureID` FOREIGN KEY (`feature_id`) REFERENCES `feature` (`feature_id`);
 
 --
--- Constraints for table `product`
+-- Các ràng buộc cho bảng `product`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `fk_product_brandID` FOREIGN KEY (`brand_id`) REFERENCES `brand` (`brand_id`),
   ADD CONSTRAINT `fk_product_type` FOREIGN KEY (`product_type`) REFERENCES `product_type` (`product_type_id`);
 
 --
--- Constraints for table `product_type`
+-- Các ràng buộc cho bảng `product_type`
 --
 ALTER TABLE `product_type`
   ADD CONSTRAINT `fk_productType_categoryID` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`);
 
 --
--- Constraints for table `product_values`
+-- Các ràng buộc cho bảng `product_values`
 --
 ALTER TABLE `product_values`
   ADD CONSTRAINT `fk_productValues_attributeId` FOREIGN KEY (`attribute_id`) REFERENCES `product_attribute` (`attribute_id`),
   ADD CONSTRAINT `fk_productValues_productId` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
 
 --
--- Constraints for table `staff`
+-- Các ràng buộc cho bảng `staff`
 --
 ALTER TABLE `staff`
   ADD CONSTRAINT `fk_staff_accountID` FOREIGN KEY (`account_id`) REFERENCES `account` (`account_id`);
