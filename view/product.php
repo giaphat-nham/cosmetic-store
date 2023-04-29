@@ -63,7 +63,7 @@
     rangeDisplay.innerHTML = `${leftRange.max - leftRange.value} - ${rightRange.value}`;
 
     rangeSelects.forEach(input => {
-        input.addEventListener("change", e => {
+        input.addEventListener("input", e => {
             const leftRange = rangeSelects[0];
             const rightRange = rangeSelects[1];
             const rangeDisplay = document.querySelector(".price-range-display");
@@ -73,7 +73,7 @@
         })
     });
 
-    rangeSelects[0].addEventListener("change", e => {
+    rangeSelects[0].addEventListener("input", e => {
         const leftRange = rangeSelects[0];
         const rightRange = rangeSelects[1];
 

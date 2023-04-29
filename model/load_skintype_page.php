@@ -25,7 +25,7 @@ while ($row = mysqli_fetch_array($result)) {
                 <a href='./index.php?act=productDetails&productId=" . $row['product_id'] . "' class='product product-page'>
                     <img src='./img/product/" . $row['img'] . "' alt='product image'>
                     <div class='product-price'>
-                        <div class='price'>" . number_format($row['price'], 0, '', '.') . "</div>
+                        <div class='price'>" . number_format($row['price'], 0, '', '.') . "&#8363;</div>
                         <svg class='heart' xmlns='http://www.w3.org/2000/svg' id='Outline' viewBox='0 0 24 24' width='22'
                             height='22'>
                             <path
