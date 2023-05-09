@@ -23,100 +23,51 @@
 
 <body>
     <div class="grid-container">
-        <!-- HEADER -->
+
         <div class="header">
-            <div class="menu-icon" onclick="openSidebar()">
-                <a href="#"><span class="material-icons-outlined">menu</span></a>
-            </div>
-            <div class="header-left">
-                <a href="#"><span class="material-icons-outlined">search</span></a>
-            </div>
-            <div class="header-right">
-                <a href="#"> <span class="material-icons-outlined">account_circle</span></a>
-                <a href="#"> <span class="material-icons-outlined">logout</span></a>
-            </div>
+            <?php include("view/admin_header.php") ?>
         </div>
 
-        <!-- HEADER -->
-        <!-- STAR SIDE BAR -->
         <div id="sidebar">
-            <div class="sidebar-title">
-                <div class="sidebar-brand">
-                    <a href="#"><img src="./img/favicon.png" alt="">FLORA</a>
-                </div>
-                <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
-            </div>
-
-            <ul class="sidebar-list">
-                <li class="sidebar-list-item">
-                    <a href="#"> <span class="material-icons-outlined">bar_chart</span>Thống kê</a>
-                </li>
-                <li class="sidebar-list-item">
-                    <a href="#"><span class="material-icons-outlined">inventory_2</span>Sản phẩm</a>
-                </li>
-                <li class="sidebar-list-item">
-                    <a href="#"><span class="material-icons-outlined">inventory</span>Đơn hàng</a>
-                </li>
-                <li class="sidebar-list-item">
-                    <a href="#"><span class="material-icons-outlined">verified_user</span>Quyền</a>
-                </li>
-                <li class="sidebar-list-item">
-                    <a href="#"><span class="material-icons-outlined">manage_accounts</span>Tài khoản</a>
-                </li>
-                <li class="sidebar-list-item">
-                    <a href="#"> <span class="material-icons-outlined">perm_contact_calendar</span>Nhân viên</a>
-                </li>
-                <li class="sidebar-list-item">
-                    <a href="#"> <span class="material-icons-outlined">label</span>Nhãn hàng</a>
-                </li>
-            </ul>
-
+            <?php include("view/admin_sidebar.php") ?>
         </div>
-        <!-- END SIDE BAR -->
-        <!-- STAR MAIN -->
+
         <div class="main-container">
-            <div class="main-title">
-                <p class="text-primary font-weight-bold">THỐNG KÊ</p>
-            </div>
-
-            <div class="main-cards">
-                <div class="card">
-                    <div class="card-inner">
-                        <p class="text-primary">SẢN PHẨM</p>
-                        <span class="material-icons-outlined">inventory_2</span>
-                    </div>
-                    <span class="text-primary font-weight-bold">0</span>
-                </div>
-
-                <div class="card">
-                    <div class="card-inner">
-                        <p class="text-primary">ĐƠN HÀNG ĐANG XỬ LÝ</p>
-                        <span class="material-icons-outlined">shopping_cart</span>
-                    </div>
-                    <span class="text-primary font-weight-bold">0</span>
-                </div>
-
-                <div class="card">
-                    <div class="card-inner">
-                        <p class="text-primary">ĐƠN HÀNG ĐÃ HOÀN THÀNH</p>
-                        <span class="material-icons-outlined">add_shopping_cart</span>
-                    </div>
-                    <span class="text-primary font-weight-bold">0</span>
-                </div>
-                <div class="card">
-                    <div class="card-inner">
-                        <p class="text-primary">DOANH SỐ</p>
-                        <span class="material-icons-outlined">paid</span>
-                    </div>
-                    <span class="text-primary font-weight-bold">0</span>
-                </div>
-
-            </div>
+            <?php include("./controller/folder_title_space.php")
+                ?>
+            <?php
+            if (isset($_GET['act'])) {
+                switch ($_GET['act']) {
+                    case "statistic":
+                        include("./view/admin_statistic.php");
+                        break;
+                    case "product":
+                        include("./view/admin_product.php");
+                        break;
+                    case "order":
+                        include("./view/admin_order.php");
+                        break;
+                    case "decentralization":
+                        include("./view/admin_decentralization.php");
+                        break;
+                    case "account":
+                        include("./view/admin_account.php");
+                        break;
+                    case "employee":
+                        include("./view/admin_employee.php");
+                        break;
+                    case "brand":
+                        include("./view/admin_brand.php");
+                        break;
+                    default:
+                        include("./view/admin_statistic.php");
+                        break;
+                }
+            } else {
+                include("./view/admin_statistic.php");
+            }
+            ?>
         </div>
-
-        <!-- END MAIN -->
-
-
 
     </div>
     <script src="js/admin.js"></script>

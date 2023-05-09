@@ -89,6 +89,8 @@ a {
 }
 .sidebar-list-item {
     padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
 }
 .sidebar-list-item:hover {
     background-color: rgba(255,255,255,0.3);
@@ -97,6 +99,9 @@ a {
 .sidebar-responsive {
     display: inline !important;
     position: absolute;
+}
+.sidebar-list-item a {
+    width: 100%;
 }
 /* ---------- SIDEBAR ---------- */
 
@@ -107,12 +112,13 @@ a {
     padding: 20px;
     
 }
-.main-title {
+.folder-title-space {
     display: flex;
     justify-content: space-between;
 }
-.main-title > p{
+.folder-title-space > p{
     font-size: 20px;
+    text-transform: uppercase;
 }
 .main-cards {
     display: grid;
@@ -164,6 +170,7 @@ border-left: 7px solid #d7263d;
 .card-inner > span {
     font-size: 35px;
 }
+
 
 
 /* ---------- MAIN ---------- */

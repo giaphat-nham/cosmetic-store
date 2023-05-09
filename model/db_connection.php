@@ -315,19 +315,27 @@ class DatabaseConnection
     </div>
     <div class='info-row'>
         <div class='info-label'>Loại sản phẩm</div>
-        <div class='info-detail' id='lbl-type'>".$row['product_type_name']."</div>
+        <div class='info-detail' id='lbl-type'>" . $row['product_type_name'] . "</div>
     </div>";
     }
 
-    public function loadBrandLogo($productId) {
-        $sql = "SELECT brand".'.'."img, brand_name from product, brand WHERE product".'.'."brand_id = brand".'.'."brand_id AND product_id = $productId";
+    public function loadBrandLogo($productId)
+    {
+        $sql = "SELECT brand" . '.' . "img, brand_name from product, brand WHERE product" . '.' . "brand_id = brand" . '.' . "brand_id AND product_id = $productId";
         $result = mysqli_query($this->conn, $sql);
         $row = mysqli_fetch_array($result);
 
-        echo "<a href='./index.php?act=product&nav=brand&brand=".$row['brand_name']."' class='brand-logo'>
-    <img src='./img/brands/".$row['img']."' alt=''>
+        echo "<a href='./index.php?act=product&nav=brand&brand=" . $row['brand_name'] . "' class='brand-logo'>
+    <img src='./img/brands/" . $row['img'] . "' alt=''>
 </a>";
     }
 
+    public function loadFeature($featureID)
+    {
+        $sql = "SELECT feature_name FROM feature WHERE feature_id = '$featureID'";
+        $result = mysqli_query($this->conn, $sql);
+        $row = mysqli_fetch_array($result);
+        return $row['feature_name'];
+    }
 }
 ?>
