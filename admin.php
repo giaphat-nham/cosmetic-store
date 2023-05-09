@@ -59,6 +59,9 @@
                     case "brand":
                         include("./view/admin_brand.php");
                         break;
+                    case "customer":
+                        include("./view/admin_customer.php");
+                        break;
                     default:
                         include("./view/admin_statistic.php");
                         break;

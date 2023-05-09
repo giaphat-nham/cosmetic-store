@@ -32,4 +32,10 @@
     <li class="sidebar-list-item">
         <a href="./admin.php?act=brand&feature=7"> <span class="material-icons-outlined">label</span>Nhãn hàng</a>
     </li>
+    <li class="sidebar-list-item">
+        <a href="./admin.php?act=customer&feature=8"> <span class="material-icons-outlined">
+                contacts
+            </span>Khách
+            hàng</a>
+    </li>
 </ul>

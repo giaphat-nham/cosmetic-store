@@ -91,6 +91,7 @@ a {
     padding: 20px;
     box-sizing: border-box;
     width: 100%;
+    font-weight: 550;
 }
 .sidebar-list-item:hover {
     background-color: rgba(255,255,255,0.3);
@@ -103,6 +104,10 @@ a {
 .sidebar-list-item a {
     width: 100%;
 }
+.sidebar-list:first-child {
+    display: none;
+}
+
 /* ---------- SIDEBAR ---------- */
 
 /* ---------- MAIN ---------- */
