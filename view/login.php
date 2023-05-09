@@ -1,3 +1,4 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript">
 function loginform() {
     document.getElementById("login_overlay").style.display='flex';
@@ -9,7 +10,7 @@ function loginform() {
     <div class="modal" id="login">
         <div class="btn-cancel" onclick="close_form()">&times;</div>
         <div class="title">Đăng nhập</div>
-        <form action="model/login.inc.php" method="post">
+        <form  method="post" id="loginForm">
             <div class="input">
                 <label for="username">Tên đăng nhập:</label>
                 <input type="text" name="username">
@@ -19,6 +20,7 @@ function loginform() {
                 <input type="password" name="password">
             </div>
             <button type="submit">Đăng nhập</button>
+            <div class="errorMessage"></div>
             <?php 
                         if (isset($_GET["loginerror"]))
                         {  
@@ -80,3 +82,31 @@ function loginform() {
         <button type="button"><ahref="login.php">Đăng nhập</a></button>
     </div> -->
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#loginForm").on('submit',function(e){
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url:"model/ajax_login.php",
+                data: new FormData(this),
+                dataType: "json",
+                contentType: false,
+                cache: false,
+                processData: false,
+
+                success:function(response){
+                     $(".errorMessage").css("display","block");
+
+                     if (response.status == 1){;
+                        $("#loginForm")[0].reset();
+                        $(".errorMessage").html('<p>' + response.message + '</p>');
+                    } else{
+                        $(".errorMessage").html('<p>' + response.message + '</p>');
+                    }
+                }  
+            })
+        })
+    })
+</script>

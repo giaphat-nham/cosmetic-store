@@ -113,7 +113,7 @@ function checkUser($conn,$username) {
 function createUser($conn,$name,$username,$pwd,$email,$phone) {
 
     settype($account_id,'int');
-    $default_decent_id =2;
+    $default_decent_id =1;
     $default_state = 1;
     $date = date('Y-m-d H:i:s');
     $add_address = 'no address';
