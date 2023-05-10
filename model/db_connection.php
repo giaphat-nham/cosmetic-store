@@ -306,12 +306,22 @@ class DatabaseConnection
 </a>";
     }
 
-    public function loadFeature($featureID)
+    public function loadFeatureName($featureID)
     {
         $sql = "SELECT feature_name FROM feature WHERE feature_id = '$featureID'";
         $result = mysqli_query($this->conn, $sql);
         $row = mysqli_fetch_array($result);
         return $row['feature_name'];
+    }
+
+    public function loadProductTable()
+    {
+        $sql = "SELECT pr.product_id, pr.product_name , br.brand_name, pr_type.product_type_name, pr.img, pr.info, pr.ingredient, pr.skin_type, pr.volume, pr.price, pr.quantity
+        FROM product AS pr, brand AS br, product_type AS pr_type
+        WHERE pr.brand_id=br.brand_id AND pr.product_type=pr_type.product_type_id
+        ORDER BY pr.product_id ASC";
+        $result = mysqli_query($this->conn, $sql);
+        return $result;
     }
 }
 ?>

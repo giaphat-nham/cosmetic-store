@@ -29,5 +29,4 @@
         </div>
         <span class="text-primary font-weight-bold">0</span>
     </div>
-
 </div>

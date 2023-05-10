@@ -36,8 +36,8 @@
             <?php include("./controller/folder_title_space.php")
                 ?>
             <?php
-            if (isset($_GET['act'])) {
-                switch ($_GET['act']) {
+            if (isset($_GET['fname'])) {
+                switch ($_GET['fname']) {
                     case "statistic":
                         include("./view/admin_statistic.php");
                         break;
@@ -55,9 +55,6 @@
                         break;
                     case "employee":
                         include("./view/admin_employee.php");
-                        break;
-                    case "brand":
-                        include("./view/admin_brand.php");
                         break;
                     case "customer":
                         include("./view/admin_customer.php");

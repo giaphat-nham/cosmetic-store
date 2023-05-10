@@ -1,41 +1,39 @@
 <div class="sidebar-title">
     <div class="sidebar-brand">
-        <a href="admin.php"><img src="./img/favicon.png" alt="">FLORA</a>
+        <a href="admin.php"><img src="./img/favicon.png" alt=""><span>FLORA</span></a>
     </div>
     <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
 </div>
 
 <ul class="sidebar-list">
     <li class="sidebar-list-item">
-        <a href="./admin.php?act=statistic&feature=10"> <span class="material-icons-outlined">bar_chart</span>Thống
-            kê</a>
+        <a href="./admin.php?fname=statistic&feature=10"> <span class="material-icons-outlined">bar_chart</span>
+            <span>Thống kê</span></a>
     </li>
     <li class="sidebar-list-item">
-        <a href="./admin.php?act=product&feature=2"><span class="material-icons-outlined">inventory_2</span>Sản phẩm</a>
+        <a href="./admin.php?fname=product&feature=2"><span class="material-icons-outlined">inventory_2</span><span>Sản
+                phẩm</span></a>
     </li>
     <li class="sidebar-list-item">
-        <a href="./admin.php?act=order&feature=6"><span class="material-icons-outlined">inventory</span>Đơn hàng</a>
+        <a href="./admin.php?fname=order&feature=6"><span class="material-icons-outlined">inventory</span><span>Đơn
+                hàng</span></a>
     </li>
     <li class="sidebar-list-item">
-        <a href="./admin.php?act=decentralization&feature=3"><span
-                class="material-icons-outlined">verified_user</span>Quyền</a>
+        <a href="./admin.php?fname=decentralization&feature=3"><span
+                class="material-icons-outlined">verified_user</span><span>Quyền</span></a>
     </li>
     <li class="sidebar-list-item">
-        <a href="./admin.php?act=account&feature=1"><span class="material-icons-outlined">manage_accounts</span>Tài
-            khoản</a>
+        <a href="./admin.php?fname=account&feature=1"><span
+                class="material-icons-outlined">manage_accounts</span><span>Tài khoản</span></a>
     </li>
     <li class="sidebar-list-item">
-        <a href="./admin.php?act=employee&feature=9"> <span
-                class="material-icons-outlined">perm_contact_calendar</span>Nhân
-            viên</a>
+        <a href="./admin.php?fname=employee&feature=9"> <span
+                class="material-icons-outlined">perm_contact_calendar</span><span>Nhân viên</span></a>
     </li>
+
     <li class="sidebar-list-item">
-        <a href="./admin.php?act=brand&feature=7"> <span class="material-icons-outlined">label</span>Nhãn hàng</a>
-    </li>
-    <li class="sidebar-list-item">
-        <a href="./admin.php?act=customer&feature=8"> <span class="material-icons-outlined">
+        <a href="./admin.php?fname=customer&feature=8"> <span class="material-icons-outlined">
                 contacts
-            </span>Khách
-            hàng</a>
+            </span><span>Khách hàng</span></a>
     </li>
 </ul>

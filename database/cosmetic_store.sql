@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 05, 2023 at 06:26 AM
+-- Generation Time: May 10, 2023 at 03:25 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -98,6 +98,18 @@ INSERT INTO `brand` (`brand_id`, `brand_name`, `img`, `display_name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `account_id` int(10) UNSIGNED NOT NULL,
+  `product_id` int(10) UNSIGNED NOT NULL,
+  `quantity` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `category`
 --
 
@@ -149,8 +161,7 @@ CREATE TABLE `decentralization` (
 INSERT INTO `decentralization` (`decent_id`, `decent_name`) VALUES
 (1, 'customer'),
 (2, 'admin'),
-(3, 'staff'),
-(4, 'manager');
+(3, 'staff');
 
 -- --------------------------------------------------------
 
@@ -176,10 +187,7 @@ INSERT INTO `decent_detail` (`decent_id`, `feature_id`, `url`, `action`, `isDisp
 (2, 1, '', 'update', 1),
 (3, 1, '', 'add', 1),
 (3, 1, '', 'delete', 1),
-(3, 1, '', 'update', 1),
-(4, 1, '', 'add', 1),
-(4, 1, '', 'delete', 1),
-(4, 1, '', 'update', 1);
+(3, 1, '', 'update', 1);
 
 -- --------------------------------------------------------
 
@@ -215,7 +223,8 @@ INSERT INTO `feature` (`feature_id`, `feature_name`) VALUES
 (6, 'Đơn hàng'),
 (7, 'Nhãn hàng'),
 (8, 'Khách hàng'),
-(9, 'Nhân viên');
+(9, 'Nhân viên'),
+(10, 'Thống kê');
 
 -- --------------------------------------------------------
 
@@ -243,10 +252,10 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `brand_id`, `product_type`, `product_name`, `img`, `info`, `ingredient`, `skin_type`, `volume`, `price`, `quantity`, `state`) VALUES
-(1, 1, 1, 'Nước Tẩy Trang L\'Oreal Tươi Mát Cho Da Dầu, Hỗn Hợp', '1.jpg', 'Nước Tẩy Trang L\'Oréal Paris 3-in-1 Micellar Water Refreshing (xanh dương nhạt) ứng dụng công nghệ Micellar mới chứa các phân tử mi-xen độc đáo hoạt động như một thỏi nam châm giúp loại bỏ hoàn toàn bụi bẩn và lớp trang điểm, đồng thời làm dịu da nhờ thành phần nước khoáng từ những ngọn núi ở Pháp, mang lại làn da tươi tắn hơn sau khi tẩy trang. Kết cấu dạng nước tươi mát, dễ sử dụng, không cần rửa lại với nước mà vẫn không gây nhờn dính da.', 'Aqua / Water, Hexylene Glycol, Glycerin, Poloxamer 184, Disodium Cocoamphodiacetate, Disodium Edta, BHT , Polyaminopropyl Biguanide', 'oil', 400, 159000, 0, 1),
-(2, 1, 1, 'Nước Tẩy Trang L\'Oreal Làm Sạch Sâu Trang Điểm', '2.jpg', 'Nước Tẩy Trang L\'Oreal Micellar Water 3-in-1 Deep Cleansing Even For Sensitive Skin có hai lớp chất lỏng giúp hòa tan chất bẩn và loại bỏ toàn bộ lớp trang điểm hiệu quả, kể cả lớp trang điểm lâu trôi và không thấm nước chỉ trong một bước.', 'Aqua / Water, Cyclopentasiloxane, Isohexadecane, Potassium Phosphate, Sodium Chloride, Dipotassium Phosphate, Disodium Edta, Decyl Glucoside, Hexylene Glycol, Polyaminopropyl Biguanide, CI 61565 / Green 6', 'all', 400, 159000, 0, 1),
-(3, 1, 1, 'Nước Tẩy Trang L\'Oreal Dưỡng Ẩm Cho Da Thường, Khô', '3.jpg', 'Nước Tẩy Trang L\'Oreal Micellar Water 3-in-1 Moisturizing Even For Sensitive Skin ứng dụng công nghệ Micellar mới chứa các phân tử mi-xen độc đáo hoạt động như một thỏi nam châm giúp loại bỏ hoàn toàn bụi bẩn và lớp trang điểm, đồng thời dưỡng da ẩm mượt nhờ thành phần chiết xuất hoa hồng Pháp, giúp duy trì độ ẩm cần thiết cho da sau khi tẩy trang. Kết cấu dạng nước tươi mát, dễ sử dụng, không cần rửa lại với nước, giúp da trở nên sạch sẽ, tươi sáng và có đủ độ ẩm.', ' Aqua / Water, Hexylene Glycol, Glycerin, Rosa Gallica Flower Extract, Sorbitol, Poloxamer 184, Disodium Cocoamphodiacetate, Disodium Edta, Propylene Glycol, BHT , Polyaminopropyl Biguanide', 'dry', 400, 159000, 0, 1),
-(4, 1, 1, 'Nước Tẩy Trang L\'Oréal Làm Sạch Sâu Cho Da Dầu', '4.jpg', 'Nước Tẩy Trang L\'Oréal Paris Revitalift Crystal Purifying Micellar Water là dòng nước tẩy trang được thương hiệu L\'Oréal thiết kế dành riêng cho làn da dầu, với công nghệ đột phá Oil-free đem đến sức mạnh làm sạch sâu gấp 5 lần. Sản phẩm chứa các phân tử mixen hoạt động như một nam châm làm sạch, loại bỏ 5 loại tạp chất có trên da bạn hằng ngày, giúp lỗ chân lông thoáng sạch.', 'Aqua / Water, Hexylene Glycol, Glycerin, Rosa Gallica Flower Extract, Sorbitol, Poloxamer 184, Disodium Cocoamphodiacetate, Disodium Edta, Propylene Glycol, BHT , Polyaminopropyl Biguanide', 'oil', 400, 209000, 0, 1),
+(1, 1, 1, 'Nước Tẩy Trang L\'Oreal Tươi Mát Cho Da Dầu, Hỗn Hợp', '1.jpg', 'Nước Tẩy Trang L\'Oréal Paris 3-in-1 Micellar Water Refreshing (xanh dương nhạt) ứng dụng công nghệ Micellar mới chứa các phân tử mi-xen độc đáo hoạt động như một thỏi nam châm giúp loại bỏ hoàn toàn bụi bẩn và lớp trang điểm, đồng thời làm dịu da nhờ thành phần nước khoáng từ những ngọn núi ở Pháp, mang lại làn da tươi tắn hơn sau khi tẩy trang. Kết cấu dạng nước tươi mát, dễ sử dụng, không cần rửa lại với nước mà vẫn không gây nhờn dính da.', 'Aqua / Water, Hexylene Glycol, Glycerin, Poloxamer 184, Disodium Cocoamphodiacetate, Disodium Edta, BHT , Polyaminopropyl Biguanide', 'oil', 400, 159000, 15000, 1),
+(2, 1, 1, 'Nước Tẩy Trang L\'Oreal Làm Sạch Sâu Trang Điểm', '2.jpg', 'Nước Tẩy Trang L\'Oreal Micellar Water 3-in-1 Deep Cleansing Even For Sensitive Skin có hai lớp chất lỏng giúp hòa tan chất bẩn và loại bỏ toàn bộ lớp trang điểm hiệu quả, kể cả lớp trang điểm lâu trôi và không thấm nước chỉ trong một bước.', 'Aqua / Water, Cyclopentasiloxane, Isohexadecane, Potassium Phosphate, Sodium Chloride, Dipotassium Phosphate, Disodium Edta, Decyl Glucoside, Hexylene Glycol, Polyaminopropyl Biguanide, CI 61565 / Green 6', 'all', 400, 159000, 15000, 1),
+(3, 1, 1, 'Nước Tẩy Trang L\'Oreal Dưỡng Ẩm Cho Da Thường, Khô', '3.jpg', 'Nước Tẩy Trang L\'Oreal Micellar Water 3-in-1 Moisturizing Even For Sensitive Skin ứng dụng công nghệ Micellar mới chứa các phân tử mi-xen độc đáo hoạt động như một thỏi nam châm giúp loại bỏ hoàn toàn bụi bẩn và lớp trang điểm, đồng thời dưỡng da ẩm mượt nhờ thành phần chiết xuất hoa hồng Pháp, giúp duy trì độ ẩm cần thiết cho da sau khi tẩy trang. Kết cấu dạng nước tươi mát, dễ sử dụng, không cần rửa lại với nước, giúp da trở nên sạch sẽ, tươi sáng và có đủ độ ẩm.', ' Aqua / Water, Hexylene Glycol, Glycerin, Rosa Gallica Flower Extract, Sorbitol, Poloxamer 184, Disodium Cocoamphodiacetate, Disodium Edta, Propylene Glycol, BHT , Polyaminopropyl Biguanide', 'dry', 400, 159000, 10000, 1),
+(4, 1, 1, 'Nước Tẩy Trang L\'Oréal Làm Sạch Sâu Cho Da Dầu', '4.jpg', 'Nước Tẩy Trang L\'Oréal Paris Revitalift Crystal Purifying Micellar Water là dòng nước tẩy trang được thương hiệu L\'Oréal thiết kế dành riêng cho làn da dầu, với công nghệ đột phá Oil-free đem đến sức mạnh làm sạch sâu gấp 5 lần. Sản phẩm chứa các phân tử mixen hoạt động như một nam châm làm sạch, loại bỏ 5 loại tạp chất có trên da bạn hằng ngày, giúp lỗ chân lông thoáng sạch.', 'Aqua / Water, Hexylene Glycol, Glycerin, Rosa Gallica Flower Extract, Sorbitol, Poloxamer 184, Disodium Cocoamphodiacetate, Disodium Edta, Propylene Glycol, BHT , Polyaminopropyl Biguanide', 'oil', 400, 209000, 6000, 1),
 (5, 1, 2, 'Kem Chống Nắng L\'Oreal Mịn Nhẹ Che Phủ Đều Màu Da', '5.jpg', 'Kem Chống Nắng L’Oreal Paris UV Defender Correct & Protect UV Serum Protector SPF 50+ PA++++ chứa thành phần chống oxy hóa mạnh mẽ Vitamin CG - giúp chống lại tác hại của gốc tự do một cách tối ưu, kết hợp cùng sắc tố màu quả mơ dễ dàng tiệp vào da thật tự nhiên, mang lại hiệu ứng da trông đều màu và rạng rỡ hơn.', 'Aqua / Water, Alcohol Denat, Ethylhexyl Triazone, Drometrizole Trisiloxane, Isononyl Isononanoate, Isopropyl Lauroyl Sarcosinate, Butyl Methoxydibenzoylmethane, Diisopropyl Sebacate, Bis Ethylhexyloxyphenol Methoxyphenyl Triazine, Dimethicone, Methylene Bis Benzotriazolyl Tetramethylbutylphenol [Nano] / Me Thylene Bis Benzotriazolyl Tetramethylbutylphenol, Octocrylene, Propanediol, Ethylhexyl Salicylate, Silica, Cetearyl Alcohol, T Butyl Alcohol, Tocopherol, Sodium Stearoyl Glutamate, Hydrolyzed Hyaluronic Acid, Phenoxyethanol, Peg 10 Dimethicone, Peg 20, Trisodium Ethylenediamine Disuccinate Polyglyceryl 10 Laurate Ammonium Acryloyldimethyltaurate / Vp Copolymer, Limonene, Linalool Caprylyl Glycol Alpha Isomethyl Ionone Carbomer Acrylates / C10 30 Alkyl Acrylate Crosspolymer Butylene Glycol Cetearyl Glucoside Potassium Hydroxideinulin Lauryl Carbamate Hexyl Glycerin, Parfum / Fragrance.', 'oil', 50, 208000, 100, 1),
 (6, 1, 2, 'Kem Chống Nắng L\'Oreal Mịn Nhẹ Nâng Tông Giảm Thâm', '6.jpg', 'Kem Chống Nắng L’Oreal Paris UV Defender Bright & Clear UV Serum Protector SPF 50+ PA++++ chứa hàm lượng cao Niacinamide có khả năng dưỡng sáng da, mờ đốm nâu & sạm nám, đồng thời củng cố hàng rào bảo vệ da, góp phần ngăn ngừa tác hại của tia UV. Đặc biệt, hiệu ứng làm sáng da tức thì sẽ giúp làn da xỉn màu trông bừng sáng và rạng rỡ hơn bao giờ hết.', 'Aqua / Water, Ethylhexyl Methoxycinnamate, Titanium Dioxide, Squalane, Glycerin, Drometrizole Trisiloxane, Terephthalylidene Dicamphor Sulfonic Acid, Propylene Glycol, Alcohol Dlenate Glycol, Alcohol Dlenate Glycol., Triethanolamine, Dipropylene Glycol, Mica, Stearic Acid, Potassium Cetyl Phosphate, Tocopherol, Nylon 12, Ci 77891 / Titanium Dioxide, Niacinamide, Sodium Cocoyl Sarcosinate, Sodium Chloride, Phenoxyethanol, Diethylamino Hydroxybenzoyl Hexyl Benzoate, Paeonia Suffruticosa Root Extract, Thermus Thermophillus Ferment, Peg 100 Stearate, Ethylhexyl Triazone, Trisodium Ethylenediamine Disuccinate, Palmitic Acid, Polysorbate 80, Limonene, Xanthan Gum, Linalool, Tromethamine, Isohexadecane, Caprylyl Glycol, Alpha Isomethyl Ionone, Barium Sulfate, Carbomer, Acrylamide / Sodium Acryloyldimethyltaurate Copolymer, Myristic Acid, Sorbitan Oleate, Bis Ethylhexyloxyphenol Methoxyphenyl Triazine, Cetyl Alcohol, Butylene Glycol, Bht, Butyrospermum Parkii Seedcake Extract / Shea Seedcake Extract, Potassiumhydroxide Hexyl Cinnamal Glyceryl Stearate Parfum / Fragrance.', 'all', 50, 224000, 100, 1),
 (7, 1, 2, 'Kem Chống Nắng L\'Oreal Mịn Nhẹ Kiềm Dầu Thoáng Mịn Da', '7.jpg', 'Kem Chống Nắng L’Oreal Paris UV Defender Matte & Fresh UV Serum Protector SPF 50+ PA++++ chứa hoạt chất Airlicium giúp kiểm soát lượng dầu thừa trên da hiệu quả, giúp làn da không còn bóng nhờn mà trở nên thoáng mịn nhẹ tênh, ngay cả trong điều kiện thời tiết nóng ẩm.', 'Aqua / Water, Glycerin, Alcohol Denat, Dimethicone, Ethylhexyl Salicylate, Propylene Glycol, Terephthalylidene Dicamphor Sulfonic Acid, Silica, Titanium Dioxide, Triethanolamine, Drometrizole Trisiloxane, Phenylbenzimidazole Sulfonic Acid, Octocrylene, Ethylhexyl Triazone, Butyl Methoxydibenzoylmethane, Tromethamine, Stearic Acid, Potassium Cetyl Phosphate, Tocopherol, Phenoxyethanol, Peg 100 Stearate, Palmitic Acid, Silica Silylate, Ammonium Polyacryloyldimethyl Taurate, Limonene, Menthoxypropanediol, Linalool, Sanguisorba Officinalis Root Extract, Zingiber Officinale Root Extract / Ginger Root Extract, Cinnamomum Cassia Bark Extract, Kaolin, Alpha Isomethyl Ionone, Carbomer, Myristic Acid, Disodium Edta Cetyl Alcohol Butylene Glycol Butyrospermum Parkii Seedcake Extract / Shea Seedcake Extract Hexyl Cinnamal Glyceryl Stearate Parfum /Fragrance.', 'oil', 50, 223000, 1000, 1),
@@ -540,6 +549,13 @@ ALTER TABLE `brand`
   ADD PRIMARY KEY (`brand_id`);
 
 --
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`account_id`,`product_id`),
+  ADD KEY `fk_cart_productID` (`product_id`);
+
+--
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
@@ -637,6 +653,12 @@ ALTER TABLE `brand`
   MODIFY `brand_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `account_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
@@ -658,7 +680,7 @@ ALTER TABLE `decentralization`
 -- AUTO_INCREMENT for table `feature`
 --
 ALTER TABLE `feature`
-  MODIFY `feature_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `feature_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -706,6 +728,13 @@ ALTER TABLE `bill`
 ALTER TABLE `bill_detail`
   ADD CONSTRAINT `fk_billDetail_billID` FOREIGN KEY (`bill_id`) REFERENCES `bill` (`bill_id`),
   ADD CONSTRAINT `fk_billDetail_productID` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
+
+--
+-- Constraints for table `cart`
+--
+ALTER TABLE `cart`
+  ADD CONSTRAINT `fk_cart_accoutnID` FOREIGN KEY (`account_id`) REFERENCES `account` (`account_id`),
+  ADD CONSTRAINT `fk_cart_productID` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
 
 --
 -- Constraints for table `customer`
