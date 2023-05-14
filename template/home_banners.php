@@ -58,7 +58,6 @@
             </p>
         </div>
         <div class="grid-row span3">
-            <a href="./index.php?act=product&txtSearch=">MUA NGAY</a>
         </div>
     </div>
 

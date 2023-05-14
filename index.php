@@ -51,7 +51,7 @@
         ?>
         <?php include("./view/footer.php") ?>
         <?php include("./view/login.php") ?>
-        <?php include("./view/register.php ") ?>
+        <?php include("./view/register.php") ?>
     </div>
 </body>
 

@@ -41,13 +41,13 @@
         }
         if (isset($_GET['txtSearch'])) {
             $searchResult = $conn->getSearchResult($_GET['txtSearch']);
-            if (sizeof($searchResult) <= 0) {
+            if (sizeof($searchResult) <= 0 || $_GET['txtSearch'] == "") {
                 echo "<h3>Không có kết quả!</h3>";
-            }
-            $counter = 0;
-            foreach ($searchResult as $result) {
-                $counter++;
-                echo "
+            } else {
+                $counter = 0;
+                foreach ($searchResult as $result) {
+                    $counter++;
+                    echo "
                 <a href='./index.php?act=productDetails&productId=" . $result['product_id'] . "' class='product product-page'>
                     <img src='./img/product/" . $result['img'] . "' alt='product image'>
                     <div class='product-price'>
@@ -56,8 +56,9 @@
                     <div class='product-brand'>" . $result['display_name'] . "</div>
                     <div class='product-name'>" . $result['product_name'] . "</div>
                 </a>";
-                if ($counter == 12)
-                    break;
+                    if ($counter == 12)
+                        break;
+                }
             }
         }
         if (isset($_GET['skintype'])) {
@@ -69,22 +70,28 @@
         <?php
         if (!isset($_GET['txtSearch'])) {
             $conn->loadPageNavigation();
-        } else if (isset($_GET['txtSearch'])) {
-            $searchResult = $conn->getSearchResult($_GET['txtSearch']);
-            if (sizeof($searchResult) > 0) {
-                $totalResult = sizeof($searchResult);
-                $totalResult % 12 == 0 ? $pageNumber = $totalResult / 12 : $pageNumber = $totalResult / 12 + 1;
-
-                for ($i = 1; $i <= $pageNumber; $i++) {
-                    echo "<button class='change-page' data-search='" . $_GET['txtSearch'] . "' onclick=" . '"' . "changeSearchResultPage(this.innerHTML,'" . $_GET['txtSearch'] . "', this)" . '"' . ">$i</button>";
-                }
-            }
-
-        }
-        echo "<script type='text/javascript'>
+            echo "<script type='text/javascript'>
                     const pageChangeButton = document.querySelector('.change-page');
                     pageChangeButton.classList.add('active');
                 </script>";
+        } else if (isset($_GET['txtSearch'])) {
+            $searchResult = $conn->getSearchResult($_GET['txtSearch']);
+            if (sizeof($searchResult) > 0 && $_GET['txtSearch'] != "") {
+                $totalResult = sizeof($searchResult);
+                $totalResult % 12 == 0 ? $pageNumber = $totalResult / 12 : $pageNumber = $totalResult / 12 + 1;
+
+                if (!($pageNumbers < 2)) {
+                    for ($i = 1; $i <= $pageNumber; $i++) {
+                        echo "<button class='change-page' data-search='" . $_GET['txtSearch'] . "' onclick=" . '"' . "changeSearchResultPage(this.innerHTML,'" . $_GET['txtSearch'] . "', this)" . '"' . ">$i</button>";
+                    }
+                }
+            }
+            echo "<script type='text/javascript'>
+                    const pageChangeButton = document.querySelector('.change-page');
+                    pageChangeButton.classList.add('active');
+                </script>";
+        }
+
 
         ?>
         <script type="text/javascript">
@@ -155,12 +162,12 @@
                     }
                     const pageNum = pageNav.innerHTML;
                     const orderProduct = document.querySelector(".order-product");
-                        const xmlhttp = new XMLHttpRequest();
-                        xmlhttp.onload = function () {
-                            document.querySelector(".product-catalog.product-page").innerHTML = this.responseText;
-                        }
-                        xmlhttp.open("GET", "./model/filter_products.php?lrange=" + lRange + "&rrange=" + rRange + "&skintype=" + skinType + "&brand=" + brand + "&producttype=" + productType + "&filter=" + filterFor + "&order=" + orderProduct.value + "&nav=" + nav + "&navtype=" + navType + "&key=" + key + "&pageNum=" + pageNum);
-                        xmlhttp.send();
+                    const xmlhttp = new XMLHttpRequest();
+                    xmlhttp.onload = function () {
+                        document.querySelector(".product-catalog.product-page").innerHTML = this.responseText;
+                    }
+                    xmlhttp.open("GET", "./model/filter_products.php?lrange=" + lRange + "&rrange=" + rRange + "&skintype=" + skinType + "&brand=" + brand + "&producttype=" + productType + "&filter=" + filterFor + "&order=" + orderProduct.value + "&nav=" + nav + "&navtype=" + navType + "&key=" + key + "&pageNum=" + pageNum);
+                    xmlhttp.send();
                 }
             }
 
@@ -319,38 +326,40 @@
 
                 clearElement(pageNavContainer);
 
-                for (let i = 1; i <= totalPage; i++) {
-                    const navButton = document.createElement("button");
-                    navButton.classList.add("change-page");
-                    navButton.dataset.leftRange = leftRange;
-                    navButton.dataset.rightRange = rightRange;
-                    navButton.dataset.skinType = skinType;
-                    navButton.dataset.brand = brand;
-                    navButton.dataset.productType = productType;
-                    navButton.dataset.filter = filterFor;
-                    navButton.dataset.nav = nav;
-                    navButton.dataset.navType = navType;
-                    navButton.dataset.key = key;
-                    navButton.onclick = function loadFilterPage() {
-                        const pageNavs =document.querySelectorAll("button.change-page");
-                        pageNavs.forEach(pNav => {
-                            if (pNav.classList.contains("active"));
-                            pNav.classList.remove("active");
-                        });
-                        navButton.classList.add("active");
-                        const orderProduct = document.querySelector(".order-product");
-                        const xmlhttp = new XMLHttpRequest();
-                        xmlhttp.onload = function () {
-                            document.querySelector(".product-catalog.product-page").innerHTML = this.responseText;
-                        }
-                        xmlhttp.open("GET", "./model/filter_products.php?lrange=" + leftRange + "&rrange=" + rightRange + "&skintype=" + skinType + "&brand=" + brand + "&producttype=" + productType + "&filter=" + filterFor + "&order=" + orderProduct.value + "&nav=" + nav + "&navtype=" + navType + "&key=" + key + "&pageNum=" + i);
-                        xmlhttp.send();
-                    };
-                    navButton.innerHTML = i;
-                    pageNavContainer.appendChild(navButton);
-                }
+                if (!(totalPage < 2)) {
+                    for (let i = 1; i <= totalPage; i++) {
+                        const navButton = document.createElement("button");
+                        navButton.classList.add("change-page");
+                        navButton.dataset.leftRange = leftRange;
+                        navButton.dataset.rightRange = rightRange;
+                        navButton.dataset.skinType = skinType;
+                        navButton.dataset.brand = brand;
+                        navButton.dataset.productType = productType;
+                        navButton.dataset.filter = filterFor;
+                        navButton.dataset.nav = nav;
+                        navButton.dataset.navType = navType;
+                        navButton.dataset.key = key;
+                        navButton.onclick = function loadFilterPage() {
+                            const pageNavs = document.querySelectorAll("button.change-page");
+                            pageNavs.forEach(pNav => {
+                                if (pNav.classList.contains("active"));
+                                pNav.classList.remove("active");
+                            });
+                            navButton.classList.add("active");
+                            const orderProduct = document.querySelector(".order-product");
+                            const xmlhttp = new XMLHttpRequest();
+                            xmlhttp.onload = function () {
+                                document.querySelector(".product-catalog.product-page").innerHTML = this.responseText;
+                            }
+                            xmlhttp.open("GET", "./model/filter_products.php?lrange=" + leftRange + "&rrange=" + rightRange + "&skintype=" + skinType + "&brand=" + brand + "&producttype=" + productType + "&filter=" + filterFor + "&order=" + orderProduct.value + "&nav=" + nav + "&navtype=" + navType + "&key=" + key + "&pageNum=" + i);
+                            xmlhttp.send();
+                        };
+                        navButton.innerHTML = i;
+                        pageNavContainer.appendChild(navButton);
+                    }
 
-                pageNavContainer.firstChild.classList.add("active");
+                    pageNavContainer.firstChild.classList.add("active");
+                }
             }
 
             function clearElement(element) {

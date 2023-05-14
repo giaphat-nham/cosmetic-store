@@ -120,8 +120,10 @@ class DatabaseConnection
             $totalProduct = $result->num_rows;
             $totalProduct % 12 == 0 ? $pageNumbers = $totalProduct / 12 : $pageNumbers = $totalProduct / 12 + 1;
 
-            for ($i = 1; $i <= $pageNumbers; $i++) {
-                echo "<button href='#' class='change-page' data-nav='brand' data-nav-type='$brandId' onclick='sendPageNumber(this.dataset.nav, this.dataset.navType, this.innerHTML, this)'>$i</button>";
+            if (!($pageNumbers < 2)) {
+                for ($i = 1; $i <= $pageNumbers; $i++) {
+                    echo "<button class='change-page' data-nav='brand' data-nav-type='$brandId' onclick='sendPageNumber(this.dataset.nav, this.dataset.navType, this.innerHTML, this)'>$i</button>";
+                }
             }
         } else if (isset($_GET['type'])) {
             $productType = $_GET['type'];
@@ -130,9 +132,10 @@ class DatabaseConnection
 
             $totalProduct = $result->num_rows;
             $totalProduct % 12 == 0 ? $pageNumbers = $totalProduct / 12 : $pageNumbers = $totalProduct / 12 + 1;
-
-            for ($i = 1; $i <= $pageNumbers; $i++) {
-                echo "<button href='#' class='change-page' data-nav='nBrand' data-nav-type='$productType' onclick='sendPageNumber(this.dataset.nav, this.dataset.navType, this.innerHTML, this)'>$i</button>";
+            if (!($pageNumbers < 2)) {
+                for ($i = 1; $i <= $pageNumbers; $i++) {
+                    echo "<button class='change-page' data-nav='nBrand' data-nav-type='$productType' onclick='sendPageNumber(this.dataset.nav, this.dataset.navType, this.innerHTML, this)'>$i</button>";
+                }
             }
         } else if (isset($_GET['skintype'])) {
             $skinType = $_GET['skintype'];
@@ -142,8 +145,10 @@ class DatabaseConnection
             $totalProduct = $result->num_rows;
             $totalProduct % 12 == 0 ? $pageNumbers = $totalProduct / 12 : $pageNumbers = $totalProduct / 12 + 1;
 
-            for ($i = 1; $i <= $pageNumbers; $i++) {
-                echo "<button href='#' class='change-page' data-skin-type='$skinType' onclick='loadSkinTypePage(this.dataset.skinType,this.innerHTML,this)'>$i</button>";
+            if (!($pageNumbers < 2)) {
+                for ($i = 1; $i <= $pageNumbers; $i++) {
+                    echo "<button class='change-page' data-skin-type='$skinType' onclick='loadSkinTypePage(this.dataset.skinType,this.innerHTML,this)'>$i</button>";
+                }
             }
         }
     }
