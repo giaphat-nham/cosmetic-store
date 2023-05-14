@@ -198,11 +198,10 @@ ul {
 
 .function #btn-basket {
   position: relative;
-  --num-o-product: "0";
 }
 
 .function #btn-basket::after {
-  content: var(--num-o-product);
+  content: attr(data-total-product);
   position: absolute;
   top: -5px;
   right: -8px;

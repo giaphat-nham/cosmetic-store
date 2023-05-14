@@ -77,6 +77,6 @@
         const leftRange = rangeSelects[0];
         const rightRange = rangeSelects[1];
 
-        rightRange.min =leftRange.max - leftRange.value;
+        rightRange.min = leftRange.max - leftRange.value;
     });
 </script>

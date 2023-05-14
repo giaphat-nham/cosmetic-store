@@ -159,6 +159,11 @@ class DatabaseConnection
         $result = mysqli_query($this->conn, $sql);
         $row = mysqli_fetch_array($result);
 
+        $accountId = "";
+        if (isset($_SESSION['account_id'])) {
+            $accountId = $_SESSION['account_id'];
+        }
+
         echo "<img class='main-img' src='./img/product/" . $row['img'] . "' alt='Ảnh sản phẩm'>
     <div class='info'>
         <div class='brand'>" . $row['display_name'] . "</div>
@@ -167,8 +172,7 @@ class DatabaseConnection
             <div class='price'>" . number_format($row['price'], 0, '', '.') . "&#8363;</div>
         </div>
         <div class='button-group'>
-            <button class='add-to-cart' data-product-id='$productId'>Thêm vào giỏ hàng</button>
-            <button class='buy-now' data-product-id='$productId'>Mua ngay</button>
+            <button class='add-to-cart' data-product-id='$productId' data-account-id='$accountId' onclick='addToCart(this.dataset.productId,this.dataset.accountId)'>Thêm vào giỏ hàng</button>
         </div>
     </div>";
     }

@@ -37,6 +37,9 @@
                 case "productDetails":
                     include("./view/product_details.php");
                     break;
+                case "cart":
+                    include("./view/cartview.php");
+                    break;
                 default:
                     include("./template/home_banners.php");
                     break;
@@ -52,6 +55,7 @@
         <?php include("./view/footer.php") ?>
         <?php include("./view/login.php") ?>
         <?php include("./view/register.php") ?>
+        <?php include("./model/load_cart_total.php")?>
     </div>
 </body>
 

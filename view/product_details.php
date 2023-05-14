@@ -20,4 +20,5 @@
         <?php include("./controller/product_side_info.php") ?>
         <?php include("./controller/product_recommendation.php") ?>
     </div>
+    <div class="script"></div>
 </div>
