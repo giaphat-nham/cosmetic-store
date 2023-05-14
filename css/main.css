@@ -369,6 +369,7 @@ button:hover svg {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   padding-right: 30px;
+  margin-top: 30px;
 }
 
 .sub-banner-1 img {
@@ -487,12 +488,14 @@ button:hover svg {
 .sub-banner-3 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  box-shadow: 0px 0px 10px gray;
+  margin-top: 60px;
+  margin-bottom: 60px;
 }
 
 .sub-banner-3 img {
   width: 720px;
   height: auto;
+  border-radius: 30px;
 }
 
 .sub-banner-3 .banner-col {
@@ -963,6 +966,7 @@ footer img {
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr;
     padding: 0;
+    margin-top: 0;
   }
 
   .sub-banner-1 img {
@@ -989,6 +993,12 @@ footer img {
   .sub-banner-3 {
     grid-template-rows: 1fr auto;
     grid-template-columns: 1fr;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .sub-banner-3 img {
+    border-radius: 0;
   }
 
   .sub-banner-3 .banner-col:first-child {
