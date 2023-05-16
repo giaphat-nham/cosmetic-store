@@ -127,8 +127,8 @@ function createUser($conn,$name,$username,$pwd,$email,$phone) {
         exit();
     }
     else {
-        // $hashedPwd = password_hash($pwd,PASSWORD_DEFAULT);
-        mysqli_stmt_bind_param($stmt1,'sssii',$username,$pwd,$date,$default_decent_id,$default_state);
+        $hashedPwd = password_hash($pwd,PASSWORD_DEFAULT);
+        mysqli_stmt_bind_param($stmt1,'sssii',$username,$hashedPwd,$date,$default_decent_id,$default_state);
         mysqli_stmt_execute($stmt1);
         mysqli_stmt_close($stmt1);
         

@@ -30,8 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                     $userError = true;
                 } else {
                     $sqlpwd = $user_exist['password'];
-                    if ($sqlpwd != $password){
-                            $response['message'] = "Tên đăng nhập không chính xác!!!";
+                    if (!password_verify($password, $sqlpwd)){
+                            $response['message'] = "Mật Khẩu không chính xác!!!";
                             $pwdError = true; 
                         } else {
                         $_SESSION['account_id'] =$user_exist['account_id'];
