@@ -708,6 +708,29 @@ footer img {
   display: none;
 } */
 
+#register_overlay {
+  position: fixed;
+  inset: 0 0 0 0;
+  background-color: hsla(0, 0%, 100%, 0.2);
+  z-index: 1000;
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+
+#login_overlay {
+  position: fixed;
+  inset: 0 0 0 0;
+  background-color: hsla(0, 0%, 100%, 0.2);
+  z-index: 1000;
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+
+
 .modal {
   background-color: white;
   padding: 30px 50px;
@@ -1067,26 +1090,4 @@ footer img {
   .search:has(input:focus) {
     position: fixed;
   }
-}
-
-#register_overlay {
-  position: fixed;
-  inset: 0 0 0 0;
-  background-color: hsla(0, 0%, 100%, 0.2);
-  z-index: 1000;
-  /* display: flex; */
-  align-items: center;
-  justify-content: center;
-  display: none;
-}
-
-#login_overlay {
-  position: fixed;
-  inset: 0 0 0 0;
-  background-color: hsla(0, 0%, 100%, 0.2);
-  z-index: 1000;
-  /* display: flex; */
-  align-items: center;
-  justify-content: center;
-  display: none;
 }
