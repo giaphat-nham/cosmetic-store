@@ -123,8 +123,8 @@ function createUser($conn,$name,$username,$pwd,$email,$phone,$account_type) {
 
     mysqli_stmt_prepare($stmt1, $sql1);
 
-    $hashedPwd = password_hash($pwd,PASSWORD_DEFAULT);
-    mysqli_stmt_bind_param($stmt1,'sssii',$username,$hashedPwd,$date,$decent_id,$default_state);
+    // $hashedPwd = password_hash($pwd,PASSWORD_DEFAULT);
+    mysqli_stmt_bind_param($stmt1,'sssii',$username,$pwd,$date,$decent_id,$default_state);
     mysqli_stmt_execute($stmt1);
     mysqli_stmt_close($stmt1);
         
@@ -145,7 +145,7 @@ function createUser($conn,$name,$username,$pwd,$email,$phone,$account_type) {
 
             } else if ($decent_id == 2 || $decent_id == 3) {
 
-                $sql3  ="INSERT INTO staff (staff_id,account_id,staff_name,email,phone,address) VALUE(?,?,?,?,?);";
+                $sql3  ="INSERT INTO staff (account_id,staff_name,email,phone,address) VALUE(?,?,?,?,?);";
                 $stmt3 = mysqli_stmt_init($conn);
                 mysqli_stmt_prepare($stmt3, $sql3);
 

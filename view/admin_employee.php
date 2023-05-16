@@ -17,6 +17,18 @@ function close_form() {
 
 <?php 
 
+    if(isset($_GET['del'])){
+        $state = $_GET['del'];
+        if ($state == 'succcess'){
+            echo '<script type="text/javascript"> alert("delete Success")</script>';
+        }
+    }
+
+
+?>
+
+<?php 
+
     if(isset($_GET['update'])){
         $user = $_GET['update'];
         $sql1 = "SELECT staff_id,account_id,staff_name,email,phone,address FROM staff WHERE staff_id = '$user';";
@@ -105,7 +117,7 @@ if(isset($_GET['update'])){
             echo "<td>" . $row['phone'] . "</td>";
             echo "<td>" . $row['address'] . "</td>";
 
-            echo "<td>" . "<a href='./admin.php?fname=employee&feature=8&delete='".$row['account_id']."'><span class='material-icons-outlined'>delete</span></a>"
+            echo "<td>" . "<a href='./model/account_delete.php?act=delete&user=". $row['account_id'] . "&place=employee'><span class='material-icons-outlined'>delete</span></a>"
                 . "<a href='./admin.php?fname=employee&feature=8&update=".$row['staff_id']."'><span class='material-icons-outlined'>settings</span></a>" . "</td>";
             echo "</tr>";
         }

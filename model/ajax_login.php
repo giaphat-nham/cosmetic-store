@@ -30,8 +30,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                     $userError = true;
                 } else {
                     $sqlpwd = $user_exist['password'];
-                    if (!password_verify($password, $sqlpwd)){
-                            $response['message'] = "Mật Khẩu không chính xác!!!";
+
+                    
+                    if ($password != $sqlpwd){
+                            $response['message'] = "Mật khẩu không chính xác!!!";
                             $pwdError = true; 
                         } else {
                         $_SESSION['account_id'] =$user_exist['account_id'];
@@ -59,7 +61,7 @@ else {
 
 function checkUser($conn,$username){
 
-    $sql  = "SELECT * FROM account WHERE username=?;";
+    $sql  = "SELECT username,account_id,password,decent_id FROM account WHERE username=?;";
     $stmt = mysqli_stmt_init($conn);
 
     mysqli_stmt_prepare($stmt, $sql);

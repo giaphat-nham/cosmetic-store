@@ -20,6 +20,17 @@ function close_form() {
         }
 ?>
 
+<?php 
+
+    if(isset($_GET['del'])){
+        $state = $_GET['del'];
+        if ($state == 'succcess'){
+            echo '<script type="text/javascript"> alert("delete Success")</script>';
+        }
+    }
+
+
+?>
 
 <div id="add_overlay">
     <div class="modal">
@@ -72,14 +83,11 @@ function close_form() {
                                 echo "<p> Số điện thoại không hợp lệ!!!</p>";
                             }
                             if($_GET["errorAdd"]=="none"){
-                                echo "<p> Đăng kí thành công</p>";
+                                echo "<p> Tạo thành công</p>";
                             }
                         }
                 ?>
         </form>
-        <div class="other-option">
-        </div>
-        <button type="button" onclick=loginform()>Đăng nhập</a></button>
     </div>
 </div>
 
@@ -160,10 +168,10 @@ if(isset($_GET['update'])){
 <div class="button-add"><a href="#" onclick="addForm()"><span class="material-icons-outlined"> add_circle_outline </span>Thêm tài khoản</a></div>
 
 <?php
+        
         $sql = "SELECT account_id,username,password,decent_id from account ";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_array($result);
-        
         
         echo "<table>
         <tr>
@@ -187,8 +195,8 @@ if(isset($_GET['update'])){
                     }
                 }
             }
-            echo "<td>" . "<a href='./admin.php?fname=account&feature=1&delete='".$row['account_id']."'><span class='material-icons-outlined'>delete</span></a>"
-                . "<a href='./admin.php?fname=account&feature=1&update=".$row['account_id']."'><span class='material-icons-outlined'>settings</span></a>" . "</td>";
+            echo "<td>" . "<a href='./model/account_delete.php?act=delete&user=". $row['account_id'] . "&place=account'><span class='material-icons-outlined'>delete</span> </a>"
+                 . "<a href='./admin.php?fname=account&feature=1&update=".$row['account_id']."'><span class='material-icons-outlined'>settings</span></a>" . "</td>";
             echo "</tr>";
         }
         echo "</table>";
