@@ -327,10 +327,112 @@ class DatabaseConnection
     {
         $sql = "SELECT pr.product_id, pr.product_name , br.brand_name, pr_type.product_type_name, pr.img, pr.info, pr.ingredient, pr.skin_type, pr.volume, pr.price, pr.quantity
         FROM product AS pr, brand AS br, product_type AS pr_type
-        WHERE pr.brand_id=br.brand_id AND pr.product_type=pr_type.product_type_id
+        WHERE pr.brand_id=br.brand_id AND pr.product_type=pr_type.product_type_id AND NOT pr.state=0
         ORDER BY pr.product_id ASC";
         $result = mysqli_query($this->conn, $sql);
         return $result;
     }
+    public function loadProductByID($productID)
+    {
+        $sql = "SELECT pr.product_id, pr.product_name , br.brand_name, pr_type.product_type_name, pr.img, pr.info, pr.ingredient, pr.skin_type, pr.volume, pr.price, pr.quantity, pr.brand_id, pr.product_type, pr.state
+        FROM product AS pr, brand AS br, product_type AS pr_type
+        WHERE pr.brand_id=br.brand_id AND pr.product_type=pr_type.product_type_id AND NOT pr.state=0 AND pr.product_id = $productID";
+        $result = mysqli_query($this->conn, $sql);
+        $row = mysqli_fetch_array($result);
+        return $row;
+    }
+
+    public function loadProductBrand()
+    {
+        $sql = "SELECT * FROM brand";
+        $result = mysqli_query($this->conn, $sql);
+
+        return $result;
+    }
+
+    public function admin_LoadProductType()
+    {
+        $sql = "SELECT * FROM product_type";
+        $result = mysqli_query($this->conn, $sql);
+
+        return $result;
+    }
+
+    public function loadSkinType()
+    {
+        $sql = "SELECT * FROM skin_type";
+        $result = mysqli_query($this->conn, $sql);
+
+        return $result;
+    }
+
+    public function initProductID()
+    {
+        $sql = "SELECT MAX(product_id) AS maxID FROM product ";
+        $result = mysqli_query($this->conn, $sql);
+        $row = mysqli_fetch_array($result);
+        return $row;
+    }
+
+    public function insertProduct($id, $brandID, $typeID, $name, $img, $info, $ingredient, $skinType, $volume, $price, $quantity)
+    {
+        $state = 1;
+        $sql = "INSERT INTO product (product_id, product_name, product_type, brand_id, info, ingredient, skin_type, volume, price, quantity, state, img)
+        VALUES ('$id', '$name', '$typeID', '$brandID', '$info', '$ingredient', '$skinType', '$volume','$price', '$quantity', '$state', '$img')";
+        mysqli_query($this->conn, $sql);
+        echo "Thêm sản phẩm thành công!";
+        return true;
+
+    }
+
+    public function deleteProduct($productID)
+    {
+        $sql = "UPDATE product SET state=0 WHERE product_id=$productID";
+        mysqli_query($this->conn, $sql);
+        return true;
+    }
+
+    public function updateProduct($id, $brandID, $typeID, $name, $info, $ingredient, $skinType, $volume, $price, $quantity)
+    {
+        $sql = "UPDATE product 
+        SET product_name='$name', product_type='$typeID', brand_id =' $brandID', info='$info', ingredient='$ingredient', skin_type='$skinType', volume='$volume', price='$price', quantity='$quantity' 
+        WHERE product_id='$id'";
+        mysqli_query($this->conn, $sql);
+        return true;
+
+    }
+
+    //ĐƠN HÀNG
+    public function loadOrderTable()
+    {
+        $sql = "SELECT bill.bill_id, bill.price, bill.customer_id, bill.bill_state, bill.date, detail.product_id, detail.quantity, detail.product_price
+        FROM bill, bill_detail AS detail, product
+        WHERE bill.bill_id=detail.bill_id AND detail.product_id=product.product_id AND NOT bill.bill_state=0
+        ORDER BY bill.bill_id ASC";
+        $result = mysqli_query($this->conn, $sql);
+        return $result;
+    }
+
+
+    //QUYỀN
+
+    // THỐNG KÊ
+    public function numberOfProducts()
+    {
+        $sql = "SELECT COUNT(product_id) AS number_Of_Products FROM product WHERE product.state != 0";
+        $result = mysqli_query($this->conn, $sql);
+        $row = mysqli_fetch_array($result);
+        return $row['number_Of_Products'];
+    }
+
+
+    // public function totalSales()
+    // {
+    //     $sql = "SELECT SUM(price) AS totalPrice FROM bill";
+    //     $result = mysqli_query($this->conn, $sql);
+    //     $row = mysql_fetch_array($result);
+    //     return $row['totalPrice'];
+
+    // }
 }
 ?>

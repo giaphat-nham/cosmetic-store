@@ -1,7 +1,23 @@
-<div class="button-add"><a href="./admin.php?fname=product&feature=2&act=add"><span class="material-icons-outlined">
-            add_circle_outline
-        </span>Thêm sản phẩm</a></div>
-<div class="product-table">
-    <?php include("./controller/product_management.php")
-        ?>
+<div class="product-page">
+
+    <?php
+    if (isset($_GET['act'])) {
+        switch ($_GET['act']) {
+            case "update":
+                include("./view/admin_product_update.php");
+                break;
+            case "add":
+                include("./view/admin_product_adding.php");
+                break;
+            case "info":
+                include("./view/admin_product_info.php");
+                break;
+            default:
+                include("./controller/product_management.php");
+        }
+    } else
+        include("./controller/product_management.php");
+    ?>
+
+
 </div>

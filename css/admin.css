@@ -105,10 +105,7 @@ a {
     background-color: rgba(255,255,255,0.3);
     cursor: pointer;
 }
-.sidebar-responsive {
-    display: inline !important;
-    position: absolute;
-}
+
 .sidebar-list-item a {
     display: flex;
     align-items: center;
@@ -212,19 +209,31 @@ td, th {
     text-align: center;
 }
 
-.product-table td:nth-child(2){
+.product-table td:nth-child(2) {
     text-align: left;
 }
 
-td:last-child  a:first-child {
+.product-table td:last-child a:nth-child(2) {
     color: #d7263d;
 }
 
-
-
+.sidebar-responsive {
+    display: inline !important;
+    position: absolute;
+}
 /* ---------- MAIN ---------- */
 
 /* ---------- MEDIA QUERIES ---------- */
+
+@media screen and (max-width: 1220px) {
+
+    /* for table button delete and update  */
+    td:last-child {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
 /* Medium <= 992px  */
 @media screen and (max-width: 992px) {
 
@@ -438,3 +447,129 @@ td:last-child  a:first-child {
     background-color: var(--clr-focus-gray);
     border: 1px solid var(--clr-focus-gray);
   }
+
+  .require::after {
+      content: "(*)";
+      color: red;
+      font-weight: 600;
+
+  }
+ .product-page {
+     display: flex;
+     justify-content: center;
+     width: 100%;
+     /* position: relative; */
+ }
+  .delete-msg-container {
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+
+  }
+
+  .delete-confirm-form {
+      border: 2px solid var(--clr-main);
+      width: 60%;
+      border-radius: 5px;
+      padding: 5px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      align-items: center;
+      background-color: var(--clr-main-light);
+
+  }
+
+  .delete-confirm-form .confirm {
+      display: flex;
+      gap: 10px;
+  }
+
+  .confirm input {
+      padding: 5px 10px;
+      align-items: center;
+      border-radius: 5px;
+  }
+
+  .confirm input:hover {
+      background-color: var(--clr-main);
+      color: white;
+  }
+
+
+  /* Product adding form */
+ 
+  .product-adding-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    border: 2px solid var(--clr-main);
+    width: 80%;
+    
+  }
+ .product-adding-form h2 {
+    font-size: 2rem;
+    text-transform: uppercase;
+    color: var(--clr-main-dark);
+    text-align: center;
+    margin-top: 15px;
+ }
+ .product-adding-form form{
+    width: 90%;;
+ }
+  .form-item {
+    padding: 10px 0;
+
+  }
+  /* .wide-height input{
+    height: 100px;
+  } */
+  .button {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  .btn-item {
+    padding: 10px 20px;
+
+  }
+  .btn-item:hover {
+    background-color: var(--clr-main-dark);
+    color: white;
+  }
+
+  input[type=text],input[type=number],
+  select {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+  }
+  
+  .product-update-form {
+    padding: 20px 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .product-update-form label {
+    align-items: left;
+  }
+  .product-update-form h2{
+text-align: center;
+text-transform: uppercase;
+
+  }
+
+
+  
+
+
