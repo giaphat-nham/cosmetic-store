@@ -168,8 +168,11 @@ if (isset($_POST['btnUpdate'])) {
         }
         return;
     }
+    if ($conn->updateProduct($product_id, $product_brand, $product_type, $product_name, $product_info, $product_ingredient, $product_skinType, $product_volume, $product_price, $product_quantity)) {
+        echo ("Cập nhật sản phẩm thành công!");
 
-    $conn->updateProduct($product_id, $product_brand, $product_type, $product_name, $product_info, $product_ingredient, $product_skinType, $product_volume, $product_price, $product_quantity);
+    }
+
 
 
 

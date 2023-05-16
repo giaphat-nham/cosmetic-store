@@ -395,8 +395,8 @@ class DatabaseConnection
     public function updateProduct($id, $brandID, $typeID, $name, $info, $ingredient, $skinType, $volume, $price, $quantity)
     {
         $sql = "UPDATE product 
-        SET product_name='$name', product_type='$typeID', brand_id =' $brandID', info='$info', ingredient='$ingredient', skin_type='$skinType', volume='$volume', price='$price', quantity='$quantity' 
-        WHERE product_id='$id'";
+        SET product_name=" . '"' . $name . '"' . ", product_type=$typeID, brand_id =$brandID, info=" . '"' . $info . '"' . ", ingredient=" . '"' . $ingredient . '"' . ", skin_type='$skinType', volume=$volume, price=$price, quantity=$quantity
+        WHERE product_id=$id";
         mysqli_query($this->conn, $sql);
         return true;
 
@@ -413,9 +413,6 @@ class DatabaseConnection
         return $result;
     }
 
-
-    //QUYỀN
-
     // THỐNG KÊ
     public function numberOfProducts()
     {
@@ -426,13 +423,13 @@ class DatabaseConnection
     }
 
 
-    // public function totalSales()
-    // {
-    //     $sql = "SELECT SUM(price) AS totalPrice FROM bill";
-    //     $result = mysqli_query($this->conn, $sql);
-    //     $row = mysql_fetch_array($result);
-    //     return $row['totalPrice'];
+    public function totalSales()
+    {
+        $sql = "SELECT SUM(price) AS totalPrice FROM bill";
+        $result = mysqli_query($this->conn, $sql);
+        $row = mysql_fetch_array($result);
+        return $row['totalPrice'];
 
-    // }
+    }
 }
 ?>
