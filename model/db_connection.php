@@ -413,6 +413,15 @@ class DatabaseConnection
         return $result;
     }
 
+    public function getState($billID)
+    {
+        $sql = "SELECT bill_state
+        FROM bill
+        WHERE bill_id = $billID";
+        $result = mysqli_query($this->conn, $sql);
+        $row = mysqli_fetch_array($result);
+        return $row;
+    }
     // THỐNG KÊ
     public function numberOfProducts()
     {
@@ -425,11 +434,50 @@ class DatabaseConnection
 
     public function totalSales()
     {
-        $sql = "SELECT SUM(price) AS totalPrice FROM bill";
+        $sql = "SELECT SUM(product_price*quantity) AS totalPrice FROM bill_detail";
         $result = mysqli_query($this->conn, $sql);
-        $row = mysql_fetch_array($result);
+        $row = mysqli_fetch_array($result);
         return $row['totalPrice'];
 
     }
+
+    public function countProcessingOrder()
+    {
+        $sql = "SELECT COUNT(bill_state) AS count FROM bill WHERE bill_state=0";
+        $result = mysqli_query($this->conn, $sql);
+        $row = mysqli_fetch_array($result);
+        return $row['count'];
+    }
+
+    public function countProcessedOrder()
+    {
+        $sql = "SELECT COUNT(bill_state) AS count FROM bill WHERE bill_state=1";
+        $result = mysqli_query($this->conn, $sql);
+        $row = mysqli_fetch_array($result);
+        return $row['count'];
+    }
+
+
+    public function getDecentByAccountID($accountId)
+    {
+        $sql = "SELECT decent_id FROM account WHERE account_id = $accountId";
+        $result = mysqli_query($this->conn, $sql);
+        $row = mysqli_fetch_array($result);
+        return $row['decent_id'];
+    }
+
+
+    public function soLuotBanTheoBill($dateFrom, $dateTo)
+    {
+        $sql = "SELECT COUNT(d.product_id) AS count, d.product_id, product.product_name FROM bill_detail as d, product, bill
+        WHERE d.product_id = product.product_id AND bill.bill_id=d.bill_id AND bill.bill_state=1 AND bill.date BETWEEN '$dateFrom' AND '$dateTo'
+        GROUP BY d.product_id
+        ORDER BY count DESC";
+        $result = mysqli_query($this->conn, $sql);
+        return $result;
+    }
+
+
+
 }
 ?>

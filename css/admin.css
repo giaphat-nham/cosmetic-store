@@ -203,6 +203,7 @@ table {
 td, th {
     border-bottom: 1px solid #ddd;
     padding: 5px;
+    text-align: center;
 }
 
 .product-table td {

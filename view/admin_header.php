@@ -3,6 +3,6 @@
 </div>
 
 <div class="header-right">
-    <a href="#"> <span class="material-icons-outlined">account_circle</span></a>
-    <a href="#"> <span class="material-icons-outlined">logout</span></a>
+
+    <a href="./model/logout.inc.php"> <span class="material-icons-outlined">logout</span></a>
 </div>

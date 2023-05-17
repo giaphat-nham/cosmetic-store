@@ -19,9 +19,11 @@
     $conn = new DatabaseConnection("localhost", "root", "", "cosmetic_store");
     $conn->connect();
     ?>
+
 </head>
 
 <body>
+    <?php session_start() ?>
     <div class="grid-container">
 
         <div class="header">
@@ -59,12 +61,8 @@
                     case "customer":
                         include("./view/admin_customer.php");
                         break;
-                    default:
-                        include("./view/admin_statistic.php");
-                        break;
+
                 }
-            } else {
-                include("./view/admin_statistic.php");
             }
             ?>
         </div>
