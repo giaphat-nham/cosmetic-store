@@ -14,10 +14,7 @@
 
         switch ($decent_id) {
             case "2":
-                echo ("<li class='sidebar-list-item'>
-        <a href='./admin.php?fname=decentralization&feature=3'><span
-                class='material-icons-outlined'>verified_user</span><span>Quyền</span></a>
-    </li>
+                echo ("
     <li class='sidebar-list-item'>
         <a href='./admin.php?fname=account&feature=1'><span
                 class='material-icons-outlined'>manage_accounts</span><span>Tài khoản</span></a>

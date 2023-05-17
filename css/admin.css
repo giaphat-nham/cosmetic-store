@@ -569,6 +569,10 @@ text-align: center;
 text-transform: uppercase;
 
   }
+  select#type{
+    width: 150px;
+    padding: 0;
+  }
 
 
   

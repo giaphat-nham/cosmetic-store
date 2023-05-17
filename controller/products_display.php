@@ -80,7 +80,7 @@
                 $totalResult = sizeof($searchResult);
                 $totalResult % 12 == 0 ? $pageNumber = $totalResult / 12 : $pageNumber = $totalResult / 12 + 1;
 
-                if (!($pageNumbers < 2)) {
+                if (!($pageNumber < 2)) {
                     for ($i = 1; $i <= $pageNumber; $i++) {
                         echo "<button class='change-page' data-search='" . $_GET['txtSearch'] . "' onclick=" . '"' . "changeSearchResultPage(this.innerHTML,'" . $_GET['txtSearch'] . "', this)" . '"' . ">$i</button>";
                     }

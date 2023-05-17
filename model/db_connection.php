@@ -467,10 +467,14 @@ class DatabaseConnection
     }
 
 
-    public function soLuotBanTheoBill($dateFrom, $dateTo)
+    public function soLuotBanTheoBill($dateFrom, $dateTo, $type)
     {
+        $filter = '';
+        if ($type != 0) {
+            $filter = "AND product.product_type= $type";
+        }
         $sql = "SELECT COUNT(d.product_id) AS count, d.product_id, product.product_name FROM bill_detail as d, product, bill
-        WHERE d.product_id = product.product_id AND bill.bill_id=d.bill_id AND bill.bill_state=1 AND bill.date BETWEEN '$dateFrom' AND '$dateTo'
+        WHERE d.product_id = product.product_id AND bill.bill_id=d.bill_id AND bill.bill_state=1 AND bill.date BETWEEN '$dateFrom' AND '$dateTo' $filter
         GROUP BY d.product_id
         ORDER BY count DESC";
         $result = mysqli_query($this->conn, $sql);
