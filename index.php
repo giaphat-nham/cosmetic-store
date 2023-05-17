@@ -40,6 +40,10 @@
                 case "cart":
                     include("./view/cartview.php");
                     break;
+                case "placeorder":
+                    include("./view/place_order.php");
+                    break;
+                
                 default:
                     include("./template/home_banners.php");
                     break;
